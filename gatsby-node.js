@@ -5,10 +5,16 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
   if (node.internal.type === `MarkdownRemark`) {
     const slug = createFilePath({ node, getNode, basePath: `pages` })
+    const type = slug.split("/")[1]
     createNodeField({
       node,
       name: `slug`,
       value: slug,
+    })
+    createNodeField({
+      node,
+      name: `type`,
+      value: type,
     })
   }
 }
@@ -22,6 +28,7 @@ exports.createPages = ({ graphql, actions }) => {
           node {
             fields {
               slug
+              type
             }
           }
         }
@@ -29,10 +36,12 @@ exports.createPages = ({ graphql, actions }) => {
     }
   `).then(result => {
     result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-      let type = node.fields.slug.split("/")[1]
+      console.dir(node.fields)
       createPage({
         path: node.fields.slug,
-        component: path.resolve(`./src/templates/${type}-single.js`),
+        component: path.resolve(
+          `./src/templates/${node.fields.type}-single.js`
+        ),
         context: {
           // Data passed to context is available
           // in page queries as GraphQL variables.

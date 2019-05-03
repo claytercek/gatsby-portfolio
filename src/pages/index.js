@@ -24,7 +24,7 @@ export default ({ data }) => {
 
 export const query = graphql`
   query {
-    allMarkdownRemark {
+    allMarkdownRemark(filter: { fields: { type: { eq: "work" } } }) {
       totalCount
       edges {
         node {
