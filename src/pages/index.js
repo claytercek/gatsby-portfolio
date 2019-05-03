@@ -1,11 +1,13 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
+import SEO from "../components/SEO"
 
 export default ({ data }) => {
   console.log(data)
   return (
     <Layout>
+      <SEO />
       <div>
         {data.allMarkdownRemark.edges.map(({ node }) => (
           <Link to={node.fields.slug} key={node.id}>

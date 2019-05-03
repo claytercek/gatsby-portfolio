@@ -3,6 +3,10 @@ module.exports = {
     title: `Clay Tercek`,
     siteUrl: `https://claytercek.netlify.com`,
     description: `Clay Tercek's Personal Portfolio`,
+    titleTemplate: "%s · Clay Tercek",
+    url: "http://claytercek.netlify.com", // No trailing slash allowed!
+    image: "/images/default_image.jpg", // Path to your image you placed in the 'static' folder
+    twitterUsername: "@claytercek",
   },
   plugins: [
     {
@@ -14,5 +18,6 @@ module.exports = {
     },
     `gatsby-transformer-remark`,
     `gatsby-plugin-sass`,
+    `gatsby-plugin-react-helmet`,
   ],
 }

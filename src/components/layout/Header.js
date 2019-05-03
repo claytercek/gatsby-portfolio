@@ -1,7 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
-export default ({ children }) => {
+export default () => {
   const data = useStaticQuery(
     graphql`
       query {
@@ -13,11 +13,9 @@ export default ({ children }) => {
       }
     `
   )
-
   return (
-    <div style={{ margin: `3rem auto`, maxWidth: 650, padding: `0 1rem` }}>
+    <header>
       <h3>{data.site.siteMetadata.title}</h3>
-      {children}
-    </div>
+    </header>
   )
 }
