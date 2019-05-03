@@ -29,9 +29,10 @@ exports.createPages = ({ graphql, actions }) => {
     }
   `).then(result => {
     result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+      let type = node.fields.slug.split("/")[1]
       createPage({
         path: node.fields.slug,
-        component: path.resolve(`./src/templates/work-single.js`),
+        component: path.resolve(`./src/templates/${type}-single.js`),
         context: {
           // Data passed to context is available
           // in page queries as GraphQL variables.
