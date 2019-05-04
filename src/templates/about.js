@@ -9,14 +9,12 @@ export default ({ data }) => {
     <Layout>
       <SEO
         title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
-        image={"/" + post.frontmatter.image.relativePath}
+        description={post.excerpt}
         pathname={post.fields.slug}
         article
       />
       <div>
         <h1>{post.frontmatter.title}</h1>
-        <h4>{post.frontmatter.datePublished}</h4>
         <main dangerouslySetInnerHTML={{ __html: post.html }} />
       </div>
     </Layout>
@@ -28,12 +26,7 @@ export const query = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
-        datePublished: date(formatString: "MM YYYY")
         title
-        description
-        image {
-          relativePath
-        }
       }
       excerpt
       fields {

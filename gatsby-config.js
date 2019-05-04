@@ -7,6 +7,20 @@ module.exports = {
     url: "http://claytercek.netlify.com", // No trailing slash allowed!
     image: "/images/default_image.jpg", // Path to your image you placed in the 'static' folder
     twitterUsername: "@claytercek",
+    menu: [
+      {
+        name: "home",
+        slug: "/"
+      },
+      {
+        name: "blog",
+        slug:"/blog/"
+      },
+      {
+        name: "about",
+        slug:"/about/"
+      }
+    ]
   },
   plugins: [
     {

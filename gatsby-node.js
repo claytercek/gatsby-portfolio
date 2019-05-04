@@ -1,4 +1,5 @@
 const path = require(`path`)
+var fs = require("fs")
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
@@ -36,12 +37,24 @@ exports.createPages = ({ graphql, actions }) => {
     }
   `).then(result => {
     result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-      console.dir(node.fields)
+      // templates/{type}-single.js
+      let template = path.resolve(
+        `./src/templates/${node.fields.type}-single.js`
+      )
+      
+      // templates/{type}.js
+      if (!fs.existsSync(template)) {
+        template = path.resolve(`./src/templates/${node.fields.type}.js`)
+      }
+
+      // templates/default.js
+      if (!fs.existsSync(template)) {
+        template = path.resolve(`./src/templates/default.js`)
+      }
+
       createPage({
         path: node.fields.slug,
-        component: path.resolve(
-          `./src/templates/${node.fields.type}-single.js`
-        ),
+        component: template,
         context: {
           // Data passed to context is available
           // in page queries as GraphQL variables.

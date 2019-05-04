@@ -9,7 +9,6 @@ const SEO = ({ title, description, image, pathname, article }) => (
     render={({
       site: {
         siteMetadata: {
-          defaultTitle,
           titleTemplate,
           defaultDescription,
           siteUrl,
@@ -19,7 +18,7 @@ const SEO = ({ title, description, image, pathname, article }) => (
       },
     }) => {
       const seo = {
-        title: title || defaultTitle,
+        title: title,
         description: description || defaultDescription,
         image: `${siteUrl}${image || defaultImage}`,
         url: `${siteUrl}${pathname || "/"}`,

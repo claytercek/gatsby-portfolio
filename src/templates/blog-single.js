@@ -17,7 +17,7 @@ export default ({ data }) => {
       <div>
         <h1>{post.frontmatter.title}</h1>
         <h4>{post.frontmatter.datePublished}</h4>
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <main dangerouslySetInnerHTML={{ __html: post.html }} />
       </div>
     </Layout>
   )
