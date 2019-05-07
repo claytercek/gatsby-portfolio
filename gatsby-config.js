@@ -10,17 +10,17 @@ module.exports = {
     menu: [
       {
         name: "home",
-        slug: "/"
+        slug: "/",
       },
       {
         name: "blog",
-        slug:"/blog/"
+        slug: "/blog/",
       },
       {
         name: "about",
-        slug:"/about/"
-      }
-    ]
+        slug: "/about/",
+      },
+    ],
   },
   plugins: [
     {
