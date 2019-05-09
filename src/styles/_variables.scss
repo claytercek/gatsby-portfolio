@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900");
+@import url("https://fonts.googleapis.com/css?family=Crimson+Text:400,600,700");
+
+// breakpoints for include-media
+$breakpoints: (
+  small: 480 / 16 * 1em,
+  tablet: 768 / 16 * 1em,
+  large: 1024 / 16 * 1em,
+  xlarge: 1440 / 16 * 1em,
+);
+
+// fonts
+$font-size-base: 1rem;
+$line-height-base: 1.5;
+$font-family-primary: "Montserrat", Helvetica, sans-serif;
+$font-family-secondary: "Helvetica", serif;
+
+// Colors
+$color-white: #ffffff;
+$color-black: #161616;
+$color-link: rgb(25, 113, 228);
+$color-table-border: #eaecef;
+$color-light-grey: #f6f8fa;
+
+// Colors for users with dark mode
+$dcolor-white: $color-white;
+$dcolor-black: $color-black;
+
+// default spacing
+$space: 24px;
+$pad: 16px;
+$gutter: 50px;

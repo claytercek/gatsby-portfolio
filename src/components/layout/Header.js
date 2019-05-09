@@ -1,5 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
+import styles from "./header.module.scss"
 
 export default () => {
   const data = useStaticQuery(
@@ -19,18 +20,21 @@ export default () => {
   )
   return (
     <header>
-      <Link to={"/"}>{data.site.siteMetadata.title}</Link>
       <div>
-        <nav>
-          <ul>
-            {data.site.siteMetadata.menu.map(link => (
-              <li>
-                <Link to={link.slug}>{link.name}</Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <Link className={styles.logo} to={"/"}>
+          {data.site.siteMetadata.title}
+        </Link>
+        <button />
       </div>
+      <nav>
+        <ul>
+          {data.site.siteMetadata.menu.map(link => (
+            <li>
+              <Link to={link.slug}>{link.name}</Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </header>
   )
 }

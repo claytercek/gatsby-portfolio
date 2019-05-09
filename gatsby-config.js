@@ -32,6 +32,12 @@ module.exports = {
     },
     `gatsby-transformer-remark`,
     `gatsby-plugin-sass`,
+    {
+      resolve: `gatsby-plugin-sass-resources`,
+      options: {
+        resources: ["./src/styles/global.scss"],
+      },
+    },
     `gatsby-plugin-react-helmet`,
   ],
 }

@@ -1,0 +1,15 @@
+.u-fullWidth {
+  margin-left: $pad * -3;
+  margin-right: $pad * -3;
+
+  @include media("<tablet") {
+    margin-left: $pad * -2;
+    margin-right: $pad * -2;
+  }
+  @include media("<small") {
+    margin-left: $pad * -1;
+    margin-right: $pad * -1;
+  }
+
+  width: 100vw;
+}

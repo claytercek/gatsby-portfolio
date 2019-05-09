@@ -1,0 +1,53 @@
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: $color-black;
+  @include darkText($dcolor-white);
+}
+
+body {
+  background-color: $color-white;
+  // @include dark($dcolor-white);
+
+  padding-top: 100px !important;
+
+  @include media("<tablet") {
+    padding-top: 80px !important;
+  }
+  @include media("<small") {
+    padding-top: 60px !important;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: $color-black;
+  }
+}
+
+.mainPad {
+  padding: $pad * 3;
+
+  @include media("<tablet") {
+    padding: $pad * 2;
+  }
+  @include media("<small") {
+    padding: $pad;
+  }
+}
+
+.sr-only {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important;
+}
