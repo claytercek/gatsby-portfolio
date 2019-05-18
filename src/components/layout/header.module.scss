@@ -1,7 +1,13 @@
 header {
+  @extend .mainPad;
   position: fixed;
+  left: 0;
+  right: 0;
   top: 0;
   z-index: 10;
+  overflow: hidden;
+  min-height: 100px;
+  transition: min-height 0.2s ease;
 
   div {
     display: flex;
@@ -14,6 +20,10 @@ header {
     @extend %u-font-alpha;
     margin: 0;
     pointer-events: all;
+  }
+
+  nav {
+    margin-top:3rem;
   }
 
   button {
@@ -53,12 +63,16 @@ header {
     }
   }
 
-  &.opened button {
-    &::before {
-      transform: rotate(45deg) translate(3px, 3px);
-    }
-    &::after {
-      transform: rotate(-45deg) translate(3px, -3px);
+  &.opened {
+    min-height: 100%;
+
+    button {
+      &::before {
+	transform: rotate(45deg) translate(3px, 3px);
+      }
+      &::after {
+	transform: rotate(-45deg) translate(3px, -3px);
+      }
     }
   }
 }

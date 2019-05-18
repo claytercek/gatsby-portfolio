@@ -41,7 +41,7 @@ exports.createPages = ({ graphql, actions }) => {
       let template = path.resolve(
         `./src/templates/${node.fields.type}-single.js`
       )
-      
+
       // templates/{type}.js
       if (!fs.existsSync(template)) {
         template = path.resolve(`./src/templates/${node.fields.type}.js`)
