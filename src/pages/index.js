@@ -1,21 +1,26 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
+import styles from "./index.module.scss"
 import SEO from "../components/SEO"
 
 export default ({ data }) => {
-  console.log(data)
+  var foo = Array(20).fill(0)
   return (
     <Layout>
       <SEO />
-      <main>
-        {data.allMarkdownRemark.edges.map(({ node }) => (
+      <main className={styles.gridWrapper}>
+        {/* {data.allMarkdownRemark.edges.map(({ node }) => (
           <Link to={node.fields.slug} key={node.id}>
             <h3>
               {node.frontmatter.title} <span> — {node.frontmatter.date}</span>
             </h3>
             <p>{node.excerpt}</p>
           </Link>
+        ))} */}
+
+        {foo.map((item, index) => (
+          <div className={styles.gridItem}>{index}</div>
         ))}
       </main>
     </Layout>
