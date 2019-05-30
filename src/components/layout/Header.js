@@ -1,30 +1,29 @@
-import React, {Component} from "react"
+import React, { Component } from "react"
 import { StaticQuery, graphql, Link } from "gatsby"
 import styles from "./header.module.scss"
 
 class Header extends Component {
-
   constructor(props) {
-    super(props);
-    this.state = {isOpen: false};
+    super(props)
+    this.state = { isOpen: false }
 
-    this.handleClick = this.handleClick.bind(this);
+    this.handleClick = this.handleClick.bind(this)
   }
 
   handleClick() {
     this.setState(state => ({
-      isOpen: !state.isOpen
-    }));
+      isOpen: !state.isOpen,
+    }))
   }
 
   render() {
     return (
-      <header className={ this.state.isOpen ? styles.opened : ""} onClick={this.handleClick}>
+      <header className={this.state.isOpen ? styles.opened : ""}>
         <div>
           <Link className={styles.logo} to={"/"}>
             {this.props.data.site.siteMetadata.title}
           </Link>
-          <button />
+          <button onClick={this.handleClick} />
         </div>
         <nav>
           <ul>
@@ -54,8 +53,7 @@ export default () => (
           }
         }
       }
-    `
-    }
-    render={( query ) => <Header data={query} />}
+    `}
+    render={query => <Header data={query} />}
   />
-);
+)

@@ -23,7 +23,7 @@ header {
   }
 
   nav {
-    margin-top:3rem;
+    margin-top: 3rem;
   }
 
   button {
@@ -36,6 +36,9 @@ header {
     cursor: pointer;
     width: 36px;
     height: 28px;
+
+    border: none;
+    outline: none;
 
     &::before,
     &::after {
@@ -68,10 +71,10 @@ header {
 
     button {
       &::before {
-	transform: rotate(45deg) translate(3px, 3px);
+        transform: rotate(45deg) translate(3px, 3px);
       }
       &::after {
-	transform: rotate(-45deg) translate(3px, -3px);
+        transform: rotate(-45deg) translate(3px, -3px);
       }
     }
   }

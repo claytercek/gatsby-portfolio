@@ -13,10 +13,10 @@ export default ({ data }) => {
         pathname={post.fields.slug}
         article
       />
-      <div>
+      <main>
         <h1>{post.frontmatter.title}</h1>
-        <main dangerouslySetInnerHTML={{ __html: post.html }} />
-      </div>
+        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+      </main>
     </Layout>
   )
 }

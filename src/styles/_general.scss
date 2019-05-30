@@ -12,13 +12,13 @@ body {
   background-color: $color-white;
   // @include dark($dcolor-white);
 
-  padding-top: 100px !important;
+  padding-top: 76px;
 
   @include media("<tablet") {
-    padding-top: 80px !important;
+    padding-top: 60px;
   }
   @include media("<small") {
-    padding-top: 60px !important;
+    padding-top: 44px;
   }
 }
 
@@ -28,7 +28,8 @@ body {
   }
 }
 
-.mainPad {
+.mainPad,
+.content {
   padding: $pad * 3;
 
   @include media("<tablet") {

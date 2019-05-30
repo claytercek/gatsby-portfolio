@@ -5,7 +5,7 @@ import "typeface-montserrat"
 
 export default ({ children }) => {
   return (
-    <div>
+    <div className="content">
       <Header />
       {children}
     </div>
