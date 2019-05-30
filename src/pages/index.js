@@ -9,7 +9,7 @@ export default ({ data }) => {
   return (
     <Layout>
       <SEO />
-      <main className={[styles.gridWrapper, "content"].join(" ")}>
+      <main className={[styles.gridWrapper, "mainContent"].join(" ")}>
         {/* {data.allMarkdownRemark.edges.map(({ node }) => (
           <Link to={node.fields.slug} key={node.id}>
             <h3>

@@ -18,7 +18,7 @@ class Header extends Component {
 
   render() {
     return (
-      <header className={this.state.isOpen ? styles.opened : ""}>
+      <header className={[this.state.isOpen ? styles.opened : "", "mainPad"].join(' ')}>
         <div>
           <Link className={styles.logo} to={"/"}>
             {this.props.data.site.siteMetadata.title}
