@@ -11,15 +11,9 @@ a {
 body {
   background-color: $color-white;
   // @include dark($dcolor-white);
-
-  padding-top: 76px;
-
-  @include media("<tablet") {
-    padding-top: 60px;
-  }
-  @include media("<small") {
-    padding-top: 44px;
-  }
+  color: $color-black;
+  @include darkText($dcolor-white);
+  padding-top: 60px;
 }
 
 @media (prefers-color-scheme: dark) {

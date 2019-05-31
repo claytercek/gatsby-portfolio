@@ -1,14 +1,21 @@
 .gridWrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
-  grid-auto-rows: 200px;
+  grid-gap: $pad * 1.5;
+  grid-auto-rows: 24vw;
   grid-auto-flow: dense; // Wow - this line really does all the work for you
+
+  @include media("<tablet") {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 240px;
+  }
+  @include media("<small") {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .gridItem {
   border: 2px solid #ffa94d;
-  border-radius: 5px;
   background-color: #ffd8a8;
   padding: 1em;
   color: #d9480f;
@@ -16,8 +23,35 @@
   &:nth-child(5n-1) {
     grid-column: span 2;
     grid-row: span 2;
+
+    @include media("<small") {
+      grid-column: span 1;
+      grid-row: span 1;
+    }
   }
   &:nth-child(4n-2) {
     grid-row: span 2;
+
+    @include media("<small") {
+      grid-column: span 1;
+      grid-row: span 1;
+    }
+  }
+}
+
+.headline {
+  max-width: 640px;
+  font-size: 2rem;
+  line-height: 1.5;
+  margin-top: 30vh;
+  padding-right: $pad;
+
+  @include media("<tablet") {
+    margin-bottom: $pad * 2;
+    font-size: 1.5rem;
+    margin-top: 20vh;
+  }
+  @include media("<small") {
+    margin-top: $pad;
   }
 }

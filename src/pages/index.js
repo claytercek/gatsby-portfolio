@@ -9,7 +9,12 @@ export default ({ data }) => {
   return (
     <Layout>
       <SEO />
-      <main className={[styles.gridWrapper, "mainContent"].join(" ")}>
+      <main className={"mainContent"}>
+        <h3 className={styles.headline}>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
+          explicabo veritatis asperiores? Voluptatibus a reprehenderit
+          doloremque accusamus.
+        </h3>
         {/* {data.allMarkdownRemark.edges.map(({ node }) => (
           <Link to={node.fields.slug} key={node.id}>
             <h3>
@@ -18,10 +23,11 @@ export default ({ data }) => {
             <p>{node.excerpt}</p>
           </Link>
         ))} */}
-
-        {foo.map((item, index) => (
-          <div className={styles.gridItem}>{index}</div>
-        ))}
+        <div className={styles.gridWrapper}>
+          {foo.map((item, index) => (
+            <div className={styles.gridItem}>{index}</div>
+          ))}
+        </div>
       </main>
     </Layout>
   )

@@ -1,12 +1,16 @@
 header {
   position: fixed;
+  padding-top: $pad !important;
+  padding-bottom: $pad !important;
   left: 0;
   right: 0;
   top: 0;
   z-index: 10;
   overflow: hidden;
-  min-height: 100px;
+  min-height: 60px;
   transition: min-height 0.2s ease;
+  background-color: $color-white;
+  @include dark($dcolor-black);
 
   div {
     display: flex;
