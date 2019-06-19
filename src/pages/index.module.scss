@@ -48,8 +48,8 @@
   margin-bottom: $pad * 3;
   padding-right: $pad;
 
-  font-family: $font-family-primary;
-  font-weight: 400;
+  font-family: $font-family-secondary;
+  font-weight: 300;
 
   @include media("<tablet") {
     margin-bottom: $pad * 2;

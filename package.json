@@ -24,7 +24,7 @@
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
     "sass-resources-loader": "^2.0.0",
-    "typeface-crimson-text": "^0.0.72",
+    "typeface-roboto-slab": "^0.0.72",
     "typeface-montserrat": "^0.0.54"
   },
   "devDependencies": {

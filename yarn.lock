@@ -4353,9 +4353,9 @@ fsevents@^1.2.7:
     node-pre-gyp "^0.12.0"
 
 fstream@^1.0.0, fstream@^1.0.2:
-  version "1.0.11"
-  resolved "https://registry.yarnpkg.com/fstream/-/fstream-1.0.11.tgz#5c1fb1f117477114f0632a0eb4b71b3cb0fd3171"
-  integrity sha1-XB+x8RdHcRTwYyoOtLcbPLD9MXE=
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/fstream/-/fstream-1.0.12.tgz#4e8ba8ee2d48be4f7d0de505455548eae5932045"
+  integrity sha512-WvJ193OHa0GHPEL+AycEJgxvBEwyfRkN1vhjca23OaPVMCaLCXTd5qAu82AjTcgP1UJmytkOKb63Ypde7raDIg==
   dependencies:
     graceful-fs "^4.1.2"
     inherits "~2.0.0"
@@ -10186,15 +10186,15 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typeface-crimson-text@^0.0.72:
-  version "0.0.72"
-  resolved "https://registry.yarnpkg.com/typeface-crimson-text/-/typeface-crimson-text-0.0.72.tgz#af492f355f1474ec185bebebf4b2aaaae6eec24d"
-  integrity sha512-CLDNCOJ05k1BIbgQ1eAPPaK4eVHls8Y+n5NTIwvlFmhCSLzCXWII4vQ2oV6Iyi3BOVogj/LsWq25IdQINrh5+Q==
-
 typeface-montserrat@^0.0.54:
   version "0.0.54"
   resolved "https://registry.yarnpkg.com/typeface-montserrat/-/typeface-montserrat-0.0.54.tgz#3fc338db6428d73485b75aa7bd2af8c9a55b9ab3"
   integrity sha512-Typhap0PWT299+Va0G/8ZtycHMXrH4gBWKfiW977KEBx5rXUUCa70gvqLx1fdA0WAo6bhSAQmo8uc+QFAmjPww==
+
+typeface-roboto-slab@^0.0.72:
+  version "0.0.72"
+  resolved "https://registry.yarnpkg.com/typeface-roboto-slab/-/typeface-roboto-slab-0.0.72.tgz#8316b370a7b80af4aab339c957a467ca84b38aa1"
+  integrity sha512-KaRFzz42wh7qMWsAZGt1Yih3H6zf+cyUjn6T+LWnMdxLm+fmsznnP/CX9rwIq2vLhlkUuCrVxfLO8OlgSauzgw==
 
 ua-parser-js@^0.7.18:
   version "0.7.19"
