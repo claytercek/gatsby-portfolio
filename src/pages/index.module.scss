@@ -29,7 +29,8 @@
       grid-row: span 1;
     }
   }
-  &:nth-child(4n-2) {
+  &:nth-child(5n-3),
+  &:nth-child(6n) {
     grid-row: span 2;
 
     @include media("<small") {
@@ -42,16 +43,20 @@
 .headline {
   max-width: 640px;
   font-size: 2rem;
-  line-height: 1.5;
-  margin-top: 30vh;
+  line-height: 1.6;
+  margin-top: 18vh;
+  margin-bottom: $pad * 3;
   padding-right: $pad;
+
+  font-family: $font-family-primary;
+  font-weight: 400;
 
   @include media("<tablet") {
     margin-bottom: $pad * 2;
     font-size: 1.5rem;
-    margin-top: 20vh;
   }
   @include media("<small") {
+    margin-bottom: $pad;
     margin-top: $pad;
   }
 }
