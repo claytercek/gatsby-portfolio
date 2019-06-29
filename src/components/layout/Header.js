@@ -23,7 +23,7 @@ class Header extends Component {
           <Link className={styles.logo} to={"/"}>
             {this.props.data.site.siteMetadata.title}
           </Link>
-          <button onClick={this.handleClick} />
+          <button onClick={this.handleClick} aria-label="menu toggle"/>
         </div>
         <nav>
           <ul>
