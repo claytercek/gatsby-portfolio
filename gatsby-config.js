@@ -30,7 +30,25 @@ module.exports = {
         path: `${__dirname}/content/`,
       },
     },
-    `gatsby-transformer-remark`,
+    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1440,
+              linkImagesToOriginal: false,
+              withWebp: true,
+              quality: 80,
+              wrapperStyle:
+                "max-width: unset !important; margin-left: 0!important; margin-right: 0!important;",
+            },
+          },
+        ],
+      },
+    },
     `gatsby-plugin-sass`,
     {
       resolve: `gatsby-plugin-sass-resources`,
