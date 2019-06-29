@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
+import Headline from "../components/Headline";
 import styles from "./index.module.scss"
 import SEO from "../components/SEO"
 
@@ -10,11 +11,13 @@ export default ({ data }) => {
     <Layout>
       <SEO />
       <main className={"mainContent"}>
-        <h3 className={styles.headline}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
-          explicabo veritatis asperiores? Voluptatibus a reprehenderit
-          doloremque accusamus.
-        </h3>
+        <Headline>
+          <h3 className={styles.headline}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
+            explicabo veritatis asperiores? Voluptatibus a reprehenderit
+            doloremque accusamus.
+          </h3>
+        </Headline>
         {/* {data.allMarkdownRemark.edges.map(({ node }) => (
           <Link to={node.fields.slug} key={node.id}>
             <h3>

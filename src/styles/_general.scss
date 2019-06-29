@@ -8,6 +8,10 @@ a {
   @include darkText($dcolor-white);
 }
 
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
 body {
   background-color: $color-white;
   // @include dark($dcolor-white);
@@ -22,15 +26,17 @@ body {
   }
 }
 
-:global(.mainPad),
-:global(.mainContent) {
-  padding: $pad * 3;
+:global {
+  .mainPad,
+  .mainContent {
+    padding: $pad * 3;
 
-  @include media("<tablet") {
-    padding: $pad * 2;
-  }
-  @include media("<small") {
-    padding: $pad;
+    @include media("<tablet") {
+      padding: $pad * 2;
+    }
+    @include media("<small") {
+      padding: $pad;
+    }
   }
 }
 

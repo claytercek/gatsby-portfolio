@@ -1,7 +1,9 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
+import Headline from "../components/Headline"
 import SEO from "../components/SEO"
+import styles from "./work-single.module.scss"
 
 export default ({ data }) => {
   const post = data.markdownRemark
@@ -14,11 +16,13 @@ export default ({ data }) => {
         pathname={post.fields.slug}
         article
       />
-      <div>
-        <h1>{post.frontmatter.title}</h1>
-        <h4>{post.frontmatter.datePublished}</h4>
-        <main dangerouslySetInnerHTML={{ __html: post.html }} />
-      </div>
+      <main className={"mainContent"}>
+        <Headline>
+          <h1 className={styles.title}>{post.frontmatter.title}</h1>
+          <h2 className={styles.subtitle}>{post.frontmatter.subtitle}</h2>
+        </Headline>
+        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+      </main>
     </Layout>
   )
 }
@@ -30,12 +34,11 @@ export const query = graphql`
       frontmatter {
         datePublished: date(formatString: "MM YYYY")
         title
-        description
+        subtitle
         image {
           relativePath
         }
       }
-      excerpt
       fields {
         slug
       }

@@ -1,5 +1,5 @@
 %u-font {
-  &-alpha {
+  &-logo {
     font-family: $font-family-primary;
     font-weight: 800;
     text-transform: uppercase;
@@ -9,13 +9,30 @@
     @include darkText($dcolor-white);
   }
 
-  &-beta {
-    font-family: $font-family-primary;
-    font-weight: 800;
-    line-height: $line-height-base;
+  &-headline {
+    font-size: $font-size-base * 2;
+    line-height: 1.6;
+    font-family: $font-family-secondary;
+    font-weight: 300;
     color: $color-black;
     @include darkText($dcolor-white);
-    font-size: $font-size-base * 5;
+
+    @include media("<tablet") {
+      font-size: $font-size-base * 1.5;
+    }
+    @include media("<small") {
+      font-size: $font-size-base * 1.3;
+    }
+  }
+
+  &-title {
+    font-family: $font-family-primary;
+    font-weight: 800;
+    text-transform: capitalize;
+    font-size: $font-size-base * 4;
+    line-height: 1;
+    color: $color-black;
+    @include darkText($dcolor-white);
 
     @include media("<tablet") {
       font-size: $font-size-base * 3;
@@ -25,87 +42,4 @@
     }
   }
 
-  &-gamma {
-    font-family: $font-family-primary;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: $font-size-base * 1.3;
-    line-height: $line-height-base;
-    color: $color-black;
-    @include darkText($dcolor-white);
-
-    @include media("<tablet") {
-      font-size: $font-size-base * 1.1;
-    }
-    @include media("<small") {
-      font-size: $font-size-base;
-    }
-  }
-
-  &-delta {
-    font-family: $font-family-primary;
-    font-weight: 800;
-    line-height: 1.2;
-    margin: 0;
-    color: $color-black;
-    @include darkText($dcolor-white);
-    font-size: $font-size-base * 7;
-
-    @include media("<tablet") {
-      font-size: $font-size-base * 4;
-    }
-    @include media("<small") {
-      font-size: $font-size-base * 2.5;
-      margin-bottom: 0.5rem;
-    }
-  }
-
-  &-epsilon {
-    font-family: $font-family-secondary;
-    opacity: 0.9;
-    font-weight: 500;
-    line-height: 1.8;
-    margin: 0;
-    color: $color-black;
-    @include darkText($dcolor-white);
-
-    font-size: $font-size-base * 1.15;
-
-    @include media("<small") {
-      font-size: $font-size-base * 1;
-    }
-  }
-
-  &-zeta {
-    font-family: $font-family-secondary;
-    font-weight: 300;
-    line-height: $line-height-base;
-    margin: 0;
-    color: $color-black;
-    @include darkText($dcolor-white);
-
-    font-size: $font-size-base * 1.3;
-
-    @include media("<tablet") {
-      font-size: $font-size-base * 1.15;
-    }
-    @include media("<small") {
-      font-size: $font-size-base;
-    }
-  }
-
-  &-eta {
-    font-family: $font-family-primary;
-    font-weight: 300;
-
-    @media (prefers-color-scheme: dark) {
-      font-weight: 500;
-    }
-
-    line-height: $line-height-base;
-    margin: 0;
-    color: $color-black;
-    @include darkText($dcolor-white);
-    font-size: $font-size-base;
-  }
 }

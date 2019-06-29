@@ -20,7 +20,7 @@ header {
   }
 
   .logo {
-    @extend %u-font-alpha;
+    @extend %u-font-logo;
     margin: 0;
     pointer-events: all;
   }

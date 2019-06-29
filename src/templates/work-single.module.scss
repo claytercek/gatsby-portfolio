@@ -1,0 +1,8 @@
+.title {
+    @extend %u-font-title;
+    margin-bottom: $pad / 2;
+}
+
+.subtitle {
+    @extend %u-font-headline;
+}
