@@ -35,6 +35,7 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          "gatsby-remark-component",
           {
             resolve: `gatsby-remark-images`,
             options: {
@@ -42,8 +43,7 @@ module.exports = {
               linkImagesToOriginal: false,
               withWebp: true,
               quality: 80,
-              wrapperStyle:
-                "max-width: unset !important; margin-left: 0!important; margin-right: 0!important;",
+              wrapperStyle: "max-width: unset !important; margin-left: 0!important; margin-right: 0!important;",
             },
           },
         ],
