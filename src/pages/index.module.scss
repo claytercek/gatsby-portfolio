@@ -24,45 +24,48 @@
 }
 
 .gridItem {
-  min-height: 200px;
   border: 2px solid #ffa94d;
   background-color: #ffd8a8;
   padding: 1em;
   color: #d9480f;
-
-  // for the flex fallback
-  @supports not (display: grid) {
-    flex: 1 0 26%;
-    max-width: calc(100% / 3 - (#{$pad} / 1.5));
-    height: 20vw;
-    margin-bottom: $pad;
-    
-    @include media(">=tablet") {
-      &:nth-child(3n-2) {
-        margin-right: $pad;
-      }
+  flex: 1 0 26%;
+  max-width: calc(100% / 3 - (#{$pad} / 1.5));
+  height: 20vw;
+  min-height: 200px;
+  margin-bottom: $pad;
   
-      &:nth-child(3n-1) {
-        margin-right: $pad;
-      }
+  @include media(">=tablet") {
+    &:nth-child(3n-2) {
+      margin-right: $pad;
     }
 
-    @include media("<tablet") {
-      &:nth-child(2n-1) {
-        margin-right: $pad;
-      }
-
-      flex: 1 0 45%;
-      max-width: calc(100% / 2 - (#{$pad} / 2));
+    &:nth-child(3n-1) {
+      margin-right: $pad;
     }
-    @include media("<small") {
-      &:nth-child(2n-1) {
-        margin-right: 0;
-      }
+  }
 
-      flex: 1 0 100%;
-      max-width: 100%;
+  @include media("<tablet") {
+    &:nth-child(2n-1) {
+      margin-right: $pad;
     }
+
+    flex: 1 0 45%;
+    max-width: calc(100% / 2 - (#{$pad} / 2));
+  }
+  @include media("<small") {
+    &:nth-child(2n-1) {
+      margin-right: 0;
+    }
+
+    flex: 1 0 100%;
+    max-width: 100%;
+  }
+  
+  // for the flex fallback
+  @supports (display: grid) {
+    margin-right: 0 !important;
+    max-width: 100% !important;
+    height: auto !important;
   }
 
   &:nth-child(5n-1) {
