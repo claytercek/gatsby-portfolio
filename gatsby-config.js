@@ -35,17 +35,16 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
-          "gatsby-remark-component",
           {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 1440,
               linkImagesToOriginal: false,
               withWebp: true,
-              quality: 80,
-              wrapperStyle: "max-width: unset !important; margin-left: 0!important; margin-right: 0!important;",
+              quality: 80
             },
           },
+          // "gatsby-remark-component",
         ],
       },
     },

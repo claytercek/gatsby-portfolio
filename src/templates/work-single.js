@@ -28,7 +28,7 @@ export default ({ data }) => {
           <h1 className={styles.title}>{post.frontmatter.title}</h1>
           <h2 className={styles.subtitle}>{post.frontmatter.subtitle}</h2>
         </Headline>
-        <div>{renderAst(post.htmlAst)}</div>
+        {renderAst(post.htmlAst)}
       </main>
     </Layout>
   )
