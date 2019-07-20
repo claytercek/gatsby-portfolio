@@ -30,11 +30,13 @@
   color: #d9480f;
   flex: 1 0 26%;
   max-width: calc(100% / 3 - (#{$pad} / 1.5));
+  grid-gap: $pad * 1.5;
   height: 20vw;
   min-height: 200px;
   margin-bottom: $pad;
   
   @include media(">=tablet") {
+    
     &:nth-child(3n-2) {
       margin-right: $pad;
     }
@@ -63,6 +65,7 @@
   
   // for the flex fallback
   @supports (display: grid) {
+    margin-bottom: 0 !important;
     margin-right: 0 !important;
     max-width: 100% !important;
     height: auto !important;

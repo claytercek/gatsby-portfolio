@@ -12,6 +12,7 @@ export default ({ data }) => {
   const renderAst = new rehypeReact({
     createElement: React.createElement,
     components: { "columns": Columns},
+    Fragment: React.Fragment,
   }).Compiler
   
   return (
@@ -28,7 +29,9 @@ export default ({ data }) => {
           <h1 className={styles.title}>{post.frontmatter.title}</h1>
           <h2 className={styles.subtitle}>{post.frontmatter.subtitle}</h2>
         </Headline>
-        {renderAst(post.htmlAst)}
+        <div className={styles.content}>
+          {renderAst(post.htmlAst)}
+        </div>
       </main>
     </Layout>
   )
@@ -38,11 +41,12 @@ function Columns(props) {
   var children = [];
   
   props.children.forEach(element => {
-  if (element.type && element.type == "span") {
-    let aspectRatio = parseFloat(element.props.children[1].props.style.paddingBottom) / 100;
-    element.props.style.flex = 1 / aspectRatio;
-    children.push(element);
-  }
+    if (element.type && element.type === "span") {
+      // for images
+      let aspectRatio = parseFloat(element.props.children[1].props.style.paddingBottom) / 100;
+      element.props.style.flex = 1 / aspectRatio;
+      children.push(element);
+    }
   })
 
   return (<div className={styles.columnWrapper}>{children}</div>)
