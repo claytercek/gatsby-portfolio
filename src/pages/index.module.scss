@@ -24,8 +24,6 @@
 }
 
 .gridItem {
-  border: 2px solid #ffa94d;
-  background-color: #ffd8a8;
   padding: 1em;
   color: #d9480f;
   flex: 1 0 26%;
@@ -34,6 +32,7 @@
   height: 20vw;
   min-height: 200px;
   margin-bottom: $pad;
+  position: relative;
   
   @include media(">=tablet") {
     
@@ -89,7 +88,57 @@
       grid-row: span 1;
     }
   }
+
+  &__image {
+    @include media(">small") {
+      position: absolute !important;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+      transition: all 0.5s $bezier;
+    }
+  }
+
+  $bezier: cubic-bezier(0.4, 0.4, 0, 1);
+
+  &__title {
+    @extend %u-font-gridTitle;
+  }
+
+  &__sub {
+    @extend %u-font-gridSub;
+  }
+  
+  &__sub, &__title {
+
+    position: relative;
+    z-index: 1;
+
+    @include media(">small") {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s $bezier;
+    }
+  }
+
+  &:hover &__image {
+    opacity: 0.4;
+  }
+
+  @include media(">small") {
+    &:hover &__sub, &:hover &__title  {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    &:hover &__sub {
+      transition-delay: 0.1s;
+    }
+  }
 }
+
 
 .headline {
   max-width: 640px;
