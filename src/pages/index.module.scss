@@ -1,5 +1,8 @@
 
 .gridWrapper {
+  margin: 0;
+  padding: 0;
+  
   // flexbox fallback
   display: flex;
   flex-flow: row wrap;
@@ -89,6 +92,8 @@
     }
   }
 
+  $bezier: cubic-bezier(0.4, 0.4, 0, 1);
+
   &__image {
     @include media(">small") {
       position: absolute !important;
@@ -101,7 +106,6 @@
     }
   }
 
-  $bezier: cubic-bezier(0.4, 0.4, 0, 1);
 
   &__title {
     @extend %u-font-gridTitle;

@@ -18,15 +18,17 @@ export default ({ data }) => {
             doloremque accusamus.
           </h3>
         </Headline>
-        <div className={styles.gridWrapper}>
+        <ul className={styles.gridWrapper}>
           {data.allMarkdownRemark.edges.map(({ node }) => (
-            <Link to={node.fields.slug} key={node.id} className={styles.gridItem}>
-              <Img className={styles.gridItem__image} fluid={node.frontmatter.image.childImageSharp.fluid} />
-              <h3 className={styles.gridItem__title}>{node.frontmatter.title}</h3>
-              <h4 className={styles.gridItem__sub}>{node.frontmatter.subtitle}</h4>
-            </Link>
+            <li key={node.id} className={styles.gridItem}>
+              <Link to={node.fields.slug}>
+                <Img className={styles.gridItem__image} fluid={node.frontmatter.image.childImageSharp.fluid} />
+                <h3 className={styles.gridItem__title}>{node.frontmatter.title}</h3>
+                <h4 className={styles.gridItem__sub}>{node.frontmatter.subtitle}</h4>
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
       </main>
     </Layout>
   )
