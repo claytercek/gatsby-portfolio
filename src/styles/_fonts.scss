@@ -62,9 +62,9 @@
     font-weight: 400;
     font-size: $font-size-base * 1.2;
     line-height: 1.5;
-    font-family: $font-family-secondary;
-    color: $color-black;
-    @include darkText($dcolor-white);
+    font-family: $font-family-primary;
+    color: $color-white;
+    @include darkText($dcolor-black);
 
     @include media(">small") {
       font-size: $font-size-base * 1.5;

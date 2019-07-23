@@ -89,12 +89,12 @@
         padding: $pad * 1.5;
       }
 
-      box-shadow: inset 0 0 0 0 $dcolor-black;
+      box-shadow: inset 0 200px 0 0 $dcolor-black;
       border: 2px solid $dcolor-black;
 
       &:hover {
-        box-shadow: inset 0 -200px 0 0 $dcolor-black;
-        color: $dcolor-white;
+        box-shadow: inset 0 0 0 0 $dcolor-black;
+        color: $dcolor-black;
       }
 
       
@@ -103,8 +103,8 @@
         border: 2px solid $dcolor-white;
 
         &:hover {
-          box-shadow: inset 0 -200px 0 0 $dcolor-white;
-          color: $dcolor-black;
+          box-shadow: inset 0 0 0 0 $dcolor-white;
+          color: $dcolor-white;
         }
       }
     }
