@@ -74,6 +74,17 @@
     }
   }
 
+  &-workHeader {
+    font-weight: 700;
+    font-size: $font-size-base * 2;
+    line-height: 1;
+    font-family: $font-family-primary;
+
+    @include media(">tablet") {
+      font-size: $font-size-base * 3.5;
+    }
+  }
+
   &-gridTitle {
     font-weight: 800;
     font-size: $font-size-base * 2;

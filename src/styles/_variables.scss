@@ -15,9 +15,6 @@ $font-family-secondary: "Roboto Slab", serif;
 // Colors
 $color-white: #ffffff;
 $color-black: #000000;
-$color-link: rgb(25, 113, 228);
-$color-table-border: #eaecef;
-$color-light-grey: #f6f8fa;
 
 // Colors for users with dark mode
 $dcolor-white: $color-white;
@@ -27,3 +24,5 @@ $dcolor-black: $color-black;
 $space: 24px;
 $pad: 16px;
 $gutter: 50px;
+
+$bezier: cubic-bezier(0.4, 0.4, 0, 1);

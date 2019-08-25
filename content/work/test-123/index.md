@@ -8,8 +8,10 @@ image: "hero.jpg"
 
 <img src="hero.jpg">
 
-
+## This is a test title
 ### Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eu faucibus metus, sed venenatis nisl. Ut venenatis tortor tortor, eget volutpat dolor aliquet sed. Cras vel quam eget diam vulputate aliquam. Quisque ipsum augue, vulputate eget neque ut, vehicula pulvinar metus. Phasellus dictum sagittis tempus.
+[test](#)
+[hello world](#)
 
 <img src="giftest.gif">
 
