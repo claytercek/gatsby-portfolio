@@ -28,6 +28,132 @@ export default ({ data }) => {
               </Link>
             </li>
           ))}
+          {data.allMarkdownRemark.edges.map(({ node }) => (
+            <li key={node.id} className={styles.gridItem}>
+              <Link to={node.fields.slug}>
+                <Img className={styles.gridItem__image} fluid={node.frontmatter.image.childImageSharp.fluid} />
+                <h3 className={styles.gridItem__title}>{node.frontmatter.title}</h3>
+                <h4 className={styles.gridItem__sub}>{node.frontmatter.subtitle}</h4>
+              </Link>
+            </li>
+          ))}
+          {data.allMarkdownRemark.edges.map(({ node }) => (
+            <li key={node.id} className={styles.gridItem}>
+              <Link to={node.fields.slug}>
+                <Img className={styles.gridItem__image} fluid={node.frontmatter.image.childImageSharp.fluid} />
+                <h3 className={styles.gridItem__title}>{node.frontmatter.title}</h3>
+                <h4 className={styles.gridItem__sub}>{node.frontmatter.subtitle}</h4>
+              </Link>
+            </li>
+          ))}
+          {data.allMarkdownRemark.edges.map(({ node }) => (
+            <li key={node.id} className={styles.gridItem}>
+              <Link to={node.fields.slug}>
+                <Img className={styles.gridItem__image} fluid={node.frontmatter.image.childImageSharp.fluid} />
+                <h3 className={styles.gridItem__title}>{node.frontmatter.title}</h3>
+                <h4 className={styles.gridItem__sub}>{node.frontmatter.subtitle}</h4>
+              </Link>
+            </li>
+          ))}
+          {data.allMarkdownRemark.edges.map(({ node }) => (
+            <li key={node.id} className={styles.gridItem}>
+              <Link to={node.fields.slug}>
+                <Img className={styles.gridItem__image} fluid={node.frontmatter.image.childImageSharp.fluid} />
+                <h3 className={styles.gridItem__title}>{node.frontmatter.title}</h3>
+                <h4 className={styles.gridItem__sub}>{node.frontmatter.subtitle}</h4>
+              </Link>
+            </li>
+          ))}
+          {data.allMarkdownRemark.edges.map(({ node }) => (
+            <li key={node.id} className={styles.gridItem}>
+              <Link to={node.fields.slug}>
+                <Img className={styles.gridItem__image} fluid={node.frontmatter.image.childImageSharp.fluid} />
+                <h3 className={styles.gridItem__title}>{node.frontmatter.title}</h3>
+                <h4 className={styles.gridItem__sub}>{node.frontmatter.subtitle}</h4>
+              </Link>
+            </li>
+          ))}
+          {data.allMarkdownRemark.edges.map(({ node }) => (
+            <li key={node.id} className={styles.gridItem}>
+              <Link to={node.fields.slug}>
+                <Img className={styles.gridItem__image} fluid={node.frontmatter.image.childImageSharp.fluid} />
+                <h3 className={styles.gridItem__title}>{node.frontmatter.title}</h3>
+                <h4 className={styles.gridItem__sub}>{node.frontmatter.subtitle}</h4>
+              </Link>
+            </li>
+          ))}
+          {data.allMarkdownRemark.edges.map(({ node }) => (
+            <li key={node.id} className={styles.gridItem}>
+              <Link to={node.fields.slug}>
+                <Img className={styles.gridItem__image} fluid={node.frontmatter.image.childImageSharp.fluid} />
+                <h3 className={styles.gridItem__title}>{node.frontmatter.title}</h3>
+                <h4 className={styles.gridItem__sub}>{node.frontmatter.subtitle}</h4>
+              </Link>
+            </li>
+          ))}
+          {data.allMarkdownRemark.edges.map(({ node }) => (
+            <li key={node.id} className={styles.gridItem}>
+              <Link to={node.fields.slug}>
+                <Img className={styles.gridItem__image} fluid={node.frontmatter.image.childImageSharp.fluid} />
+                <h3 className={styles.gridItem__title}>{node.frontmatter.title}</h3>
+                <h4 className={styles.gridItem__sub}>{node.frontmatter.subtitle}</h4>
+              </Link>
+            </li>
+          ))}
+          {data.allMarkdownRemark.edges.map(({ node }) => (
+            <li key={node.id} className={styles.gridItem}>
+              <Link to={node.fields.slug}>
+                <Img className={styles.gridItem__image} fluid={node.frontmatter.image.childImageSharp.fluid} />
+                <h3 className={styles.gridItem__title}>{node.frontmatter.title}</h3>
+                <h4 className={styles.gridItem__sub}>{node.frontmatter.subtitle}</h4>
+              </Link>
+            </li>
+          ))}
+          {data.allMarkdownRemark.edges.map(({ node }) => (
+            <li key={node.id} className={styles.gridItem}>
+              <Link to={node.fields.slug}>
+                <Img className={styles.gridItem__image} fluid={node.frontmatter.image.childImageSharp.fluid} />
+                <h3 className={styles.gridItem__title}>{node.frontmatter.title}</h3>
+                <h4 className={styles.gridItem__sub}>{node.frontmatter.subtitle}</h4>
+              </Link>
+            </li>
+          ))}
+          {data.allMarkdownRemark.edges.map(({ node }) => (
+            <li key={node.id} className={styles.gridItem}>
+              <Link to={node.fields.slug}>
+                <Img className={styles.gridItem__image} fluid={node.frontmatter.image.childImageSharp.fluid} />
+                <h3 className={styles.gridItem__title}>{node.frontmatter.title}</h3>
+                <h4 className={styles.gridItem__sub}>{node.frontmatter.subtitle}</h4>
+              </Link>
+            </li>
+          ))}
+          {data.allMarkdownRemark.edges.map(({ node }) => (
+            <li key={node.id} className={styles.gridItem}>
+              <Link to={node.fields.slug}>
+                <Img className={styles.gridItem__image} fluid={node.frontmatter.image.childImageSharp.fluid} />
+                <h3 className={styles.gridItem__title}>{node.frontmatter.title}</h3>
+                <h4 className={styles.gridItem__sub}>{node.frontmatter.subtitle}</h4>
+              </Link>
+            </li>
+          ))}
+          {data.allMarkdownRemark.edges.map(({ node }) => (
+            <li key={node.id} className={styles.gridItem}>
+              <Link to={node.fields.slug}>
+                <Img className={styles.gridItem__image} fluid={node.frontmatter.image.childImageSharp.fluid} />
+                <h3 className={styles.gridItem__title}>{node.frontmatter.title}</h3>
+                <h4 className={styles.gridItem__sub}>{node.frontmatter.subtitle}</h4>
+              </Link>
+            </li>
+          ))}
+          {data.allMarkdownRemark.edges.map(({ node }) => (
+            <li key={node.id} className={styles.gridItem}>
+              <Link to={node.fields.slug}>
+                <Img className={styles.gridItem__image} fluid={node.frontmatter.image.childImageSharp.fluid} />
+                <h3 className={styles.gridItem__title}>{node.frontmatter.title}</h3>
+                <h4 className={styles.gridItem__sub}>{node.frontmatter.subtitle}</h4>
+              </Link>
+            </li>
+          ))}
         </ul>
       </main>
     </Layout>

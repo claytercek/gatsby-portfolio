@@ -13,7 +13,7 @@
     font-size: $font-size-base * 2;
     line-height: 1.6;
     font-family: $font-family-secondary;
-    font-weight: 300;
+    font-weight: 400;
     color: $color-black;
     @include darkText($dcolor-white);
 
@@ -87,20 +87,32 @@
 
   &-gridTitle {
     font-weight: 800;
-    font-size: $font-size-base * 2;
+    font-size: $font-size-base * 2.5;
     line-height: 1.5;
     font-family: $font-family-primary;
     color: $color-black;
     @include darkText($dcolor-white);
+    @include media("<tablet") {
+      font-size: $font-size-base * 2;
+    }
+    @include media("<small") {
+      font-size: $font-size-base * 1.8;
+    }
   }
 
   &-gridSub {
-    font-weight: 300;
-    font-size: $font-size-base * 1.3;
+    font-weight: 400;
+    font-size: $font-size-base * 1.6;
     line-height: 1.5;
-    font-family: $font-family-primary;
+    font-family: $font-family-secondary;
     color: $color-black;
     @include darkText($dcolor-white);
+    @include media("<tablet") {
+      font-size: $font-size-base * 1.4;
+    }
+    @include media("<small") {
+      font-size: $font-size-base * 1.2;
+    }
   }
 
 }

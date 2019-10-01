@@ -24,6 +24,7 @@
     grid-gap: $pad;
     grid-template-columns: repeat(1, 1fr);
     flex-flow: column nowrap;
+    grid-auto-rows: initial;
   }
 }
 
@@ -64,14 +65,18 @@
 
     flex: 1 0 100%;
     max-width: 100%;
+    padding: 0;
   }
   
   // for the flex fallback
   @supports (display: grid) {
-    margin-bottom: 0 !important;
+    @include media(">=small") {
+      margin-bottom: 0 !important;
+    }
     margin-right: 0 !important;
     max-width: 100% !important;
     height: auto !important;
+    min-height: 0;
   }
 
   &:nth-child(5n-1) {
@@ -94,7 +99,12 @@
   }
 
   &__image {
-    @include media(">small") {
+    margin-left: - $pad;
+    margin-right: - $pad;
+    margin-bottom: $pad;
+  
+    @include media(">=small") {
+      margin: 0;
       position: absolute !important;
       top: 0;
       left: 0;
@@ -126,18 +136,20 @@
     }
   }
 
-  &:hover &__image {
-    opacity: 0.4;
-  }
+  &:hover {
+    @include media(">=small") {
+      .gridItem__image {
+        opacity: 0.2;
+      }
+    
+      .gridItem__sub, .gridItem__title  {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-  @include media(">small") {
-    &:hover &__sub, &:hover &__title  {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    &:hover &__sub {
-      transition-delay: 0.1s;
+      .gridItem__sub {
+        transition-delay: 0.1s;
+      }
     }
   }
 }
