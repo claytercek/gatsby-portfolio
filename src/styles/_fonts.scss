@@ -13,7 +13,7 @@
     font-size: $font-size-base * 2;
     line-height: 1.6;
     font-family: $font-family-secondary;
-    font-weight: 400;
+    font-weight: 300;
     color: $color-black;
     @include darkText($dcolor-white);
 
@@ -59,7 +59,7 @@
   }
 
   &-workLink {
-    font-weight: 400;
+    font-weight: 300;
     font-size: $font-size-base * 1.2;
     line-height: 1.5;
     font-family: $font-family-primary;
@@ -101,7 +101,7 @@
   }
 
   &-gridSub {
-    font-weight: 400;
+    font-weight: 300;
     font-size: $font-size-base * 1.6;
     line-height: 1.5;
     font-family: $font-family-secondary;

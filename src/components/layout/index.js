@@ -1,6 +1,5 @@
 import React from "react"
 import Header from "./Header"
-import "typeface-roboto-slab"
 import "typeface-montserrat"
 
 export default ({ children }) => {
