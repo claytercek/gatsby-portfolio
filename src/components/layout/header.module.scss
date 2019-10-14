@@ -8,10 +8,10 @@ header {
   z-index: 10;
   overflow: hidden;
   min-height: 60px;
-  transition: min-height 0.2s ease;
+  transition: min-height 0.6s $bezier 0.2s;
   background-color: $color-white;
   @include dark($dcolor-black);
-
+  
   div {
     display: flex;
     justify-content: space-between;
@@ -23,10 +23,10 @@ header {
     @extend %u-font-logo;
     margin: 0;
     pointer-events: all;
-  }
 
-  nav {
-    margin-top: 3rem;
+    span {
+      font-weight: 400;
+    }
   }
 
   button {
@@ -53,7 +53,7 @@ header {
       background-color: $color-black;
       @include dark($dcolor-white);
       transform: none;
-      transition: transform 0.2s ease;
+      transition: transform 0.2s $bezier;
     }
 
     &::before {
@@ -69,8 +69,21 @@ header {
     }
   }
 
+  &::after {
+    content: "";
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $color-black;
+    @include dark($dcolor-white);
+    transition: all 0.6s $bezier 0.2s;
+  }
+
   &.opened {
     min-height: 100%;
+    transition-delay: 0;
 
     button {
       &::before {
@@ -80,10 +93,64 @@ header {
         transform: rotate(-45deg) translate(3px, -3px);
       }
     }
+
+    &::after {
+      top:100%;
+      transition: all 0.9s $bezier 0;
+    }
   }
 }
 
 nav {
+  margin-top: 3rem;
   pointer-events: all;
   position: absolute;
+  bottom: 2 * $pad;
+
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+  }
+
+  li {
+    overflow: hidden;
+
+    a {
+      display: inline-block;
+      position: relative;
+      letter-spacing: 2px;
+      transform: translateY(110%);
+      @extend %u-font-navLink;
+      transition: all 0.7s $bezier;
+      &:global(.active)::after {
+        width: 100%;
+      }
+
+      &::after {
+        content:"";
+        width: 0;
+        height: 6px;
+        background-color: $color-black;
+        @include darkText($dcolor-white);
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transition: width 0.3s $bezier;
+        @include media(">tablet") {
+          height: 8px;
+        }
+      }
+
+      &.active::after, &:hover::after {
+        width: 100%;
+      } 
+    }
+  }
+
+  .opened & {
+    li a {
+      transform: translateY(0px);
+    }
+  }
 }
