@@ -13,12 +13,6 @@ class Header extends Component {
     this.setState(state => ({
       isOpen: !state.isOpen,
     }))
-    if (!this.state.isOpen) {
-      document.body.style.overflow = "hidden"
-    } else {
-      document.body.style.overflow = "auto"
-    }
-
   }
 
   render() {

@@ -1,0 +1,30 @@
+.content {
+    @extend %u-font-body;
+    max-width: 50ch;
+}
+
+.header {
+    @extend %u-font-title;
+}
+
+.textWrapper {
+    background-color: $color-white;
+    @include dark($dcolor-black);
+}
+
+.wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img {
+    width: 40vw;
+    max-width: 70vh;
+    @media (prefers-color-scheme: dark) {
+        filter: grayscale(100%);
+        //opacity: 0.8;
+        background-color: white;
+    }
+}
