@@ -4,8 +4,8 @@ module.exports = {
     siteUrl: `https://claytercek.netlify.com`,
     description: `Clay Tercek's Personal Portfolio`,
     titleTemplate: "%s · Clay Tercek",
-    url: "http://claytercek.netlify.com", // No trailing slash allowed!
-    image: "/images/default_image.jpg", // Path to your image you placed in the 'static' folder
+    url: "http://claytercek.netlify.com", 
+    image: "/images/default_image.jpg", 
     twitterUsername: "@claytercek",
     menu: [
       {
@@ -21,6 +21,28 @@ module.exports = {
         slug: "/about/",
       },
     ],
+    social: [
+      {
+        name: "GitHub",
+        slug: "#",
+      },
+      {
+        name: "Instagram",
+        slug: "#",
+      },
+      {
+        name: "LinkedIn",
+        slug: "#",
+      },
+      {
+        name: "Twitter",
+        slug: "#",
+      },
+      {
+        name: "Email",
+        slug: "#",
+      },
+    ]
   },
   plugins: [
     {

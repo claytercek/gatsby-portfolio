@@ -23,6 +23,7 @@ header {
     @extend %u-font-logo;
     margin: 0;
     pointer-events: all;
+    z-index: 20;
 
     span {
       font-weight: 400;

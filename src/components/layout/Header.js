@@ -29,7 +29,6 @@ class Header extends Component {
           <ul>
             {this.props.data.site.siteMetadata.menu.map((link, index) => {
               var delay = (this.state.isOpen) ? 0.45 + 0.15 * index : 0.0;
-              console.log(delay);
               return (
                 <li>
                   <Link to={link.slug} activeClassName="active" style={{transitionDelay: `${delay}s`}}>{link.name}</Link> 
