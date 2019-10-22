@@ -15,11 +15,17 @@ export default ({ data }) => {
         pathname={post.fields.slug}
         article
       />
-      <main className={styles.wrapper}>
-        <Img className={styles.img} fluid={post.frontmatter.image.childImageSharp.fluid} alt="headshot"/>
-        <div className={styles.textWrapper}>
-          <h1 className={styles.header}>{post.frontmatter.title}</h1>
-          <div className={styles.content} dangerouslySetInnerHTML={{ __html: post.html }} />
+      <main className={[styles.wrapper, "mainContent"].join(" ")}>
+        <h2 className={styles.header}>{post.frontmatter.title}</h2>
+        <div className={styles.content} dangerouslySetInnerHTML={{ __html: post.html }} />
+        <div className={styles.social}>
+          <h3><a>Instagram</a></h3>
+          <h3><a>Instagram</a></h3>
+          <h3><a>Instagram</a></h3>
+          <h3><a>Instagram</a></h3>
+          <h3><a>Instagram</a></h3>
+          <h3><a>Instagram</a></h3>
+          <h3><a>Instagram</a></h3>
         </div>
       </main>
     </Layout>
