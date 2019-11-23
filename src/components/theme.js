@@ -1,5 +1,5 @@
 const breakpoints = {
-    small: 576,
+    small: 360,
     medium: 768,
     large: 992
 }
@@ -13,7 +13,6 @@ const base = {
     font: {
         primary: "montserrat, helvetica, sans-serif"
     },
-    fontSize: 1,
     mq: breakpoints,
     pad: 16,
     space: 25,

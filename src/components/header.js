@@ -1,6 +1,5 @@
 import { Link, StaticQuery } from "gatsby"
 import React, {Component} from "react"
-import styled from "@emotion/styled"
 import {css} from "@emotion/core"
 
 const headerStyle = theme => (css`
@@ -18,7 +17,7 @@ const headerStyle = theme => (css`
   padding-top: ${theme.pad}px;
   padding-bottom: ${theme.pad}px;
   font-size: 1rem;
-  ${theme.mq.small} {
+  ${theme.mq.medium} {
     font-size: 1.2rem;
     padding-top: ${theme.pad * 1.5}px;
     padding-bottom: ${theme.pad * 1.5}px;
@@ -31,7 +30,7 @@ const headerWrapper = (theme) => (css`
   * {
     margin: 0;
   }
-  ${theme.mq.small} {
+  ${theme.mq.medium} {
     width: 60px;
   };
 `);
