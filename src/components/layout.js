@@ -18,6 +18,11 @@ const globalStyle = (theme) => (css`
   body {
     margin: 0;
   }
+
+  a {
+    color: inherit;
+    text-decoration: none; 
+  }
 `)
 
 const wrapperStyle = (theme) => ({

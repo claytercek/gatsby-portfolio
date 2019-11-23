@@ -13,9 +13,11 @@ const base = {
     font: {
         primary: "montserrat, helvetica, sans-serif"
     },
+    fontSize: 1,
     mq: breakpoints,
     pad: 16,
-    space: 25
+    space: 25,
+    lineWidth: "2px"
 }
 
 export const dark = {
