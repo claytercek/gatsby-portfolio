@@ -10,13 +10,16 @@ export default ({ data }) => {
         <SEO />
         <main className={"mainContent"}>
           <ul>
-            {data.allMarkdownRemark.edges.map(({ node }) => (
+            {data}
+            {/* {data.allMarkdownRemark.edges.map(({ node }) => (
               <li key={node.id} >
-                <Link to={node.fields.slug}>
+                <Link >
+                  <Img  fluid={node.frontmatter.image.childImageSharp.fluid} />
                   <h3 >{node.frontmatter.title}</h3>
+                  <h4 >{node.frontmatter.subtitle}</h4>
                 </Link>
               </li>
-            ))}
+            ))} */}
           </ul>
         </main>
       </Layout>
@@ -25,21 +28,19 @@ export default ({ data }) => {
   
   export const query = graphql`
     query {
-        allMarkdownRemark(filter: {
-            fields: {type: {eq: "work"}}
-        }) {
+      allMarkdownRemark {
         totalCount
         edges {
-            node {
+          node {
             id
             fields {
-                slug
+              slug
             }
             frontmatter {
-                title
+              title
             }
-            }
+          }
         }
-        }
-    }  
+      }
+    }
   `
