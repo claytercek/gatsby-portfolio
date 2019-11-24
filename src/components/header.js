@@ -1,8 +1,8 @@
 import { Link, StaticQuery } from "gatsby"
-import React, {Component} from "react"
-import {css} from "@emotion/core"
+import React, { Component } from "react"
+import { css } from "@emotion/core"
 
-const headerStyle = theme => (css`
+const headerStyle = theme => css`
   transform: rotate(-180deg);
   writing-mode: vertical-lr;
   display: flex;
@@ -22,9 +22,9 @@ const headerStyle = theme => (css`
     padding-top: ${theme.pad * 1.5}px;
     padding-bottom: ${theme.pad * 1.5}px;
   }
-`)
+`
 
-const headerWrapper = (theme) => (css`
+const headerWrapper = theme => css`
   width: 40px;
   position: relative;
   * {
@@ -32,24 +32,24 @@ const headerWrapper = (theme) => (css`
   }
   ${theme.mq.medium} {
     width: 60px;
-  };
-`);
+  }
+`
 
-const navStyle = (theme) => (css`
+const navStyle = theme => css`
   list-style-type: none;
   display: flex;
   padding: 0;
-`);
+`
 
-const separatorStyle = (theme) => (css`
+const separatorStyle = theme => css`
   flex: 1;
   border-left: ${theme.lineWidth} solid ${theme.colors.primary};
   margin-top: ${theme.pad}px;
   margin-bottom: ${theme.pad}px;
-`);
+`
 
-const linkStyle = (theme) => (css`
-  :not(:first-child) {
+const linkStyle = theme => css`
+  :not(:first-of-type) {
     margin-top: ${theme.pad}px;
   }
   a {
@@ -58,42 +58,41 @@ const linkStyle = (theme) => (css`
   }
   text-transform: uppercase;
   font-size: 1em;
-`)
+`
 
-const logoStyle = (theme) => (css`
+const logoStyle = theme => css`
   text-transform: uppercase;
   font-size: 1.2em;
   font-weight: 300;
   span {
     font-weight: 600;
   }
-`)
-
+`
 
 class Header extends Component {
   render() {
-    var data = this.props.data.site.siteMetadata;
-    const splitString = data.title.split(" ");
+    var data = this.props.data.site.siteMetadata
+    const splitString = data.title.split(" ")
     return (
-    <div css={headerWrapper}>
-      <header css={headerStyle}>
-        <Link css={logoStyle} to={"/"}>
-          <span>{splitString[0]}</span> {splitString.slice(1).join(" ")}
-        </Link>
-        <div css={separatorStyle}/>
-        <nav>
-          <ul css={navStyle}>
-            {data.menu.map((link, index) => {
-              return (
-                <li css={linkStyle}>
-                  <Link to={link.slug}>{link.name}</Link>
-                </li>
-              )
-            })}
-          </ul>
-        </nav>
-      </header>
-    </div>
+      <div css={headerWrapper}>
+        <header css={headerStyle}>
+          <Link css={logoStyle} to={"/"}>
+            <span>{splitString[0]}</span> {splitString.slice(1).join(" ")}
+          </Link>
+          <div css={separatorStyle} />
+          <nav>
+            <ul css={navStyle}>
+              {data.menu.map((link, index) => {
+                return (
+                  <li css={linkStyle}>
+                    <Link to={link.slug}>{link.name}</Link>
+                  </li>
+                )
+              })}
+            </ul>
+          </nav>
+        </header>
+      </div>
     )
   }
 }

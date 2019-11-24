@@ -1,13 +1,13 @@
-import React, {Component} from "react"
-import useDarkMode from 'use-dark-mode';
+import React, { Component } from "react"
+import useDarkMode from "use-dark-mode"
 import Header from "./header"
-import { ThemeProvider } from 'emotion-theming'
-import {dark, light} from './theme'
-import { Global, css } from '@emotion/core'
+import { ThemeProvider } from "emotion-theming"
+import { dark, light } from "./theme"
+import { Global, css } from "@emotion/core"
 
-require('typeface-montserrat')
+require("typeface-montserrat")
 
-const globalStyle = (theme) => (css`
+const globalStyle = theme => css`
   html {
     background-color: ${theme.colors.bg};
     font-family: ${theme.font.primary};
@@ -21,25 +21,32 @@ const globalStyle = (theme) => (css`
 
   a {
     color: inherit;
-    text-decoration: none; 
+    text-decoration: none;
   }
-`)
+`
+const contentStyle = theme => css`
+  flex: 1;
+  padding: ${theme.pad}px;
+  ${theme.mq.medium} {
+    padding: ${theme.pad * 1.5}px;
+  }
+`
 
-const wrapperStyle = (theme) => ({
-  display: "flex"
-});
-
+const wrapperStyle = theme => ({
+  display: "flex",
+})
 
 const Layout = ({ children }) => {
-  const darkMode = useDarkMode(false).value;
+  // following code isnt loading correctly on build
+  // const darkMode = useDarkMode(false).value;
+  const darkMode = true
+
   return (
     <ThemeProvider theme={darkMode ? dark : light}>
       <Global styles={globalStyle} />
       <div css={wrapperStyle}>
         <Header />
-        <div css={wrapperStyle}>
-          {children}
-        </div> 
+        <div css={contentStyle}>{children}</div>
       </div>
     </ThemeProvider>
   )

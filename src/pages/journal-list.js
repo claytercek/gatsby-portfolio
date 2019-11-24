@@ -3,13 +3,13 @@ import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Headline from "../components/headline"
-import {css} from "@emotion/core"
+import { css } from "@emotion/core"
 
-const listStyle = theme => (css`
+const listStyle = theme => css`
   list-style-type: none;
   padding: 0;
   padding-left: ${theme.pad}px;
-`)
+`
 
 export default ({ data }) => {
   return (
@@ -18,9 +18,9 @@ export default ({ data }) => {
       <main className={"mainContent"}>
         <ul css={listStyle}>
           {data.allMarkdownRemark.edges.map(({ node }, index) => {
-            let i = (1 + index).toString().padStart(2, '0');
+            let i = (1 + index).toString().padStart(2, "0")
             return (
-              <li key={node.id} >
+              <li key={node.id}>
                 <Link to={node.fields.slug}>
                   <Headline
                     title={node.frontmatter.title}
@@ -37,23 +37,21 @@ export default ({ data }) => {
 }
 
 export const query = graphql`
-    query {
-        allMarkdownRemark(filter: {
-            fields: {type: {eq: "journal"}}
-        }) {
-        totalCount
-        edges {
-            node {
-            id
-            fields {
-                slug
-            }
-            frontmatter {
-                title
-                type
-            }
+  query {
+    allMarkdownRemark(filter: { fields: { type: { eq: "journal" } } }) {
+      totalCount
+      edges {
+        node {
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            type
           }
         }
       }
-    }  
-  `
+    }
+  }
+`

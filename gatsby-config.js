@@ -4,8 +4,8 @@ module.exports = {
     siteUrl: `https://claytercek.com`,
     description: `Clay Tercek's Personal Portfolio`,
     titleTemplate: "%s · Clay Tercek",
-    url: "https://claytercek.com", 
-    image: "/images/default_image.jpg", 
+    url: "https://claytercek.com",
+    image: "/images/default_image.jpg",
     twitterUsername: "@claytercek",
     menu: [
       {
@@ -42,7 +42,7 @@ module.exports = {
         name: "Email",
         slug: "#",
       },
-    ]
+    ],
   },
   plugins: [
     {
@@ -65,7 +65,7 @@ module.exports = {
               maxWidth: 1440,
               linkImagesToOriginal: false,
               withWebp: true,
-              quality: 80
+              quality: 80,
             },
           },
         ],
@@ -74,6 +74,14 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-emotion`,
-    `gatsby-plugin-use-dark-mode`,
+    {
+      resolve: "gatsby-plugin-use-dark-mode",
+      options: {
+        classNameDark: "dark-mode",
+        classNameLight: "light-mode",
+        storageKey: "darkMode",
+        minify: true,
+      },
+    },
   ],
 }

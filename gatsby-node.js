@@ -23,22 +23,22 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 exports.createPages = ({ actions, graphql, reporter }) => {
   const { createPage } = actions
   return graphql(`
-  {
-    allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] }
-      limit: 1000
-    ) {
-      edges {
-        node {
-          fields {
-            slug
-            type
+    {
+      allMarkdownRemark(
+        sort: { order: DESC, fields: [frontmatter___date] }
+        limit: 1000
+      ) {
+        edges {
+          node {
+            fields {
+              slug
+              type
+            }
           }
         }
       }
     }
-  }
-`).then(result => {
+  `).then(result => {
     result.data.allMarkdownRemark.edges.forEach(({ node }) => {
       // pages/{type}/{type}-single.js
       let template = path.resolve(
