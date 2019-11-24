@@ -29,6 +29,7 @@ const contentStyle = theme => css`
   padding: ${theme.pad}px;
   ${theme.mq.medium} {
     padding: ${theme.pad * 1.5}px;
+    padding-left: ${theme.pad * 0.5}px;
   }
 `
 
