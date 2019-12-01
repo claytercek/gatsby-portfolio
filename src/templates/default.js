@@ -44,6 +44,10 @@ const bodyStyle = theme => css`
     margin-bottom: ${theme.space}px;
   }
 
+  p:empty a {
+    color: red;
+  }
+
   ul {
 
     list-style-position: inside;
@@ -131,6 +135,8 @@ export default ({ data }) => {
     createElement: React.createElement,
     Fragment: React.Fragment,
   }).Compiler
+
+  console.log(post.htmlAst);
 
   return (
     <Layout>
