@@ -1,7 +1,9 @@
 import React, { Component } from "react"
-import { css } from "@emotion/core"
+import { css, jsx } from "@emotion/core"
+import { throws } from "assert"
 
 const wrapperStyle = theme => css`
+  line-height: 1;
   display: flex;
   flex-direction: column-reverse;
   * {
@@ -10,6 +12,7 @@ const wrapperStyle = theme => css`
 `
 
 const titleStyle = theme => css`
+  line-height: 1;
   text-transform: uppercase;
   @supports (-webkit-text-stroke: 1px ${theme.colors.primary}) {
     -webkit-text-stroke: ${theme.lineWidth} ${theme.colors.primary};
@@ -22,9 +25,12 @@ const titleStyle = theme => css`
   ${theme.mq.medium} {
     font-size: 4.8vw;
   }
+  margin-top: ${theme.pad / 2}px;
 `
 
 const subtitleStyle = theme => css`
+  margin: 0;
+  line-height: 1;
   font-weight: 300;
   text-transform: uppercase;
   font-size: 0.8rem;
@@ -35,15 +41,12 @@ const subtitleStyle = theme => css`
   }
 `
 
-class Headline extends Component {
-  render() {
-    return (
-      <div css={wrapperStyle}>
-        <h2 css={titleStyle}>{this.props.title}</h2>
-        <h3 css={subtitleStyle}>{this.props.subtitle}</h3>
-      </div>
-    )
-  }
-}
+const Headline = props => (
+  <div css={wrapperStyle} {...props}>
+    <h2 css={titleStyle}>{props.title}</h2>
+    <h3 css={subtitleStyle}>{props.subtitle}</h3>
+  </div>
+
+)
 
 export default Headline

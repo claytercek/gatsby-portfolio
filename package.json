@@ -28,6 +28,7 @@
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-helmet": "^5.2.1",
+    "rehype-react": "^4.0.1",
     "typeface-montserrat": "^0.0.75",
     "use-dark-mode": "^2.3.1"
   },

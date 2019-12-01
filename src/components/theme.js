@@ -15,7 +15,7 @@ const base = {
   },
   mq: breakpoints,
   pad: 16,
-  space: 25,
+  space: 16,
   lineWidth: "1.5px",
 }
 
