@@ -27,9 +27,11 @@ const globalStyle = theme => css`
 const contentStyle = theme => css`
   flex: 1;
   padding: ${theme.pad}px;
+  padding-left: 0;
+  
   ${theme.mq.medium} {
     padding: ${theme.pad * 1.5}px;
-    padding-left: ${theme.pad * 0.5}px;
+    padding-left: 0;
   }
 `
 

@@ -15,11 +15,14 @@ const headerImgStyle = theme => css`
   }
 `
 const headerTextStyle = theme => css`
-  display: flex;
-  align-items: flex-end;
   ${theme.mq.medium} {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    overflow: hidden;
     ::after {
+      width: 100%;
       content:"";
+      break-before: always;
       flex: 1;
       border-bottom: ${theme.colors.primary} solid ${theme.lineWidth};
       margin-left: ${theme.pad}px;
@@ -115,6 +118,10 @@ const bodyStyle = theme => css`
       }
     }
   }
+
+  .gatsby-image-wrapper > img {
+    display: none;
+  }
 `
 
 export default ({ data }) => {
@@ -129,9 +136,7 @@ export default ({ data }) => {
     <Layout>
       <main css={bodyStyle}>
         <Img css={headerImgStyle} fluid={post.frontmatter.image.childImageSharp.fluid} />
-        <div css={headerTextStyle}>
-          <Headline title={post.frontmatter.title} subtitle={post.frontmatter.type}/>
-        </div>
+          <Headline css={headerTextStyle} title={post.frontmatter.title} subtitle={post.frontmatter.type}/>
         {renderAst(post.htmlAst)}
       </main>
     </Layout>
