@@ -1,18 +1,13 @@
 import React from "react"
 import { graphql } from "gatsby"
 import rehypeReact from "rehype-react"
-import Img from "gatsby-image"
+import SafeImg from "../components/SafeImg"
 import Layout from "../components/layout"
 import Headline from "../components/headline"
 import { css } from "@emotion/core"
 
 const headerImgStyle = theme => css`
   max-height: 75vh;
-  margin-bottom: ${theme.space * 2}px;
-
-  ${theme.mq.medium} {
-    margin-bottom: ${theme.space * 3}px;
-  }
 `
 const headerTextStyle = theme => css`
   ${theme.mq.medium} {
@@ -28,24 +23,55 @@ const headerTextStyle = theme => css`
       margin-left: ${theme.pad}px;
       transform: translateY(-2.4vw);
     }
+
+    margin-top: ${theme.space * 2}px;
+
+    ${theme.mq.medium} {
+      margin-top: ${theme.space * 3}px;
+    }
   }
 `
 
 const bodyStyle = theme => css`
-  line-height: 1.5;
+  line-height: 1.6;
   font-size: 1rem;
   font-weight: 300;
+  padding-bottom: ${theme.space * 2}px;
+
+  > * {
+    margin-bottom: 0;
+  }
 
   p, ul {
     max-width: 60ch;
     margin-left: auto;
     margin-right: auto;
     margin-top: ${theme.space}px;
-    margin-bottom: ${theme.space}px;
   }
 
-  p:empty a {
-    color: red;
+  p a {
+    position: relative;
+    display: inline-block;
+    font-weight: 400;
+    ::after {
+      content:"";
+      position: absolute;
+      height: ${theme.lineWidth};
+      width:100%;
+      left:0;
+      bottom: 0;
+      background: ${theme.colors.primary};
+      transition: height ${theme.bezier} 0.2s;
+    }
+
+    &:hover::after {
+      height: 6px;
+    }
+  }
+
+  .linksOnly a {
+    padding-bottom: 0.5em;
+    margin-right: ${theme.pad}px;
   }
 
   ul {
@@ -60,17 +86,20 @@ const bodyStyle = theme => css`
 
   > h3 {
     margin-top: ${theme.space * 2}px;
-    margin-bottom: ${theme.space}px;
     text-transform: uppercase;
     font-size: 1.6rem;
   }
 
   ${theme.mq.medium} {
+    padding-bottom: ${theme.space * 3}px;
     font-size: 1.4rem;
 
     p, ul {
       margin-top: ${theme.space * 3}px;
-      margin-bottom: ${theme.space * 3}px;
+
+      + p, + ul {
+        margin-top: ${theme.space * 1.5}px;
+      }
     }
 
     > h3 {
@@ -111,7 +140,10 @@ const bodyStyle = theme => css`
 
     p, ul {
       margin-top: ${theme.space * 4}px;
-      margin-bottom: ${theme.space * 4}px;
+
+      + p, + ul {
+        margin-top: ${theme.space * 2}px;
+      }
     }
 
     > h3 {
@@ -121,10 +153,6 @@ const bodyStyle = theme => css`
         bottom: 1.5rem;
       }
     }
-  }
-
-  .gatsby-image-wrapper > img {
-    display: none;
   }
 `
 
@@ -141,7 +169,7 @@ export default ({ data }) => {
   return (
     <Layout>
       <main css={bodyStyle}>
-        <Img css={headerImgStyle} fluid={post.frontmatter.image.childImageSharp.fluid} />
+        <SafeImg css={headerImgStyle} fluid={post.frontmatter.image.childImageSharp.fluid} alt={post.frontmatter.title}/>
           <Headline css={headerTextStyle} title={post.frontmatter.title} subtitle={post.frontmatter.type}/>
         {renderAst(post.htmlAst)}
       </main>

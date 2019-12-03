@@ -30,9 +30,11 @@ const itemStyle = theme => css`
     &:nth-child(9n-8),
     &:nth-child(9n-4) {
       flex-grow: 1;
-      &::after {
-        margin-right: ${theme.pad}px;
-      }
+    }
+
+    &:nth-child(9n-7),
+    &:nth-child(9n-3) {
+      margin-left: ${theme.pad}px;
     }
 
     &:nth-child(9n-6),

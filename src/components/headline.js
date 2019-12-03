@@ -15,7 +15,7 @@ const titleStyle = theme => css`
   line-height: 1;
   text-transform: uppercase;
   @supports (-webkit-text-stroke: 1px ${theme.colors.primary}) {
-    -webkit-text-stroke: ${theme.lineWidth} ${theme.colors.primary};
+    -webkit-text-stroke: 2px ${theme.colors.primary};
     color: ${theme.colors.bg};
   }
   font-size: 2rem;

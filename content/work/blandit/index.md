@@ -24,5 +24,4 @@ This is a [Real page](https://google.com)
 
 # another title
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac o dio quis sem scelerisque ornare. Fusce condimentum dapibus est, nec finibus metus vestibulum eget. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus ac magna sit amet tellus ultrices interdum ac sed risus. 
-Phasellus sed egestas massa, at maximus ex.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac odio quis sem scelerisque ornare. Fusce condimentum dapibus est, nec finibus metus vestibulum eget. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus ac magna sit amet tellus ultrices interdum ac sed risus.Phasellus sed egestas massa, at maximus ex.

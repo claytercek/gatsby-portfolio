@@ -79,7 +79,7 @@ class Header extends Component {
           <Link css={logoStyle} to={"/"}>
             <span>{splitString[0]}</span> {splitString.slice(1).join(" ")}
           </Link>
-          <div css={separatorStyle} />
+          <div css={separatorStyle}/>
           <nav>
             <ul css={navStyle}>
               {data.menu.map((link, index) => {

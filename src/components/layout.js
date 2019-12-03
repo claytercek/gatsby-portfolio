@@ -23,6 +23,10 @@ const globalStyle = theme => css`
     color: inherit;
     text-decoration: none;
   }
+
+  * {
+    box-sizing: border-box;
+  }
 `
 const contentStyle = theme => css`
   flex: 1;
