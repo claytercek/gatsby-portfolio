@@ -1,5 +1,5 @@
-import React, { Component } from "react"
-import useDarkMode from "use-dark-mode"
+import React from "react"
+// import useDarkMode from "use-dark-mode"
 import Header from "./header"
 import { ThemeProvider } from "emotion-theming"
 import { dark, light } from "./theme"
@@ -26,6 +26,10 @@ const globalStyle = theme => css`
 
   * {
     box-sizing: border-box;
+  }
+
+  style {
+    display: none !important; 
   }
 `
 const contentStyle = theme => css`

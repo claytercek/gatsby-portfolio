@@ -69,40 +69,25 @@ const itemStyle = theme => css`
   }
 `
 
-const dividerStyle = theme => css`
-  border-bottom: ${theme.lineWidth} solid ${theme.colors.primary};
-  background: red;
-  flex-grow: 1;
-`
-
-const breakAfter = theme => css`
-  flex-basis: 100%;
-`
-
-const Divider = () => <li css={dividerStyle} />
-
 export default ({ data }) => {
   return (
     <Layout>
-      <SEO />
-      <main className={"mainContent"}>
-        <ul css={listStyle}>
+      <main>
+        <listStyle>
           {data.allMarkdownRemark.edges.map(({ node }, index) => {
             let i = (1 + index).toString().padStart(2, "0")
             return (
-              <>
-                <li key={node.id} css={itemStyle}>
-                  <Link to={node.fields.slug}>
-                    <Headline
-                      title={node.frontmatter.title}
-                      subtitle={i + " " + node.frontmatter.type}
-                    />
-                  </Link>
-                </li>
-              </>
+              <li key={node.id} css={itemStyle}>
+                <Link to={node.fields.slug}>
+                  <Headline
+                    title={node.frontmatter.title}
+                    subtitle={i + " " + node.frontmatter.type}
+                  />
+                </Link>
+              </li>
             )
           })}
-        </ul>
+        </listStyle>
       </main>
     </Layout>
   )

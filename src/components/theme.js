@@ -6,7 +6,8 @@ const breakpoints = {
 
 // convert breakpoints to media queries
 Object.keys(breakpoints).map(key => {
-  breakpoints[key] = `@media (min-width: ${breakpoints[key]}px)`
+  breakpoints[key] = `@media (min-width: ${breakpoints[key]}px)`;
+  return;
 })
 
 const base = {
