@@ -29,7 +29,8 @@ const globalStyle = theme => css`
   }
 
   style {
-    display: none !important; 
+    // fixing an issue with flash of unstyled content
+    display: none !important;
   }
 `
 const contentStyle = theme => css`

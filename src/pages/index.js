@@ -73,7 +73,7 @@ export default ({ data }) => {
   return (
     <Layout>
       <main>
-        <listStyle>
+        <ul css={listStyle}>
           {data.allMarkdownRemark.edges.map(({ node }, index) => {
             let i = (1 + index).toString().padStart(2, "0")
             return (
@@ -87,7 +87,7 @@ export default ({ data }) => {
               </li>
             )
           })}
-        </listStyle>
+        </ul>
       </main>
     </Layout>
   )
