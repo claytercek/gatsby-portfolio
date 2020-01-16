@@ -10,33 +10,55 @@ const headerImgStyle = theme => css`
   max-height: 75vh;
 `
 const headerTextStyle = theme => css`
-  ${theme.mq.medium} {
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    overflow: hidden;
-    ::after {
-      width: 100%;
-      content:"";
-      break-before: always;
-      flex: 1;
-      border-bottom: ${theme.colors.primary} solid ${theme.lineWidth};
-      margin-left: ${theme.pad}px;
-      transform: translateY(-2.4vw);
+  ${'' /* margin-left: ${theme.pad * 2}px; */}
+  height: calc(80vh - ${theme.pad * 2}px);
+  flex-direction:column;
+  justify-content: flex-end;
+
+  padding-bottom: 40px;
+  padding-right: 15%;
+  margin-bottom: 0;
+
+
+  h2 {
+    font-size: 3rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+    margin-top: ${theme.pad}px;
+  }
+
+  ${theme.mq.small} {
+    h2 {
+    font-size: 3.8rem;
     }
 
-    margin-top: ${theme.space * 2}px;
-
-    ${theme.mq.medium} {
-      margin-top: ${theme.space * 3}px;
+    h3 {
+      font-size: 1.6rem;
     }
   }
+
+  ${theme.mq.medium} {
+    padding-bottom: 0px;
+
+    h2 {
+    font-size: 6rem;
+    }
+
+    h3 {
+      font-size: 1.8rem;
+    }
+  }
+
 `
 
 const bodyStyle = theme => css`
   line-height: 1.6;
-  font-size: 1rem;
-  font-weight: 300;
+  font-size: 1.1rem;
+  font-weight: 400;
   padding-bottom: ${theme.space * 2}px;
+  padding-left: ${theme.pad}px;
 
   > * {
     margin-bottom: 0;
@@ -44,8 +66,6 @@ const bodyStyle = theme => css`
 
   p, ul {
     max-width: 60ch;
-    margin-left: auto;
-    margin-right: auto;
     margin-top: ${theme.space}px;
   }
 
@@ -91,47 +111,15 @@ const bodyStyle = theme => css`
   }
 
   ${theme.mq.medium} {
+    padding-left: 5vw;
     padding-bottom: ${theme.space * 3}px;
     font-size: 1.4rem;
 
-    p, ul {
+    p, ul, > h3  {
       margin-top: ${theme.space * 3}px;
 
       + p, + ul {
         margin-top: ${theme.space * 1.5}px;
-      }
-    }
-
-    > h3 {
-      margin-right: 0 !important;
-      margin-top: ${theme.space * 5}px;
-      display: flex;
-      flex-flow: row nowrap;
-      line-height: 1;
-      font-size: 2.4rem;
-      position: relative;
-      z-index: 10;
-      margin-right: 0;
-
-      ::before, ::after {
-        content: "";
-        display: block;
-        border-bottom: ${theme.colors.primary} solid ${theme.lineWidth};
-        position: relative;
-        bottom: 1.2rem;
-      }
-      
-      ::after {
-        margin-left: ${theme.pad}px;
-        flex: 1000;
-        max-width: 60vw;
-      },
-
-      ::before {
-        flex-basis: 10vw;
-        flex: 1;
-        min-width: 30px;
-        margin-right: ${theme.pad}px;
       }
     }
   }
@@ -148,10 +136,6 @@ const bodyStyle = theme => css`
 
     > h3 {
       font-size: 3rem;
-
-      ::before, ::after {
-        bottom: 1.5rem;
-      }
     }
   }
 `
@@ -169,8 +153,8 @@ export default ({ data }) => {
   return (
     <Layout>
       <main css={bodyStyle}>
-        <SafeImg css={headerImgStyle} fluid={post.frontmatter.image.childImageSharp.fluid} alt={post.frontmatter.title}/>
-          <Headline css={headerTextStyle} title={post.frontmatter.title} subtitle={post.frontmatter.type}/>
+        {/* <SafeImg css={headerImgStyle} fluid={post.frontmatter.image.childImageSharp.fluid} alt={post.frontmatter.title}/> */}
+        <Headline css={headerTextStyle} title={post.frontmatter.title} subtitle={post.frontmatter.type} />
         {renderAst(post.htmlAst)}
       </main>
     </Layout>

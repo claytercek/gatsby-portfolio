@@ -14,10 +14,10 @@ const wrapperStyle = theme => css`
 const titleStyle = theme => css`
   line-height: 1;
   text-transform: uppercase;
-  @supports (-webkit-text-stroke: 1px ${theme.colors.primary}) {
+  ${'' /* @supports (-webkit-text-stroke: 1px ${theme.colors.primary}) {
     -webkit-text-stroke: 2px ${theme.colors.primary};
     color: ${theme.colors.bg};
-  }
+  } */}
   font-size: 2rem;
   ${theme.mq.small} {
     font-size: 2.2rem;
