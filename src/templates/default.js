@@ -6,12 +6,9 @@ import Layout from "../components/layout"
 import Headline from "../components/headline"
 import { css } from "@emotion/core"
 
-const headerImgStyle = theme => css`
-  max-height: 75vh;
-`
 const headerTextStyle = theme => css`
   ${'' /* margin-left: ${theme.pad * 2}px; */}
-  height: calc(80vh - ${theme.pad * 2}px);
+  height: calc(72vh - ${theme.pad * 2}px);
   flex-direction:column;
   justify-content: flex-end;
 
