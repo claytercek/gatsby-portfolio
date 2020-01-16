@@ -58,7 +58,6 @@ const bodyStyle = theme => css`
   font-size: 1.1rem;
   font-weight: 400;
   padding-bottom: ${theme.space * 2}px;
-  padding-left: ${theme.pad}px;
 
   > * {
     margin-bottom: 0;
