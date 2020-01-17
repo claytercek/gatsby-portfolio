@@ -25,13 +25,13 @@ const headerStyle = theme => css`
 `
 
 const headerWrapper = theme => css`
-  width: 40px;
+  width: 48px;
   position: relative;
   * {
     margin: 0;
   }
   ${theme.mq.medium} {
-    width: 60px;
+    width: 64px;
   }
 `
 
