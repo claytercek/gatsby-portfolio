@@ -27,6 +27,8 @@ const headerStyle = theme => css`
 const headerWrapper = theme => css`
   width: 48px;
   position: relative;
+  flex-shrink: 0;
+  
   * {
     margin: 0;
   }
