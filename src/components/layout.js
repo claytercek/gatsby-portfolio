@@ -51,7 +51,7 @@ const wrapperStyle = theme => ({
 const Layout = ({ children }) => {
   // following code isnt loading correctly on build
   // const darkMode = useDarkMode(false).value;
-  const darkMode = true
+  const darkMode = false
 
   return (
     <ThemeProvider theme={darkMode ? dark : light}>

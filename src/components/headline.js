@@ -26,15 +26,18 @@ const titleStyle = theme => css`
     font-size: 4.8vw;
   }
   margin-top: ${theme.pad / 2}px;
+  text-shadow: 6px 6px ${theme.colors.accent};
+
 `
 
 const subtitleStyle = theme => css`
   margin: 0;
   line-height: 1;
-  font-weight: 300;
+  font-weight: 400;
   text-transform: uppercase;
   font-size: 0.8rem;
   margin-bottom: -0.2rem;
+  position: relative;
   ${theme.mq.medium} {
     font-size: 1.2rem;
     margin-bottom: -0.6vw;

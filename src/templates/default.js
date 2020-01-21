@@ -68,25 +68,26 @@ const bodyStyle = theme => css`
   p a {
     position: relative;
     display: inline-block;
-    font-weight: 400;
-    ::after {
+    z-index: 1;
+
+    ::before {
       content:"";
+      z-index: -10;
       position: absolute;
-      height: ${theme.lineWidth};
+      height: 1.1rem;
       width:100%;
-      left:0;
-      bottom: 0;
-      background: ${theme.colors.primary};
-      transition: height ${theme.bezier} 0.2s;
+      left:5px;
+      bottom: 0rem;
+      background: ${theme.colors.accent};
+      transition: all ${theme.bezier} 0.2s;
     }
 
-    &:hover::after {
-      height: 6px;
+    &:hover::before {
+      height: 5px;
     }
   }
 
   .linksOnly a {
-    padding-bottom: 0.5em;
     margin-right: ${theme.pad}px;
   }
 
@@ -131,7 +132,9 @@ const bodyStyle = theme => css`
     }
 
     > h3 {
-      font-size: 3rem;
+      font-size: 1.3rem;
+      color: #999;
+      font-weight: 500;
     }
   }
 `
