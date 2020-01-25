@@ -19,7 +19,7 @@ const headerStyle = theme => css`
   position:fixed;
   font-size: 1rem;
   min-height: 40px;
-  transition: min-height 0.6s ${theme.bezier} 0.16s, transform 0.1s ${theme.bezier};
+  transition: min-height 0.6s ${theme.bezier} 0.16s;
 
   ${theme.mq.medium} {
     font-size: 1.2rem;
@@ -188,12 +188,15 @@ class Header extends Component {
   }
 
   handleScroll() {
+    var top = document.body.getBoundingClientRect().top;
+    if (top > 0) {
+      return;
+    }
     if (this.state.opened) {
       this.setState({scrollPos: top});
       return;
     };
 
-    var top = document.body.getBoundingClientRect().top;
     var diff = top - this.state.scrollPos;
 
     if (diff < 0) {
