@@ -48,7 +48,7 @@ const headerStyle = theme => css`
   &.opened {
     min-height: 100%;
     transition: min-height 0.7s ${theme.bezier} 0s;
-
+    transform: translateY(0) !important;
 
     ${theme.mq.medium} {
       min-height: 0;
@@ -192,6 +192,9 @@ class Header extends Component {
 
   handleScroll() {
     const { scrollPos } = this.state;
+    if (document.body.getBoundingClientRect().top > -50 || this.state.opened) {
+      return;
+    } 
     this.setState({
       scrollPos: document.body.getBoundingClientRect().top,
       show: document.body.getBoundingClientRect().top > scrollPos
