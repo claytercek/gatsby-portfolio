@@ -19,7 +19,7 @@ const headerStyle = theme => css`
   position:fixed;
   font-size: 1rem;
   min-height: 40px;
-  transition: min-height 0.6s ${theme.bezier} 0.16s, transform 0.6s ${theme.bezier};
+  transition: min-height 0.6s ${theme.bezier} 0.16s, transform 0.1s ${theme.bezier};
 
   ${theme.mq.medium} {
     font-size: 1.2rem;
@@ -49,6 +49,7 @@ const headerStyle = theme => css`
     min-height: 100%;
     transition: min-height 0.7s ${theme.bezier} 0s;
     transform: translateY(0) !important;
+    position: fixed !important;
 
     ${theme.mq.medium} {
       min-height: 0;
@@ -59,11 +60,6 @@ const headerStyle = theme => css`
       top:100%;
       transition: all 0.8s ${theme.bezier} 0.06s;
     }
-  }
-
-
-  &.hidden {
-    transform: translateY(-100%);
   }
 `
 
@@ -169,7 +165,7 @@ class Header extends Component {
     this.state = { 
       opened: false,
       scrollPos: 0,
-      show: true
+      offsetY: 0
      }
     this.toggleOpen = this.toggleOpen.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
@@ -186,18 +182,35 @@ class Header extends Component {
 
   toggleOpen() {
     this.setState(state => ({
-      opened: !state.opened
+      opened: !state.opened,
+      offsetY: 0
     }));
   }
 
   handleScroll() {
-    const { scrollPos } = this.state;
-    if (document.body.getBoundingClientRect().top > -50 || this.state.opened) {
+    if (this.state.opened) {
+      this.setState({scrollPos: top});
       return;
-    } 
+    };
+
+    var top = document.body.getBoundingClientRect().top;
+    var diff = top - this.state.scrollPos;
+
+    if (diff < 0) {
+      if (-1 * this.state.offsetY >= this.header.clientHeight) {
+        this.setState({scrollPos: top});
+        return;
+      }
+    } else {
+      if (-1 * this.state.offsetY <= 0) {
+        this.setState({scrollPos: top});
+        return;
+      }
+    }
+
     this.setState({
-      scrollPos: document.body.getBoundingClientRect().top,
-      show: document.body.getBoundingClientRect().top > scrollPos
+      scrollPos: top,
+      offsetY: Math.min( Math.max(this.state.offsetY + diff, -this.header.clientHeight), 0),
     });
   }
 
@@ -205,14 +218,9 @@ class Header extends Component {
     var data = this.props.data.site.siteMetadata;
 
     const splitString = data.title.split(" ");
-    
-    var headerClasses = [
-      this.state.opened ? "opened" : "",
-      this.state.show ? "" : "hidden"
-    ].join(" ");
 
     return (
-      <header css={headerStyle} className={headerClasses} ref={this.header}>
+      <header css={theme => css`${headerStyle(theme)}; top: ${this.state.offsetY}px`} className={this.state.opened ? "opened" : ""} ref={element => this.header = element}>
         <Link css={logoStyle} to={"/"}>
           <span>{splitString[0]}</span> {splitString.slice(1).join(" ")}
         </Link>
