@@ -10,8 +10,8 @@ const headerStyle = theme => css`
   right: 0;
   z-index:10;
   overflow: hidden !important;
-  align-items: center;
-  align-content: flex-start;
+  align-items: flex-start;
+  justify-content: space-between;
   background-color: ${theme.colors.bg};
   display: flex;
   flex-wrap: wrap;
@@ -86,10 +86,6 @@ const navStyle = theme => css`
   }
 `
 
-const separatorStyle = theme => css`
-  flex: 1;
-`
-
 const linkStyle = theme => css`
   a {
     color: ${theme.colors.primary};
@@ -116,12 +112,11 @@ const buttonStyle = theme => css`
   position: relative;
   border: none;
   background-color: transparent;
-  padding: 8px;
   padding-right: 0;
   pointer-events: all;
   cursor: pointer;
   width: 36px;
-  height: 28px;
+  height: 24px;
 
   border: none;
   outline: none;
@@ -139,11 +134,11 @@ const buttonStyle = theme => css`
   }
 
   &::before {
-    top: 9px;
+    top: 7px;
   }
 
   &::after {
-    bottom: 9px;
+    bottom: 7px;
   }
 
   .opened & {
@@ -183,7 +178,6 @@ class Header extends Component {
         <Link css={logoStyle} to={"/"}>
           <span>{splitString[0]}</span> {splitString.slice(1).join(" ")}
         </Link>
-        <div css={separatorStyle}/>
         <button css={buttonStyle} onClick={this.toggleOpen}/>
         <nav css={navStyle}>
           <ul >
