@@ -15,11 +15,11 @@ const headerStyle = theme => css`
   background-color: ${theme.colors.bg};
   display: flex;
   flex-wrap: wrap;
-
+  transform: translateY(0);
   position:fixed;
   font-size: 1rem;
   min-height: 40px;
-  transition: min-height 0.6s ${theme.bezier} 0.16s;
+  transition: min-height 0.6s ${theme.bezier} 0.16s, transform 0.6s ${theme.bezier};
 
   ${theme.mq.medium} {
     font-size: 1.2rem;
@@ -59,6 +59,11 @@ const headerStyle = theme => css`
       top:100%;
       transition: all 0.8s ${theme.bezier} 0.06s;
     }
+  }
+
+
+  &.hidden {
+    transform: translateY(-100%);
   }
 `
 
@@ -141,6 +146,7 @@ const buttonStyle = theme => css`
     bottom: 7px;
   }
 
+
   .opened & {
     &::before {
       transform: rotate(45deg) translate(3px, 3px);
@@ -160,8 +166,22 @@ const buttonStyle = theme => css`
 class Header extends Component {
   constructor(props) {
     super(props);
-    this.state = { opened: false }
+    this.state = { 
+      opened: false,
+      scrollPos: 0,
+      show: true
+     }
     this.toggleOpen = this.toggleOpen.bind(this);
+    this.handleScroll = this.handleScroll.bind(this);
+    this.header = React.createRef();
+  }
+
+  componentDidMount() {
+    window.addEventListener("scroll", this.handleScroll);
+  }
+  
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleScroll);
   }
 
   toggleOpen() {
@@ -170,11 +190,26 @@ class Header extends Component {
     }));
   }
 
+  handleScroll() {
+    const { scrollPos } = this.state;
+    this.setState({
+      scrollPos: document.body.getBoundingClientRect().top,
+      show: document.body.getBoundingClientRect().top > scrollPos
+    });
+  }
+
   render() {
-    var data = this.props.data.site.siteMetadata
-    const splitString = data.title.split(" ")
+    var data = this.props.data.site.siteMetadata;
+
+    const splitString = data.title.split(" ");
+    
+    var headerClasses = [
+      this.state.opened ? "opened" : "",
+      this.state.show ? "" : "hidden"
+    ].join(" ");
+
     return (
-      <header css={headerStyle} className={this.state.opened ? "opened" : ""}>
+      <header css={headerStyle} className={headerClasses} ref={this.header}>
         <Link css={logoStyle} to={"/"}>
           <span>{splitString[0]}</span> {splitString.slice(1).join(" ")}
         </Link>
