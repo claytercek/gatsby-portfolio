@@ -74,9 +74,9 @@ const bodyStyle = theme => css`
       content:"";
       z-index: -10;
       position: absolute;
-      height: 1.1rem;
+      height: 50%;
       width:100%;
-      left:5px;
+      left:4px;
       bottom: 0rem;
       background: ${theme.colors.accent};
       transition: all ${theme.bezier} 0.2s;
@@ -125,6 +125,7 @@ const bodyStyle = theme => css`
 
     p, ul {
       margin-top: ${theme.space * 4}px;
+      padding-left: ${theme.pad} !important;
 
       + p, + ul {
         margin-top: ${theme.space * 2}px;
@@ -132,9 +133,8 @@ const bodyStyle = theme => css`
     }
 
     > h3 {
-      font-size: 1.3rem;
-      color: #999;
-      font-weight: 500;
+      font-size: 1.9rem;
+      margin-top: ${theme.space * 5}px;
     }
   }
 `

@@ -7,6 +7,24 @@ import { Global, css } from "@emotion/core"
 
 require("typeface-montserrat")
 
+const mainPad = theme => css`
+  margin: 0;
+  max-width: ${1440}px;
+  padding: ${theme.pad * 1.5}px;
+  margin-left: auto;
+  margin-right: auto;
+
+  ${theme.mq.medium} {
+    font-size: 1.2rem;
+    padding: ${theme.pad * 2}px;
+  }
+
+  ${theme.mq.large} {
+    font-size: 1.2rem;
+    padding: ${theme.pad * 4}px;
+  }
+`
+
 const globalStyle = theme => css`
   html {
     background-color: ${theme.colors.bg};
@@ -14,9 +32,8 @@ const globalStyle = theme => css`
     color: ${theme.colors.primary};
     padding: 0;
   }
-
   body {
-    margin: 0;
+    ${mainPad(theme)};
   }
 
   a {
@@ -34,19 +51,16 @@ const globalStyle = theme => css`
   }
 `
 const contentStyle = theme => css`
-  flex: 1;
-  padding: ${theme.pad}px;
-  padding-left: 0;
-  
+  margin-top: ${theme.pad * 3.6}px;
+
   ${theme.mq.medium} {
-    padding: ${theme.pad * 1.5}px;
-    padding-left: 0;
+    margin-top: ${theme.pad * 4}px;
+  }
+
+  ${theme.mq.large} {
+    margin-top: ${theme.pad * 5}px;
   }
 `
-
-const wrapperStyle = theme => ({
-  display: "flex",
-})
 
 const Layout = ({ children }) => {
   // following code isnt loading correctly on build
@@ -56,12 +70,11 @@ const Layout = ({ children }) => {
   return (
     <ThemeProvider theme={darkMode ? dark : light}>
       <Global styles={globalStyle} />
-      <div css={wrapperStyle}>
-        <Header />
-        <div css={contentStyle}>{children}</div>
-      </div>
+      <Header />
+      <div css={contentStyle}>{children}</div>
     </ThemeProvider>
   )
 }
 
 export default Layout
+export {mainPad}

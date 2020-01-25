@@ -1,65 +1,106 @@
 import { Link, StaticQuery } from "gatsby"
 import React, { Component } from "react"
+import {mainPad} from "./layout";
 import { css } from "@emotion/core"
 
 const headerStyle = theme => css`
-  transform: rotate(-180deg);
-  writing-mode: vertical-lr;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
+  ${mainPad(theme)};
   top: 0;
   left: 0;
-  bottom: 0;
-  width: inherit;
-  padding-top: ${theme.pad}px;
-  padding-bottom: ${theme.pad}px;
+  right: 0;
+  z-index:10;
+  overflow: hidden !important;
+  align-items: center;
+  align-content: flex-start;
+  background-color: ${theme.colors.bg};
+  display: flex;
+  flex-wrap: wrap;
+
+  position:fixed;
   font-size: 1rem;
+  min-height: 40px;
+  transition: min-height 0.6s ${theme.bezier} 0.16s;
+
   ${theme.mq.medium} {
     font-size: 1.2rem;
-    padding-top: ${theme.pad * 1.5}px;
-    padding-bottom: ${theme.pad * 1.5}px;
+    padding-bottom: ${theme.pad * 2}px;
   }
-`
+  ${theme.mq.large} {
+    font-size: 1.3rem;
+  }
 
-const headerWrapper = theme => css`
-  width: 48px;
-  position: relative;
-  flex-shrink: 0;
-  
-  * {
-    margin: 0;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: ${theme.colors.primary};
+    transition: all 0.6s ${theme.bezier} 0.1s;
+
+    ${theme.mq.medium} {
+      display: none;
+    }
   }
-  ${theme.mq.medium} {
-    width: 64px;
+
+
+  &.opened {
+    min-height: 100%;
+    transition: min-height 0.7s ${theme.bezier} 0s;
+
+
+    ${theme.mq.medium} {
+      min-height: 0;
+      transition: none;
+    }
+
+    &::after {
+      top:100%;
+      transition: all 0.8s ${theme.bezier} 0.06s;
+    }
   }
 `
 
 const navStyle = theme => css`
+  position: absolute;
+  top: 80px;
   list-style-type: none;
-  display: flex;
   padding: 0;
+  margin: 0;
+  flex-basis: 100%;
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+
+  ${theme.mq.medium} {
+    position: static;
+    flex-basis: 0;
+    ul {
+      display: flex;
+    }
+  }
 `
 
 const separatorStyle = theme => css`
   flex: 1;
-  border-left: ${theme.lineWidth} solid ${theme.colors.primary};
-  margin-top: ${theme.pad}px;
-  margin-bottom: ${theme.pad}px;
 `
 
 const linkStyle = theme => css`
-  :not(:first-of-type) {
-    margin-top: ${theme.pad}px;
-  }
   a {
     color: ${theme.colors.primary};
     text-decoration: none;
   }
   text-transform: uppercase;
   font-size: 1em;
+
+  ${theme.mq.medium} {
+    margin-left: ${theme.pad * 2}px;
+  }
 `
 
 const logoStyle = theme => css`
@@ -71,30 +112,91 @@ const logoStyle = theme => css`
   }
 `
 
+const buttonStyle = theme => css`
+  position: relative;
+  border: none;
+  background-color: transparent;
+  padding: 8px;
+  padding-right: 0;
+  pointer-events: all;
+  cursor: pointer;
+  width: 36px;
+  height: 28px;
+
+  border: none;
+  outline: none;
+
+  &::before,
+  &::after {
+    content: " ";
+    height: 2px;
+    width: 28px;
+    position: absolute;
+    left: 8px;
+    background-color: ${theme.colors.primary};
+    transform: none;
+    transition: transform 0.2s ${theme.bezier};
+  }
+
+  &::before {
+    top: 9px;
+  }
+
+  &::after {
+    bottom: 9px;
+  }
+
+  .opened & {
+    &::before {
+      transform: rotate(45deg) translate(3px, 3px);
+    }
+    &::after {
+      transform: rotate(-45deg) translate(3px, -3px);
+    }
+  }
+
+
+  ${theme.mq.medium} {
+    display: none;
+  }
+
+`
+
 class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { opened: false }
+    this.toggleOpen = this.toggleOpen.bind(this);
+  }
+
+  toggleOpen() {
+    this.setState(state => ({
+      opened: !state.opened
+    }));
+  }
+
   render() {
     var data = this.props.data.site.siteMetadata
     const splitString = data.title.split(" ")
     return (
-      <div css={headerWrapper}>
-        <header css={headerStyle}>
-          <Link css={logoStyle} to={"/"}>
-            <span>{splitString[0]}</span> {splitString.slice(1).join(" ")}
-          </Link>
-          <div css={separatorStyle}/>
-          <nav>
-            <ul css={navStyle}>
-              {data.menu.map((link, index) => {
-                return (
-                  <li css={linkStyle}>
-                    <Link to={link.slug}>{link.name}</Link>
-                  </li>
-                )
-              })}
-            </ul>
-          </nav>
-        </header>
-      </div>
+      <header css={headerStyle} className={this.state.opened ? "opened" : ""}>
+        <Link css={logoStyle} to={"/"}>
+          <span>{splitString[0]}</span> {splitString.slice(1).join(" ")}
+        </Link>
+        <div css={separatorStyle}/>
+        <button css={buttonStyle} onClick={this.toggleOpen}/>
+        <nav css={navStyle}>
+          <ul >
+            {data.menu.map((link, index) => {
+              return (
+                <li css={linkStyle}>
+                  <Link to={link.slug}>{link.name}</Link>
+                </li>
+              )
+            })}
+          </ul>
+        </nav>
+      </header>
     )
   }
 }
