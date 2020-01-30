@@ -8,7 +8,7 @@ import { css } from "@emotion/core"
 
 const headerTextStyle = theme => css`
   ${'' /* margin-left: ${theme.pad * 2}px; */}
-  height: calc(72vh - ${theme.pad * 2}px);
+  height: calc(64vh - ${theme.pad * 2}px);
   flex-direction:column;
   justify-content: flex-end;
 
