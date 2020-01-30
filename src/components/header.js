@@ -2,6 +2,7 @@ import { Link, StaticQuery } from "gatsby"
 import React, { Component } from "react"
 import {mainPad} from "./layout";
 import { css } from "@emotion/core"
+import theme, {breakpoints} from "./theme"
 import Headroom from "react-headroom"
 
 const headerStyle = theme => css`
@@ -144,11 +145,26 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      opened: false
+      opened: false,
+      pinStart: 0,
      }
     this.toggleOpen = this.toggleOpen.bind(this);
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
+  componentDidMount() {
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
+  }
+  
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions() {
+    var pinStart = parseInt(window.getComputedStyle(document.body).paddingTop, 10);
+    this.setState({ pinStart: pinStart});
+  }
 
   toggleOpen() {
     this.setState(state => ({
@@ -160,10 +176,9 @@ class Header extends Component {
     var data = this.props.data.site.siteMetadata;
 
     const splitString = data.title.split(" ");
-    
 
     return (
-      <Headroom forcePin={this.state.opened}>
+      <Headroom pinStart={this.state.pinStart} forcePin={this.state.opened}>
         <header css={headerStyle} className={this.state.opened ? "opened" : ""}>
           <Link css={logoStyle} to={"/"}>
             <span>{splitString[0]}</span> {splitString.slice(1).join(" ")}

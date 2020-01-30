@@ -1,4 +1,4 @@
-const breakpoints = {
+export const breakpoints = {
   small: 360,
   medium: 768,
   large: 992,
@@ -42,3 +42,5 @@ export const light = {
     lineWidth: "1px",
   },
 }
+
+export default base;

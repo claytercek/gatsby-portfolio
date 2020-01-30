@@ -39,6 +39,10 @@ const globalStyle = theme => css`
   body {
     margin: 0;
     padding: 0;
+    
+    ${theme.mq.large} {
+      padding-top: ${theme.pad * 2}px;
+    }
   }
 
   a {
@@ -58,14 +62,14 @@ const globalStyle = theme => css`
 const contentStyle = theme => css`
   ${mainPad(theme)};
   
-  margin-top: ${theme.pad * 3.6}px;
+  margin-top: ${theme.pad * 1}px;
 
   ${theme.mq.medium} {
-    margin-top: ${theme.pad * 4}px;
+    margin-top: ${theme.pad * 2}px;
   }
 
   ${theme.mq.large} {
-    margin-top: ${theme.pad * 5}px;
+    margin-top: ${theme.pad * 2}px;
   }
 `
 
