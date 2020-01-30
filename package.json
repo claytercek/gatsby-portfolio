@@ -1,9 +1,8 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "gatsby-portfolio",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Clay Tercek <code@claytercek.com>",
   "dependencies": {
     "@emotion/core": "^10.0.22",
     "@emotion/styled": "^10.0.23",
@@ -27,6 +26,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
+    "react-headroom": "git://github.com/claytercek/react-headroom.git",
     "react-helmet": "^5.2.1",
     "rehype-react": "^4.0.1",
     "typeface-montserrat": "^0.0.75",

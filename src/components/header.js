@@ -2,91 +2,66 @@ import { Link, StaticQuery } from "gatsby"
 import React, { Component } from "react"
 import {mainPad} from "./layout";
 import { css } from "@emotion/core"
+import Headroom from "react-headroom"
 
 const headerStyle = theme => css`
   ${mainPad(theme)};
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index:10;
-  overflow: hidden !important;
   align-items: flex-start;
   justify-content: space-between;
   background-color: ${theme.colors.bg};
   display: flex;
   flex-wrap: wrap;
-  transform: translateY(0);
-  position:fixed;
   font-size: 1rem;
-  min-height: 40px;
-  transition: min-height 0.6s ${theme.bezier} 0.16s, transform 0.6s ${theme.bezier};
+  position: relative;
+  padding-top: ${theme.pad}px;
+  padding-bottom: ${theme.pad}px;
 
   ${theme.mq.medium} {
     font-size: 1.2rem;
-    padding-bottom: ${theme.pad * 2}px;
+    padding-top: ${theme.pad * 1.5}px;
+    padding-bottom: ${theme.pad * 1.5}px;
   }
   ${theme.mq.large} {
     font-size: 1.3rem;
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    top: 80px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: ${theme.colors.primary};
-    transition: all 0.6s ${theme.bezier} 0.1s;
-
-    ${theme.mq.medium} {
-      display: none;
-    }
-  }
-
-
-  &.opened {
-    min-height: 100%;
-    transition: min-height 0.7s ${theme.bezier} 0s;
-    transform: translateY(0) !important;
-
-    ${theme.mq.medium} {
-      min-height: 0;
-      transition: none;
-    }
-
-    &::after {
-      top:100%;
-      transition: all 0.8s ${theme.bezier} 0.06s;
-    }
-  }
-
-
-  &.hidden {
-    transform: translateY(-100%);
+    padding-top: ${theme.pad * 2}px;
+    padding-bottom: ${theme.pad * 2}px;
   }
 `
 
 const navStyle = theme => css`
   position: absolute;
-  top: 80px;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background-color: ${theme.colors.bg};
   list-style-type: none;
   padding: 0;
   margin: 0;
+  height: 0;
   flex-basis: 100%;
+  transition: height 0.6s ${theme.bezier};
+  overflow: hidden;
+
+  .opened & {
+    height: 100vh;
+  }
 
   ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
+    margin-top: 80px;
   }
 
 
   ${theme.mq.medium} {
     position: static;
-    flex-basis: 0;
+    height: unset;
+    flex-basis: auto;
     ul {
       display: flex;
+      margin-top: 0;
     }
   }
 `
@@ -105,6 +80,7 @@ const linkStyle = theme => css`
 `
 
 const logoStyle = theme => css`
+  z-index: 15;
   text-transform: uppercase;
   font-size: 1.2em;
   font-weight: 300;
@@ -114,6 +90,7 @@ const logoStyle = theme => css`
 `
 
 const buttonStyle = theme => css`
+  z-index: 15;
   position: relative;
   border: none;
   background-color: transparent;
@@ -167,22 +144,11 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      opened: false,
-      scrollPos: 0,
-      show: true
+      opened: false
      }
     this.toggleOpen = this.toggleOpen.bind(this);
-    this.handleScroll = this.handleScroll.bind(this);
-    this.header = React.createRef();
   }
 
-  componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll);
-  }
-  
-  componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleScroll);
-  }
 
   toggleOpen() {
     this.setState(state => ({
@@ -190,45 +156,32 @@ class Header extends Component {
     }));
   }
 
-  handleScroll() {
-    const { scrollPos } = this.state;
-    if (document.body.getBoundingClientRect().top > -50 || this.state.opened) {
-      return;
-    } 
-    this.setState({
-      scrollPos: document.body.getBoundingClientRect().top,
-      show: document.body.getBoundingClientRect().top > scrollPos
-    });
-  }
-
   render() {
     var data = this.props.data.site.siteMetadata;
 
     const splitString = data.title.split(" ");
     
-    var headerClasses = [
-      this.state.opened ? "opened" : "",
-      this.state.show ? "" : "hidden"
-    ].join(" ");
 
     return (
-      <header css={headerStyle} className={headerClasses} ref={this.header}>
-        <Link css={logoStyle} to={"/"}>
-          <span>{splitString[0]}</span> {splitString.slice(1).join(" ")}
-        </Link>
-        <button css={buttonStyle} onClick={this.toggleOpen}/>
-        <nav css={navStyle}>
-          <ul >
-            {data.menu.map((link, index) => {
-              return (
-                <li css={linkStyle}>
-                  <Link to={link.slug}>{link.name}</Link>
-                </li>
-              )
-            })}
-          </ul>
-        </nav>
-      </header>
+      <Headroom forcePin={this.state.opened}>
+        <header css={headerStyle} className={this.state.opened ? "opened" : ""}>
+          <Link css={logoStyle} to={"/"}>
+            <span>{splitString[0]}</span> {splitString.slice(1).join(" ")}
+          </Link>
+          <button css={buttonStyle} onClick={this.toggleOpen}/>
+          <nav css={navStyle}>
+            <ul >
+              {data.menu.map((link, index) => {
+                return (
+                  <li css={linkStyle}>
+                    <Link to={link.slug}>{link.name}</Link>
+                  </li>
+                )
+              })}
+            </ul>
+          </nav>
+        </header>
+      </Headroom>
     )
   }
 }

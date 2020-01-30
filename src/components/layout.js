@@ -10,18 +10,21 @@ require("typeface-montserrat")
 const mainPad = theme => css`
   margin: 0;
   max-width: ${1440}px;
-  padding: ${theme.pad * 1.5}px;
+  padding-left: ${theme.pad * 1.5}px;
+  padding-right: ${theme.pad * 1.5}px;
   margin-left: auto;
   margin-right: auto;
 
   ${theme.mq.medium} {
     font-size: 1.2rem;
-    padding: ${theme.pad * 2}px;
+    padding-left: ${theme.pad * 2}px;
+    padding-right: ${theme.pad * 2}px;
   }
 
   ${theme.mq.large} {
     font-size: 1.2rem;
-    padding: ${theme.pad * 4}px;
+    padding-left: ${theme.pad * 4}px;
+    padding-right: ${theme.pad * 4}px;
   }
 `
 
@@ -32,8 +35,10 @@ const globalStyle = theme => css`
     color: ${theme.colors.primary};
     padding: 0;
   }
+
   body {
-    ${mainPad(theme)};
+    margin: 0;
+    padding: 0;
   }
 
   a {
@@ -51,6 +56,8 @@ const globalStyle = theme => css`
   }
 `
 const contentStyle = theme => css`
+  ${mainPad(theme)};
+  
   margin-top: ${theme.pad * 3.6}px;
 
   ${theme.mq.medium} {
