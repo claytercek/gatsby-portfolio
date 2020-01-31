@@ -92,6 +92,10 @@ const bodyStyle = theme => css`
   }
 
   .imageWrapper {
+    > *:not(:last-child) {
+      margin-bottom: ${theme.space * 1.5}px;
+    }
+
     ${theme.mq.medium} {
       display: flex;
       max-width: unset;
@@ -99,6 +103,7 @@ const bodyStyle = theme => css`
 
       > *:not(:last-child) {
         margin-right: ${theme.space * 2}px !important;
+        margin-bottom: 0;
       }
     }
 
@@ -125,6 +130,14 @@ const bodyStyle = theme => css`
     font-size: 1.6rem;
   }
 
+  .imageWrapper {
+    margin-top: ${theme.space * 1.5}px;
+
+    + *:not(h3) {
+      margin-top: ${theme.space * 1.5}px;
+    }
+  }
+
   ${theme.mq.medium} {
     padding-bottom: ${theme.space * 3}px;
     font-size: 1.4rem;
@@ -141,7 +154,7 @@ const bodyStyle = theme => css`
     .imageWrapper {
       margin-top: ${theme.space * 2}px;
 
-      + * {
+      + *:not(h3) {
         margin-top: ${theme.space * 2}px;
       }
     }
@@ -186,7 +199,6 @@ export default ({ data }) => {
   return (
     <Layout>
       <main css={bodyStyle}>
-        {/* <SafeImg css={headerImgStyle} fluid={post.frontmatter.image.childImageSharp.fluid} alt={post.frontmatter.title}/> */}
         <Headline css={headerTextStyle} title={post.frontmatter.title} subtitle={post.frontmatter.type} />
         {renderAst(post.htmlAst)}
       </main>
