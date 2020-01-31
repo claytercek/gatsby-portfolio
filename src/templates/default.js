@@ -37,6 +37,7 @@ const headerTextStyle = theme => css`
   }
 
   ${theme.mq.medium} {
+    margin-left: 5vw;
     padding-bottom: 0px;
 
     h2 {
@@ -68,12 +69,11 @@ const bodyStyle = theme => css`
   p a {
     position: relative;
     display: inline-block;
-    z-index: 1;
 
     ::before {
       content:"";
-      z-index: -10;
       position: absolute;
+      z-index: -1;
       height: 50%;
       width:100%;
       left:4px;
@@ -89,6 +89,24 @@ const bodyStyle = theme => css`
 
   .linksOnly a {
     margin-right: ${theme.pad}px;
+  }
+
+  .imageWrapper {
+    ${theme.mq.medium} {
+      display: flex;
+      max-width: unset;
+      margin-left: 0 !important;
+
+      > *:not(:last-child) {
+        margin-right: ${theme.space * 2}px !important;
+      }
+    }
+
+    ${theme.mq.large} {
+      > *:not(:last-child) {
+        margin-right: ${theme.space * 3}px !important;
+      }
+    }
   }
 
   ul {
@@ -108,15 +126,23 @@ const bodyStyle = theme => css`
   }
 
   ${theme.mq.medium} {
-    padding-left: 5vw;
     padding-bottom: ${theme.space * 3}px;
     font-size: 1.4rem;
 
     p, ul, > h3  {
+      margin-left: 5vw;
       margin-top: ${theme.space * 3}px;
 
       + p, + ul {
         margin-top: ${theme.space * 1.5}px;
+      }
+    }
+
+    .imageWrapper {
+      margin-top: ${theme.space * 2}px;
+
+      + * {
+        margin-top: ${theme.space * 2}px;
       }
     }
   }
@@ -135,6 +161,14 @@ const bodyStyle = theme => css`
     > h3 {
       font-size: 1.9rem;
       margin-top: ${theme.space * 5}px;
+    }
+
+    .imageWrapper {
+      margin-top: ${theme.space * 4}px;
+
+      + *:not(h3) {
+        margin-top: ${theme.space * 4}px;
+      }
     }
   }
 `
@@ -167,13 +201,6 @@ export const query = graphql`
       frontmatter {
         title
         type
-        image {
-          childImageSharp {
-            fluid(maxWidth: 2160, maxHeight: 1600) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
       }
       excerpt
       fields {
