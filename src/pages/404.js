@@ -75,45 +75,8 @@ export default ({ data }) => {
   return (
     <Layout>
       <main>
-        <ul css={listStyle}>
-          {data.allMarkdownRemark.edges.map(({ node }, index) => {
-            let i = (1 + index).toString().padStart(2, "0")
-            return (
-              <li key={node.id} css={itemStyle}>
-                <Link to={node.fields.slug}>
-                  <Headline
-                    title={node.frontmatter.title}
-                    subtitle={i + " " + node.frontmatter.subtitle}
-                  />
-                </Link>
-              </li>
-            )
-          })}
-        </ul>
+      <h4>error 404</h4>
       </main>
     </Layout>
   )
 }
-
-export const query = graphql`
-  query {
-    allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC },
-      filter: {fields: {draft: {ne: true}}}
-    ) {
-      totalCount
-      edges {
-        node {
-          id
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            subtitle
-          }
-        }
-      }
-    }
-  }
-`

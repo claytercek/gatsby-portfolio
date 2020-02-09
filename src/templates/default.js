@@ -129,11 +129,18 @@ const bodyStyle = theme => css`
     text-transform: uppercase;
     font-size: 1.6rem;
   }
+  
+  > h4 {
+    margin-top: ${theme.space * 1.5}px;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 1.4rem;
+  }
 
   .imageWrapper {
     margin-top: ${theme.space * 1.5}px;
 
-    + *:not(h3) {
+    + *:not(h3, h4) {
       margin-top: ${theme.space * 1.5}px;
     }
   }
@@ -142,7 +149,7 @@ const bodyStyle = theme => css`
     padding-bottom: ${theme.space * 3}px;
     font-size: 1.4rem;
 
-    p, ul, > h3  {
+    p, ul, > h3, > h4  {
       margin-left: 5vw;
       margin-top: ${theme.space * 3}px;
 
@@ -176,6 +183,11 @@ const bodyStyle = theme => css`
       margin-top: ${theme.space * 5}px;
     }
 
+    > h4 {
+      font-size: 1.5rem;
+      margin-top: ${theme.space * 3}px;
+    }
+
     .imageWrapper {
       margin-top: ${theme.space * 4}px;
 
@@ -199,7 +211,7 @@ export default ({ data }) => {
   return (
     <Layout>
       <main css={bodyStyle}>
-        <Headline css={headerTextStyle} title={post.frontmatter.title} subtitle={post.frontmatter.type} />
+        <Headline css={headerTextStyle} title={post.frontmatter.title} subtitle={post.frontmatter.subtitle} />
         {renderAst(post.htmlAst)}
       </main>
     </Layout>
@@ -212,7 +224,7 @@ export const query = graphql`
       htmlAst
       frontmatter {
         title
-        type
+        subtitle
       }
       excerpt
       fields {

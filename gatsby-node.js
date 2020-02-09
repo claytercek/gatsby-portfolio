@@ -17,6 +17,12 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       name: `type`,
       value: type,
     })
+
+    createNodeField({
+      node,
+      name: `draft`,
+      value: (process.env.NODE_ENV === 'production') ? node.frontmatter.draft : false,
+    })
   }
 }
 
@@ -25,7 +31,8 @@ exports.createPages = ({ actions, graphql, reporter }) => {
   return graphql(`
     {
       allMarkdownRemark(
-        sort: { order: DESC, fields: [frontmatter___date] }
+        sort: {fields: [frontmatter___date], order: DESC},
+        filter: {fields: {draft: {ne: true}}}
         limit: 1000
       ) {
         edges {
@@ -39,7 +46,10 @@ exports.createPages = ({ actions, graphql, reporter }) => {
       }
     }
   `).then(result => {
-    result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    const posts = result.data.allMarkdownRemark.edges;
+
+    posts.forEach(({ node }) => {
+
       // pages/{type}/{type}-single.js
       let template = path.resolve(
         `./src/templates/${node.fields.type}-single.js`

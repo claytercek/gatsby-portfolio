@@ -24,7 +24,7 @@ export default ({ data }) => {
                 <Link to={node.fields.slug}>
                   <Headline
                     title={node.frontmatter.title}
-                    subtitle={i + " " + node.frontmatter.type}
+                    subtitle={i + " " + node.frontmatter.subtitle}
                   />
                 </Link>
               </li>
@@ -48,7 +48,7 @@ export const query = graphql`
           }
           frontmatter {
             title
-            type
+            subtitle
           }
         }
       }
