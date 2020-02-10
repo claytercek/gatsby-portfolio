@@ -17,6 +17,12 @@ module.exports = ({ markdownAST }, pluginOptions) => {
     // ONLY link elements with no other text
     visit(markdownAST, "paragraph", node => {
 
+        if (!node.data) node.data = {};
+        node.data.hProperties = {
+            "data-sal": "slide-up",
+            "data-sal-duration": 800,
+        }
+
         var linkOnly = true;
         var linkCount = 0;
 
@@ -32,16 +38,18 @@ module.exports = ({ markdownAST }, pluginOptions) => {
         });
 
         if (linkOnly && linkCount > 0) {
-            if (!node.data) node.data = {};
             node.data.hProperties = {
-                className: "linksOnly"
+                className: "linksOnly",
+                "data-sal": "slide-up",
+                "data-sal-duration": 800,
             }
         }
 
         if (node.children[0].type == "image") {
-            if (!node.data) node.data = {};
             node.data.hProperties = {
-                className: "imageWrapper"
+                className: "imageWrapper",
+                "data-sal": "slide-up",
+                "data-sal-duration": 800,
             }
         }
     })
