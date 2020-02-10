@@ -2,11 +2,15 @@ var remark = require("remark")
 var visit = require("unist-util-visit")
 
 module.exports = ({ markdownAST }, pluginOptions) => {
+    // add data 
+    markdownAST.children.forEach(node => {
+        if (!node.data) node.data = {};
+    });
+
     // make sure h1 and h2 are not being used for
     // accessibility reasons:
     // h1 is for the logo
     // h2 is for the article title
-
     visit(markdownAST, "heading", node => {
         if (node.depth < 4) {
             node.depth += 2;
@@ -17,11 +21,6 @@ module.exports = ({ markdownAST }, pluginOptions) => {
     // ONLY link elements with no other text
     visit(markdownAST, "paragraph", node => {
 
-        if (!node.data) node.data = {};
-        node.data.hProperties = {
-            "data-sal": "slide-up",
-            "data-sal-duration": 800,
-        }
 
         var linkOnly = true;
         var linkCount = 0;
@@ -39,17 +38,15 @@ module.exports = ({ markdownAST }, pluginOptions) => {
 
         if (linkOnly && linkCount > 0) {
             node.data.hProperties = {
+                ...node.data.hProperties,
                 className: "linksOnly",
-                "data-sal": "slide-up",
-                "data-sal-duration": 800,
             }
         }
 
         if (node.children[0].type == "image") {
             node.data.hProperties = {
+                ...node.data.hProperties,
                 className: "imageWrapper",
-                "data-sal": "slide-up",
-                "data-sal-duration": 800,
             }
         }
     })
