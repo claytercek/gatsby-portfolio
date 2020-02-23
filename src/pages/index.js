@@ -99,7 +99,7 @@ export const query = graphql`
   query {
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC },
-      filter: {fields: {draft: {ne: true}}}
+      filter: {fields: {draft: {ne: true}, type: {eq: "work"}}}
     ) {
       totalCount
       edges {

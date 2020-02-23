@@ -61,6 +61,7 @@ module.exports = {
         plugins: [
           `gatsby-remark-custom`,
           "gatsby-remark-copy-linked-files",
+          `gatsby-remark-external-links`,
           {
             resolve: `gatsby-remark-images`,
             options: {
@@ -84,5 +85,6 @@ module.exports = {
         minify: true,
       },
     },
+    `gatsby-plugin-catch-links`
   ],
 }

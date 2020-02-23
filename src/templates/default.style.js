@@ -10,7 +10,6 @@ export const headerTextStyle = theme => css`
   padding-right: 15%;
   margin-bottom: 0;
 
-
   h2 {
     font-size: 3rem;
   }
@@ -55,9 +54,35 @@ export const bodyStyle = theme => css`
     margin-bottom: 0;
   }
 
-  p, ul {
+  p, ul, table {
     max-width: 60ch;
     margin-top: ${theme.space}px;
+  }
+
+  th {
+    font-weight: 400;
+    text-align: left;
+    display: block;
+    opacity: 0.5;
+    margin-top: ${theme.pad / 2}px;
+    &::after {
+      content: ':';
+    }
+  }
+
+  td {
+    font-weight: 400;
+    display: block;
+  }
+
+  ${theme.mq.small} {
+    th, td {
+      display: table-cell;
+    }
+
+    th {
+      padding-right: ${theme.pad * 2}px;
+    }
   }
 
   p a {
@@ -81,8 +106,38 @@ export const bodyStyle = theme => css`
     }
   }
 
-  .linksOnly a {
-    margin-right: ${theme.pad}px;
+  .linksOnly {
+    a {
+      margin-right: ${theme.pad * 2}px;
+      border: solid ${theme.colors.primary} 1px;
+      padding: ${theme.pad / 2}px ${theme.pad}px;
+      overflow: hidden;
+      transition: color 0.3s ${theme.bezier};
+
+      &::before {
+        display: none;
+      }
+
+      &::after {
+        z-index: -40;
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 0;
+        background-color: ${theme.colors.primary};
+        transition: width 0.3s ${theme.bezier};
+      }
+
+      &:hover {
+        color: ${theme.colors.bg};
+
+        &::after {
+          width: 100%;
+        }
+      }
+    }
   }
 
   .imageWrapper {
@@ -152,6 +207,11 @@ export const bodyStyle = theme => css`
       }
     }
 
+    table, .linksOnly {
+      margin-left: 5vw;
+      margin-top: ${theme.space * 2}px
+    }
+
     .imageWrapper {
       margin-top: ${theme.space * 2}px;
 
@@ -170,6 +230,11 @@ export const bodyStyle = theme => css`
       + p, + ul {
         margin-top: ${theme.space * 2}px;
       }
+    }
+
+    table, .linksOnly {
+      padding-left: ${theme.pad} !important;
+      margin-top: ${theme.space * 2}px
     }
 
     > h3 {
