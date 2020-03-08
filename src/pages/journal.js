@@ -2,7 +2,6 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Headline from "../components/headline"
 import { css } from "@emotion/core"
 
 const listStyle = theme => css`
@@ -22,10 +21,6 @@ export default ({ data }) => {
             return (
               <li key={node.id}>
                 <Link to={node.fields.slug}>
-                  <Headline
-                    title={node.frontmatter.title}
-                    subtitle={i + " " + node.frontmatter.subtitle}
-                  />
                 </Link>
               </li>
             )

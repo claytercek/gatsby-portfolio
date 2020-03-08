@@ -34,7 +34,7 @@ const navStyle = theme => css`
   top: 0;
   left: 0;
   right: 0;
-  z-index: 10;
+  z-index: 20;
   background-color: ${theme.colors.bg};
   list-style-type: none;
   padding: 0;
@@ -178,7 +178,7 @@ class Header extends Component {
     const splitString = data.title.split(" ");
 
     return (
-      <Headroom pinStart={this.state.pinStart} forcePin={this.state.opened}>
+      <Headroom pinStart={this.state.pinStart} forcePin={this.state.opened} wrapperStyle={{zIndex: 10}}>
         <header css={headerStyle} className={this.state.opened ? "opened" : ""}>
           <Link css={logoStyle} to={"/"}>
             <span>{splitString[0]}</span> {splitString.slice(1).join(" ")}

@@ -2,6 +2,8 @@ import { css } from "@emotion/core"
 
 export const headerTextStyle = theme => css`
   ${'' /* margin-left: ${theme.pad * 2}px; */}
+
+  display: flex;
   height: calc(64vh - ${theme.pad * 2}px);
   flex-direction:column;
   justify-content: flex-end;
@@ -11,12 +13,11 @@ export const headerTextStyle = theme => css`
   margin-bottom: 0;
 
   h2 {
+    margin: 0;
     font-size: 3rem;
-  }
-
-  h3 {
-    font-size: 1.2rem;
-    margin-top: ${theme.pad}px;
+    text-transform: uppercase;
+    line-height: 1;
+    text-shadow: 6px 6px ${theme.colors.accent};
   }
 
   ${theme.mq.small} {
@@ -108,34 +109,13 @@ export const bodyStyle = theme => css`
 
   .linksOnly {
     a {
-      margin-right: ${theme.pad * 2}px;
-      border: solid ${theme.colors.primary} 1px;
+      margin-right: ${theme.pad}px;
       padding: ${theme.pad / 2}px ${theme.pad}px;
       overflow: hidden;
       transition: color 0.3s ${theme.bezier};
 
       &::before {
-        display: none;
-      }
-
-      &::after {
-        z-index: -40;
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: 0;
-        background-color: ${theme.colors.primary};
-        transition: width 0.3s ${theme.bezier};
-      }
-
-      &:hover {
-        color: ${theme.colors.bg};
-
-        &::after {
-          width: 100%;
-        }
+        height: 100%;
       }
     }
   }

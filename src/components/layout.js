@@ -63,6 +63,7 @@ const contentStyle = theme => css`
   ${mainPad(theme)};
   
   margin-top: ${theme.pad * 1}px;
+  padding-bottom: ${theme.pad * 2}px;
 
   ${theme.mq.medium} {
     margin-top: ${theme.pad * 2}px;

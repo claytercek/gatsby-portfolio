@@ -2,6 +2,7 @@
 date: "2019-05-08"
 title: "nunc blandit"
 subtitle: "client"
+image: "default.png"
 draft: true
 
 info:

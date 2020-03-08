@@ -3,7 +3,6 @@ import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import rehypeReact from "rehype-react"
 import Layout from "../components/layout"
-import Headline from "../components/headline"
 import { css } from "@emotion/core"
 import Fade from 'react-reveal/Fade';
 import { headerTextStyle, bodyStyle } from "./default.style"
@@ -32,12 +31,15 @@ export default ({ data }) => {
     createElement: React.createElement,
     Fragment: Fade,
   }).Compiler
+
   return (
     <Layout>
       <main css={bodyStyle} >
           <Fade bottom distance={"40px"}>
-            <Headline css={headerTextStyle} title={post.frontmatter.title} subtitle={post.frontmatter.subtitle} />
-            <Img className="imageWrapper" fluid={post.frontmatter.image.childImageSharp.fluid} />
+            <div css={headerTextStyle}>
+              <h2>{post.frontmatter.title}</h2>
+            </div>
+            {post.frontmatter.image ? <Img className="imageWrapper" fluid={post.frontmatter.image.childImageSharp.fluid} /> : ""}
             <p>{post.frontmatter.description}</p>
             <PostInfo obj={post.frontmatter.info} />
             {parse(post.html)}

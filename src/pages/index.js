@@ -2,8 +2,110 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Headline from "../components/headline"
+import Img from "gatsby-image"
 import { css } from "@emotion/core"
+
+function GridItem(props) {
+  return (
+    <li {...props} css={itemStyle}>
+      <Link to={props.slug}>
+        <article>
+          <div className="content abs">
+            <h2>{props.title}</h2>
+          </div>
+          {props.image && <Img fluid={props.image.childImageSharp.fluid} className="abs" /> }
+        </article>
+      </Link>
+    </li>
+  )
+}
+
+
+export default ({ data }) => {
+  return (
+    <Layout>
+      <main>
+        <ul css={listStyle}>
+          {data.allMarkdownRemark.edges.map(({ node }, index) => {
+            return (
+              <GridItem
+                title={node.frontmatter.title}
+                image={node.frontmatter.image}
+                slug={node.fields.slug}
+                key={node.id}
+              />
+            )
+          })}
+
+          {data.allMarkdownRemark.edges.map(({ node }, index) => {
+            return (
+              <GridItem
+                title={node.frontmatter.title}
+                image={node.frontmatter.image}
+                slug={node.fields.slug}
+                key={node.id}
+              />
+            )
+          })}
+          {data.allMarkdownRemark.edges.map(({ node }, index) => {
+            return (
+              <GridItem
+                title={node.frontmatter.title}
+                image={node.frontmatter.image}
+                slug={node.fields.slug}
+                key={node.id}
+              />
+            )
+          })}
+          {data.allMarkdownRemark.edges.map(({ node }, index) => {
+            return (
+              <GridItem
+                title={node.frontmatter.title}
+                image={node.frontmatter.image}
+                slug={node.fields.slug}
+                key={node.id}
+              />
+            )
+          })}
+          {data.allMarkdownRemark.edges.map(({ node }, index) => {
+            return (
+              <GridItem
+                title={node.frontmatter.title}
+                image={node.frontmatter.image}
+                slug={node.fields.slug}
+                key={node.id}
+              />
+            )
+          })}
+          {data.allMarkdownRemark.edges.map(({ node }, index) => {
+            return (
+              <GridItem
+                title={node.frontmatter.title}
+                image={node.frontmatter.image}
+                slug={node.fields.slug}
+                key={node.id}
+              />
+            )
+          })}
+          {data.allMarkdownRemark.edges.map(({ node }, index) => {
+            return (
+              <GridItem
+                title={node.frontmatter.title}
+                image={node.frontmatter.image}
+                slug={node.fields.slug}
+                key={node.id}
+              />
+            )
+          })}
+        </ul>
+      </main>
+    </Layout>
+  )
+}
+
+
+
+// styles 
 
 const listStyle = theme => css`
   list-style-type: none;
@@ -13,87 +115,64 @@ const listStyle = theme => css`
     display: block;
   }
 
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-auto-rows: 40vw;
+  grid-gap: ${theme.pad}px;
+  grid-auto-flow: dense;
+
   ${theme.mq.medium} {
-    display: flex;
-    flex-flow: row wrap;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 30vw;
+  }
+
+  ${theme.mq.large} {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 20vw;
   }
 `
 
 const itemStyle = theme => css`
-  align-items: center;
-  display: flex;
-  margin-bottom: ${theme.pad}px;
+  position: relative;
+
+  .abs {
+    position:absolute !important;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: -1;
+  }
+
+  .content {
+    z-index: 0;
+    background-color: ${theme.colors.accent};
+    color: white;
+    opacity: 0;
+    padding: ${theme.pad}px;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
 
   ${theme.mq.medium} {
-    margin-bottom: ${theme.pad}px;
-
-    &:nth-child(9n-8),
-    &:nth-child(9n-4) {
-      flex-grow: 1;
+    &:nth-child(5n-1) {
+    grid-column: span 2;
+    grid-row: span 2;
     }
 
-    &:nth-child(9n-7),
-    &:nth-child(9n-3) {
-      margin-left: ${theme.pad}px;
+    &:nth-child(5n-3),
+    &:nth-child(6n) {
+      grid-row: span 2;
     }
+  }
 
-    &:nth-child(9n-6),
-    &:nth-child(9n),
-    &:nth-child(9n-2) {
-      flex-basis: 100%;
-    }
-
-    &:nth-child(9n-8),
-    &:nth-child(9n-4),
-    &:nth-child(9n-6),
-    &:nth-child(9n),
-    &:nth-child(9n-2) {
-      ::after {
-        content: "";
-        border-bottom: ${theme.lineWidth} solid ${theme.colors.primary};
-        margin-left: ${theme.pad}px;
-        flex: 1;
-        transform:translateY(10px);
-      }
-    }
-
-    &:nth-child(9n-5),
-    &:nth-child(9n-1) {
-      flex-basis: 100%;
-      ::before {
-        content: "";
-        border-bottom: ${theme.lineWidth} solid ${theme.colors.primary};
-        margin-right: ${theme.pad}px;
-        flex: 1;
-        transform:translateY(10px);
-      }
-    }
+  ${theme.mq.large} {
   }
 `
 
-export default ({ data }) => {
-  return (
-    <Layout>
-      <main>
-        <ul css={listStyle}>
-          {data.allMarkdownRemark.edges.map(({ node }, index) => {
-            let i = (1 + index).toString().padStart(2, "0")
-            return (
-              <li key={node.id} css={itemStyle}>
-                <Link to={node.fields.slug}>
-                  <Headline
-                    title={node.frontmatter.title}
-                    subtitle={i + " " + node.frontmatter.subtitle}
-                  />
-                </Link>
-              </li>
-            )
-          })}
-        </ul>
-      </main>
-    </Layout>
-  )
-}
+// query
 
 export const query = graphql`
   query {
@@ -111,6 +190,13 @@ export const query = graphql`
           frontmatter {
             title
             subtitle
+            image {
+              childImageSharp {
+                fluid(maxWidth: 1280, maxHeight: 1280) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
       }
