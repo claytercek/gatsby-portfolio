@@ -10,12 +10,12 @@ function GridItem(props) {
     <li {...props} css={itemStyle}>
       <Link to={props.slug}>
         <article>
+          {props.image && <Img fluid={props.image.childImageSharp.fluid} className="abs" /> }
           <div className="content abs">
             <h2>{props.title}</h2>
             <p>{props.excerpt}</p>
             <h3>view more +</h3>
           </div>
-          {props.image && <Img fluid={props.image.childImageSharp.fluid} className="abs" /> }
         </article>
       </Link>
     </li>
@@ -57,13 +57,11 @@ const listStyle = theme => css`
     display: block;
   }
 
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-auto-rows: 40vw;
-  grid-gap: ${theme.pad}px;
   grid-auto-flow: dense;
 
   ${theme.mq.medium} {
+    display: grid;
+    grid-gap: ${theme.pad}px;
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: 30vw;
   }
@@ -76,30 +74,48 @@ const listStyle = theme => css`
 
 const itemStyle = theme => css`
   position: relative;
+  
+  .gatsby-image-wrapper {
+    height: 50vw;
+
+    ${theme.mq.medium} {
+      height: auto;
+    }
+  }
 
   .abs {
-    position:absolute !important;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    z-index: -1;
+    ${theme.mq.medium} {
+      position:absolute !important;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      z-index: -1;
+    }
   }
 
   .content {
-    z-index: 0;
-    background-color: ${theme.colors.accent};
-    color: white;
-    opacity: 0;
+    margin-bottom: ${theme.pad / 2}px;
+    font-size: 0.8rem;
     padding: ${theme.pad}px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    line-height: 1;
+
+    ${theme.mq.medium} {
+      font-size: 1rem;
+      margin: 0;
+      z-index: 0;
+      background-color: ${theme.colors.accent};
+      color: white;
+      opacity: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      line-height: 1;
+    }
 
     h2 {
       margin-top: 0;
       margin-bottom: 0.5rem;
+      font-size: 1.5em;
     }
 
     p {
@@ -107,13 +123,14 @@ const itemStyle = theme => css`
       font-size: 1rem;
       margin: 0;
       flex: 1;
+      font-size: 1em;
     }
 
     h3 {
       display: inline-block;
       position: relative;
-      font-weight: 300;
-      font-size: 1rem;
+      font-weight: 400;
+      font-size: 1em;
       justify-self: flex-end;
       margin-bottom: 5px;
       margin-top: 0.5rem;
@@ -123,9 +140,13 @@ const itemStyle = theme => css`
         position:absolute;
         bottom: -4px;
         height: 1px;
-        background-color: white;
+        background-color: black;
         left: 0;
         right: 14%;
+
+        ${theme.mq.medium} {
+          background-color: white;
+        }
       }
     }
 
