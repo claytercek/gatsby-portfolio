@@ -3,17 +3,13 @@ import theme from "../components/theme";
 import Shevy from 'shevyjs';
 
 const shevy = new Shevy({
-  baseFontSize: '1em',
+  baseFontSize: '1.125rem',
   baseLineHeight: 1.6,
   baseFontScale: [3.157, 2.369, 1.777, 1.333, 1, 1],
   addMarginBottom: true,
   proximity: false,
   proximityFactor: 0.5
 });
-
-const baseFontSize = 1;
-const lineHeight = 1.5;
-const baseUnit = baseFontSize * lineHeight;
 
 export const headerTextStyle = theme => css`
   ${'' /* margin-left: ${theme.pad * 2}px; */}
@@ -34,6 +30,8 @@ export const bodyStyle = theme => css`
   }
 
   > * {
+    margin-left: auto;
+    margin-right: auto;
     display: block;
     padding: 0;
     margin-top: 0;
@@ -55,8 +53,41 @@ export const bodyStyle = theme => css`
   }
   
 
-  p, ul, table {
-    max-width: 60ch;
+  p:not(.imageWrapper), ul, table, h3, h4 {
+    max-width: 45rem;
+
+    + .imageWrapper {
+      margin-top: ${shevy.baseSpacing(1.5)};
+    }
+  }
+
+  .imageWrapper {
+    margin-bottom: ${shevy.baseSpacing(1)};
+
+    + p:not(.imageWrapper), + ul, + table, + h3, + h4 {
+      margin-top: ${shevy.baseSpacing(1.5)};
+    }
+    
+    > * {
+      margin-bottom: ${theme.pad * 1.5}px;
+    }
+  
+    ${theme.mq.medium} {
+      display: flex;
+      margin-bottom: ${theme.pad}px;
+      justify-content: center;
+      
+      > * {
+        margin-bottom: 0;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+
+        &:not(:first-child) {
+          margin-left: ${theme.pad}px !important;
+        }
+      }
+    }
+
   }
 
 
