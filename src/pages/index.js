@@ -36,67 +36,6 @@ export default ({ data }) => {
               />
             )
           })}
-
-          {data.allMarkdownRemark.edges.map(({ node }, index) => {
-            return (
-              <GridItem
-                title={node.frontmatter.title}
-                image={node.frontmatter.image}
-                slug={node.fields.slug}
-                key={node.id}
-              />
-            )
-          })}
-          {data.allMarkdownRemark.edges.map(({ node }, index) => {
-            return (
-              <GridItem
-                title={node.frontmatter.title}
-                image={node.frontmatter.image}
-                slug={node.fields.slug}
-                key={node.id}
-              />
-            )
-          })}
-          {data.allMarkdownRemark.edges.map(({ node }, index) => {
-            return (
-              <GridItem
-                title={node.frontmatter.title}
-                image={node.frontmatter.image}
-                slug={node.fields.slug}
-                key={node.id}
-              />
-            )
-          })}
-          {data.allMarkdownRemark.edges.map(({ node }, index) => {
-            return (
-              <GridItem
-                title={node.frontmatter.title}
-                image={node.frontmatter.image}
-                slug={node.fields.slug}
-                key={node.id}
-              />
-            )
-          })}
-          {data.allMarkdownRemark.edges.map(({ node }, index) => {
-            return (
-              <GridItem
-                title={node.frontmatter.title}
-                image={node.frontmatter.image}
-                slug={node.fields.slug}
-                key={node.id}
-              />
-            )
-          })}
-          {data.allMarkdownRemark.edges.map(({ node }, index) => {
-            return (
-              <GridItem
-                title={node.frontmatter.title}
-                image={node.frontmatter.image}
-                slug={node.fields.slug}
-                key={node.id}
-              />
-            )
-          })}
         </ul>
       </main>
     </Layout>
