@@ -96,10 +96,11 @@ const itemStyle = theme => css`
 
   .content {
     margin-bottom: ${theme.pad / 2}px;
-    font-size: 0.8rem;
+    font-size: 1rem;
     padding: ${theme.pad}px;
 
     ${theme.mq.medium} {
+      padding: ${theme.pad * 1.5}px;
       font-size: 1rem;
       margin: 0;
       z-index: 0;
@@ -133,7 +134,7 @@ const itemStyle = theme => css`
       font-size: 1em;
       justify-self: flex-end;
       margin-bottom: 5px;
-      margin-top: 0.5rem;
+      margin-top: 1rem;
 
       &::after {
         content: '';
