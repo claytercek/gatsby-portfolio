@@ -12,6 +12,8 @@ function GridItem(props) {
         <article>
           <div className="content abs">
             <h2>{props.title}</h2>
+            <p>{props.excerpt}</p>
+            <h3>view more +</h3>
           </div>
           {props.image && <Img fluid={props.image.childImageSharp.fluid} className="abs" /> }
         </article>
@@ -31,6 +33,7 @@ export default ({ data }) => {
               <GridItem
                 title={node.frontmatter.title}
                 image={node.frontmatter.image}
+                excerpt={node.excerpt}
                 slug={node.fields.slug}
                 key={node.id}
               />
@@ -89,6 +92,42 @@ const itemStyle = theme => css`
     color: white;
     opacity: 0;
     padding: ${theme.pad}px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1;
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      line-height: 1.5;
+      font-size: 1rem;
+      margin: 0;
+      flex: 1;
+    }
+
+    h3 {
+      display: inline-block;
+      position: relative;
+      font-weight: 300;
+      font-size: 1rem;
+      justify-self: flex-end;
+      margin-bottom: 5px;
+      margin-top: 0.5rem;
+
+      &::after {
+        content: '';
+        position:absolute;
+        bottom: -4px;
+        height: 1px;
+        background-color: white;
+        left: 0;
+        right: 14%;
+      }
+    }
 
     &:hover {
       opacity: 1;
@@ -123,12 +162,12 @@ export const query = graphql`
       edges {
         node {
           id
+          excerpt
           fields {
             slug
           }
           frontmatter {
             title
-            subtitle
             image {
               childImageSharp {
                 fluid(maxWidth: 1280, maxHeight: 1280) {
