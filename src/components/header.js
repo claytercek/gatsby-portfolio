@@ -81,7 +81,7 @@ const linkStyle = theme => css`
 `
 
 const logoStyle = theme => css`
-  z-index: 15;
+  z-index: 30;
   text-transform: uppercase;
   font-size: 1.2em;
   font-weight: 300;
@@ -91,7 +91,7 @@ const logoStyle = theme => css`
 `
 
 const buttonStyle = theme => css`
-  z-index: 15;
+  z-index: 30;
   position: relative;
   border: none;
   background-color: transparent;

@@ -104,7 +104,7 @@ const itemStyle = theme => css`
       font-size: 1rem;
       margin: 0;
       z-index: 0;
-      background-color: ${theme.colors.accent};
+      background-color: ${theme.colors.accent}DD;
       color: white;
       opacity: 0;
       display: flex;
@@ -125,6 +125,7 @@ const itemStyle = theme => css`
       margin: 0;
       flex: 1;
       font-size: 1em;
+      letter-spacing: 0.06em;
     }
 
     h3 {
@@ -134,7 +135,8 @@ const itemStyle = theme => css`
       font-size: 1em;
       justify-self: flex-end;
       margin-bottom: 5px;
-      margin-top: 1rem;
+      margin-top: 0.7rem;
+      letter-spacing: 0.06em;
 
       &::after {
         content: '';
@@ -184,7 +186,7 @@ export const query = graphql`
       edges {
         node {
           id
-          excerpt
+          excerpt(pruneLength: 100)
           fields {
             slug
           }
