@@ -16,7 +16,6 @@ const base = {
   },
   mq: breakpoints,
   pad: 16,
-  space: 16,
   lineWidth: "1px",
   bezier: "cubic-bezier(0.4, 0.4, 0, 1)",
 }

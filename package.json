@@ -33,6 +33,7 @@
     "react-helmet": "^5.2.1",
     "react-reveal": "^1.2.2",
     "rehype-react": "^4.0.1",
+    "shevyjs": "^1.1.0",
     "typeface-montserrat": "^0.0.75",
     "use-dark-mode": "^2.3.1"
   },

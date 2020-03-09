@@ -36,12 +36,6 @@ export default ({ data }) => {
     <Layout>
       <main css={bodyStyle} >
           <Fade bottom distance={"40px"}>
-            <div css={headerTextStyle}>
-              <h2>{post.frontmatter.title}</h2>
-            </div>
-            {post.frontmatter.image ? <Img className="imageWrapper" fluid={post.frontmatter.image.childImageSharp.fluid} /> : ""}
-            <p>{post.frontmatter.description}</p>
-            <PostInfo obj={post.frontmatter.info} />
             {parse(post.html)}
           </Fade>
       </main>
@@ -54,16 +48,7 @@ export const query = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
-        date
         title
-        subtitle
-        description
-        info {
-          role
-          deliverable
-          class
-          client
-        }
         image {
           childImageSharp {
             fluid(maxWidth: 2048, maxHeight: 1280) {

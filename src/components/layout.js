@@ -7,6 +7,8 @@ import { Global, css } from "@emotion/core"
 
 require("typeface-montserrat")
 
+const showGrid = true;
+
 const mainPad = theme => css`
   margin: 0;
   max-width: ${1440}px;

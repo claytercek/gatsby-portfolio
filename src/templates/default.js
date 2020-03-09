@@ -8,17 +8,13 @@ import { headerTextStyle, bodyStyle } from "./default.style"
 import parse from 'html-react-parser';
 
 export default ({ data }) => {
-  const post = data.markdownRemark
-
-  const renderAst = new rehypeReact({
-    createElement: React.createElement,
-    Fragment: Fade,
-  }).Compiler
+  const post = data.markdownRemark;
+  const html = post.html.replace(/(\r\n|\n|\r)/gm, "");
   return (
     <Layout>
       <main css={bodyStyle} >
           <Fade bottom distance={"40px"}>
-            {parse(post.html)}
+            {parse(html)}
           </Fade>
       </main>
     </Layout>
