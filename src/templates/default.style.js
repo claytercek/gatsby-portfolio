@@ -13,7 +13,7 @@ const shevy = new Shevy({
 
 export const headerTextStyle = theme => css`
   display: flex;
-  min-height: calc(60vh - ${theme.pad * 2}px);
+  min-height: calc(50vh - ${theme.pad * 2}px);
   flex-direction:column;
   justify-content: flex-end;
   font-size: 3.5rem;
@@ -102,6 +102,11 @@ export const bodyStyle = theme => css`
     li::before {
       content:"– "
     }
+  }
+
+  hr {
+    margin-top: ${shevy.baseSpacing(3)};
+    border:  none;
   }
   
 `

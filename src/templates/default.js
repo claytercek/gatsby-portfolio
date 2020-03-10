@@ -5,6 +5,7 @@ import Layout from "../components/layout"
 import { css } from "@emotion/core"
 import Fade from 'react-reveal/Fade';
 import { headerTextStyle, bodyStyle } from "./default.style"
+import Img from "gatsby-image";
 import parse from 'html-react-parser';
 
 export default ({ data }) => {
@@ -13,13 +14,18 @@ export default ({ data }) => {
   return (
     <Layout>
       <main css={bodyStyle} >
-          <Fade bottom distance={"40px"}>
-            {parse(html)}
-          </Fade>
+        <Fade bottom distance={"40px"}>
+          <h2 css={headerTextStyle}>{post.frontmatter.title}</h2>
+          <div className="imageWrapper" style={{display: "block"}}>
+            <Img fluid={post.frontmatter.image.childImageSharp.fluid}/>
+          </div>
+          {parse(html)}
+        </Fade>
       </main>
     </Layout>
   )
 }
+
 
 export const query = graphql`
   query($slug: String!) {
@@ -27,12 +33,12 @@ export const query = graphql`
       html
       frontmatter {
         title
-        subtitle
-        info {
-          role
-          deliverable
-          class
-          client
+        image {
+          childImageSharp {
+            fluid(maxWidth: 2048, maxHeight: 1280, quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+          }
         }
       }
       excerpt

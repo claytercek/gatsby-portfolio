@@ -1,20 +1,18 @@
 ---
 title: "Watchlist"
-subtitle: "case study"
 date: "2019-03-21"
+category: "case study"
+image: "featured.jpg"
 draft: false
 ---
 
-Watchlist is an iOS app allowing users to keep track of the movies and tv shows that they are interested in watching, with a sleek and intuitive UI.
-
-![app screenshot](featured.jpg)
-
-
-# Challenge
+## Watchlist is an iOS app allowing users to keep track of the movies and tv shows that they are interested in watching, with a sleek and intuitive UI.
 
 The goal with this project was first and foremost to learn the Xcode programming environment and swift language. Because of that, I pursued the idea of Watchlist. I felt like a movie/tv watchlist app would allow me to learn a lot of the important techniques and functionality that is required for developing for iOS without getting too complicated for a ten week course, such as page segues, persistent data storage, and external API integration. 
 
 Now while not an entirely unique idea, I felt that the way similar apps on the app store had been executed always lacked something. Some lacked an intuitive interface, some didn't have up to date search, some were far too overcomplicated, and some just didn't look good. My goal was to create a simple interface that was easy to understand and operate, while still having the important functionality one would expect from an app like this.
+
+---
 
 # Visual Design
 
@@ -38,6 +36,8 @@ The detail view is pretty simple, just showing the title, description, and poste
 One of the advantages of developing within the apple ecosystem is that it is really easy to create beautiful designs that look like they came straight from HQ. I decided to capitalize on this, shifting from my original design to something a lot cleaner and sleeker. This meant no more colorful gradient backgrounds, rounded corners, and Helvetica everywhere.
 
 ![v2 screens](v2.jpg)
+
+---
 
 # Development
 
@@ -100,6 +100,8 @@ URLSession.shared.dataTask(with: request) { (data, response, error) in
 ```
 
 Suffice to say AlamoFire really makes requests a lot less complicated. -->
+
+---
 
 # Final Product
 
