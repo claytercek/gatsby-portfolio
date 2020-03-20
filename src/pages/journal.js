@@ -43,30 +43,6 @@ export default ({ data }) => {
               />
             )
           })}
-          {data.allMarkdownRemark.edges.map(({ node }, index) => {
-            let i = (1 + index).toString().padStart(2, "0")
-            return (
-              <JournalItem 
-                title={node.frontmatter.title}
-                image={node.frontmatter.image}
-                category={node.frontmatter.category}
-                excerpt={node.excerpt}
-                slug={node.fields.slug}
-              />
-            )
-          })}
-          {data.allMarkdownRemark.edges.map(({ node }, index) => {
-            let i = (1 + index).toString().padStart(2, "0")
-            return (
-              <JournalItem 
-                title={node.frontmatter.title}
-                image={node.frontmatter.image}
-                category={node.frontmatter.category}
-                excerpt={node.excerpt}
-                slug={node.fields.slug}
-              />
-            )
-          })}
         </ul>
       </main>
     </Layout>
