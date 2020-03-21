@@ -53,6 +53,7 @@ const articleStyle = theme => css`
   margin-bottom: ${theme.pad}px;
   ${theme.mq.large} { 
     margin-bottom: ${theme.pad * 3}px;
+    border: 1px solid #aaa;
   }
 
   article {
