@@ -108,5 +108,33 @@ export const bodyStyle = theme => css`
     margin-top: ${shevy.baseSpacing(3)};
     border:  none;
   }
+
+  .linksOnly {
+    a {
+      display: table;
+      margin-bottom: ${shevy.baseSpacing(0.25)};
+    }
+  }
+
+  a {
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: ${theme.colors.accent};
+      transition: height 0.2s ${theme.bezier};
+    }
+
+    &:hover {
+      &::after {
+        height: 6px;
+      }
+    }
+  }
   
 `
