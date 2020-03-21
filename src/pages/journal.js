@@ -63,8 +63,6 @@ const articleStyle = theme => css`
     }
 
     .image {
-      min-height: 300px;
-
       .gatsby-image-wrapper {
         width: 100%;
         height: 100%;
@@ -108,6 +106,10 @@ const articleStyle = theme => css`
 
     ${theme.mq.large} {
       display: flex;
+
+      .image {
+        min-height: 300px;
+      }
       .text {
         padding: ${theme.pad * 3}px;
         

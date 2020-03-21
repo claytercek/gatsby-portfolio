@@ -16,13 +16,25 @@ export const headerTextStyle = theme => css`
   min-height: calc(50vh - ${theme.pad * 2}px);
   flex-direction:column;
   justify-content: flex-end;
-  font-size: 3.5rem;
-  line-height: 1;
-  margin-bottom: ${shevy.baseSpacing(1.5)};
-  
-  ${theme.mq.medium} {
-    font-size: 5rem;
+
+  h2 {
+    font-size: 3.5rem;
+    line-height: 1;
+    margin: 0;
+    
+    ${theme.mq.medium} {
+      font-size: 5rem;
+    }
   }
+
+  h3 {
+    font-weight: 400;
+    color: ${theme.colors.accent};
+    text-transform: uppercase;
+    margin: 0;
+    margin-bottom: ${shevy.baseSpacing(0.25)};
+  }
+  
 `
 
 export const bodyStyle = theme => css`
@@ -105,7 +117,7 @@ export const bodyStyle = theme => css`
   }
 
   hr {
-    margin-top: ${shevy.baseSpacing(3)};
+    margin-top: ${shevy.baseSpacing(2)};
     border:  none;
   }
 

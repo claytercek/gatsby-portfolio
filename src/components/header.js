@@ -23,7 +23,7 @@ const headerStyle = theme => css`
     padding-bottom: ${theme.pad * 1.5}px;
   }
   ${theme.mq.large} {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     padding-top: ${theme.pad * 2}px;
     padding-bottom: ${theme.pad * 2}px;
   }
@@ -64,6 +64,9 @@ const navStyle = theme => css`
       display: flex;
       margin-top: 0;
     }
+
+    margin-right: -4px;
+    padding-right: 4px;
   }
 `
 
@@ -71,22 +74,47 @@ const linkStyle = theme => css`
   a {
     color: ${theme.colors.primary};
     text-decoration: none;
+    position: relative;
+
+    &::after{
+      content: '';
+      position: absolute;
+      width: 0; 
+      height: 4px;
+      display: block;
+      margin-top: 5px;
+      right: -4px;
+      bottom: calc(50% - 2px);
+      background: ${theme.colors.accent};
+      transition: all .2s ease;
+      z-index: -5;
+    }
+    
+    &:hover::after, &.current::after {
+      width: calc(100% + 8px);
+      left: -4px;
+    }
   }
   text-transform: uppercase;
   font-size: 1em;
+  font-weight:700;
 
   ${theme.mq.medium} {
     margin-left: ${theme.pad * 2}px;
   }
+
+
+  
 `
 
 const logoStyle = theme => css`
   z-index: 30;
   text-transform: uppercase;
-  font-size: 1.2em;
-  font-weight: 300;
+  font-size: 1em;
+  font-weight: 700;
+  color: ${theme.colors.primary};
   span {
-    font-weight: 600;
+    font-weight: 700;
   }
 `
 
@@ -189,7 +217,7 @@ class Header extends Component {
               {data.menu.map((link, index) => {
                 return (
                   <li css={linkStyle}>
-                    <Link to={link.slug}>{link.name}</Link>
+                    <Link activeClassName="current" to={link.slug}>{link.name}</Link>
                   </li>
                 )
               })}

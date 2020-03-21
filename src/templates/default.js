@@ -15,7 +15,10 @@ export default ({ data }) => {
     <Layout>
       <main css={bodyStyle} >
         <Fade bottom distance={"40px"}>
-          <h2 css={headerTextStyle}>{post.frontmatter.title}</h2>
+          <div css={headerTextStyle}>
+            {post.frontmatter.category && <h3>{post.frontmatter.category}</h3>}
+            <h2>{post.frontmatter.title}</h2>
+          </div>
           <div className="imageWrapper" style={{display: "block"}}>
             <Img fluid={post.frontmatter.image.childImageSharp.fluid}/>
           </div>
@@ -33,6 +36,7 @@ export const query = graphql`
       html
       frontmatter {
         title
+        category
         image {
           childImageSharp {
             fluid(maxWidth: 2048, maxHeight: 1280, quality: 100) {
