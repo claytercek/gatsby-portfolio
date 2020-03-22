@@ -36,7 +36,7 @@ export const light = {
     colors: {
       primary: "#000000",
       bg: "#FFFFFF",
-      accent: "#2222FF"
+      accent: "#2222FFDD"
     },
     lineWidth: "1px",
   },

@@ -12,13 +12,12 @@ const headerStyle = theme => css`
   background-color: ${theme.colors.bg};
   display: flex;
   flex-wrap: wrap;
-  font-size: 1rem;
+  font-size: 1.3rem;
   position: relative;
   padding-top: ${theme.pad}px;
   padding-bottom: ${theme.pad}px;
 
   ${theme.mq.medium} {
-    font-size: 1.2rem;
     padding-top: ${theme.pad * 1.5}px;
     padding-bottom: ${theme.pad * 1.5}px;
   }
@@ -52,7 +51,8 @@ const navStyle = theme => css`
     list-style-type: none;
     padding: 0;
     margin: 0;
-    margin-top: 80px;
+    ${mainPad(theme)};
+    margin-top: 70px;
   }
 
 
@@ -63,37 +63,46 @@ const navStyle = theme => css`
     ul {
       display: flex;
       margin-top: 0;
+      padding: 0;
     }
-
+    overflow: visible;
     margin-right: -4px;
     padding-right: 4px;
   }
 `
+
+var overflow = 0;
 
 const linkStyle = theme => css`
   a {
     color: ${theme.colors.primary};
     text-decoration: none;
     position: relative;
+    display: inline-block;
+    margin-bottom: 1.2rem;
 
     &::after{
       content: '';
       position: absolute;
       width: 0; 
-      height: 4px;
+      height: 15%;
       display: block;
       margin-top: 5px;
-      right: -4px;
-      bottom: calc(50% - 2px);
+      right: -${overflow}px;
+      bottom: -15%;
       background: ${theme.colors.accent};
       transition: all .2s ease;
       z-index: -5;
     }
     
     &:hover::after, &.current::after {
-      width: calc(100% + 8px);
-      left: -4px;
+      width: calc(100% + ${overflow * 2}px);
+      left: -${overflow}px;
     }
+
+    /* &:active::after, &.current::after {
+      background: ${theme.colors.primary};
+    } */
   }
   text-transform: uppercase;
   font-size: 1em;
@@ -101,10 +110,9 @@ const linkStyle = theme => css`
 
   ${theme.mq.medium} {
     margin-left: ${theme.pad * 2}px;
+
+    font-size: 1em;
   }
-
-
-  
 `
 
 const logoStyle = theme => css`
@@ -135,7 +143,7 @@ const buttonStyle = theme => css`
   &::before,
   &::after {
     content: " ";
-    height: 2px;
+    height: 3px;
     width: 28px;
     position: absolute;
     left: 8px;
@@ -145,11 +153,11 @@ const buttonStyle = theme => css`
   }
 
   &::before {
-    top: 7px;
+    top: 6px;
   }
 
   &::after {
-    bottom: 7px;
+    bottom: 6px;
   }
 
 

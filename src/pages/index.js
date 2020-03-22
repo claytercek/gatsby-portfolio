@@ -104,7 +104,7 @@ const itemStyle = theme => css`
       font-size: 1rem;
       margin: 0;
       z-index: 0;
-      background-color: ${theme.colors.accent}DD;
+      background-color: ${theme.colors.accent};
       color: white;
       opacity: 0;
       display: flex;

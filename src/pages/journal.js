@@ -53,17 +53,17 @@ const articleStyle = theme => css`
   margin-bottom: ${theme.pad}px;
   ${theme.mq.large} { 
     margin-bottom: ${theme.pad * 3}px;
-    border: 1px solid #aaa;
   }
 
   article {
 
     .image, .text {
-      flex: 50%;
+      width:50%;
     }
 
     .image {
       .gatsby-image-wrapper {
+        display: inline-block;
         width: 100%;
         height: 100%;
       }
@@ -96,11 +96,13 @@ const articleStyle = theme => css`
 
       h4 {
         order: 0;
-        font-weight: 400;
+        font-weight: 700;
         font-size: 90%;
+        letter-spacing: 0.05rem;
         margin-bottom: 0.75rem;
         margin-top: 0.5rem;
         text-transform: uppercase;
+        color: ${theme.colors.accent};
       }
     }
 
@@ -108,8 +110,8 @@ const articleStyle = theme => css`
       display: flex;
 
       .image {
-        min-height: 300px;
       }
+
       .text {
         padding: ${theme.pad * 3}px;
         
@@ -119,7 +121,7 @@ const articleStyle = theme => css`
 
         h4 {
           margin-top: 0;
-          margin-bottom: 1.5rem;
+          margin-bottom: 1.2em;
         }
       }
     }
