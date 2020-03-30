@@ -12,15 +12,16 @@ export default theme => css`
       content: "";
       display: inline-block;
       bottom: 0;
+      width: 0;
+      right: 0;
       position: absolute;
-      animation: .25s ${theme.bezier} ${oldLinkUnderline};
+      transition: all .25s ${theme.bezier};
     }
 
     &:hover {
       &:after {
-        animation: .25s ${theme.bezier} ${newLinkUnderline};
+        width: 100%;
         left: 0;
-        right: 0;
       }
     }
   }
@@ -30,11 +31,14 @@ export default theme => css`
     &:after {
       left: 0;
       right: 0;
-      animation: none;
+      transition: none;
+      width: auto;
     }
 
     &:hover {
       &:after {
+        width: auto;
+        transition: none;
         animation: .25s ${theme.bezier} ${oldLinkUnderline}, 
         .25s ${theme.bezier} .25s ${newLinkUnderline};
       }
