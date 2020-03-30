@@ -62,10 +62,13 @@ const articleStyle = theme => css`
     }
 
     .image {
+      position: relative;
+      
       .gatsby-image-wrapper {
         display: inline-block;
         width: 100%;
         height: 100%;
+        position: absolute !important;
       }
     }
 
