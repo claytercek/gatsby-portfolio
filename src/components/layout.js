@@ -4,66 +4,11 @@ import Header from "./header"
 import { ThemeProvider } from "emotion-theming"
 import { dark, light } from "./theme"
 import { Global, css } from "@emotion/core"
+import GlobalStyles from '../styles/global'
 
 require("typeface-montserrat")
 
-const showGrid = true;
-
-const mainPad = theme => css`
-  margin: 0;
-  max-width: ${1440}px;
-  padding-left: ${theme.pad * 1.5}px;
-  padding-right: ${theme.pad * 1.5}px;
-  margin-left: auto;
-  margin-right: auto;
-
-  ${theme.mq.medium} {
-    font-size: 1.2rem;
-    padding-left: ${theme.pad * 2}px;
-    padding-right: ${theme.pad * 2}px;
-  }
-
-  ${theme.mq.large} {
-    font-size: 1.2rem;
-    padding-left: ${theme.pad * 4}px;
-    padding-right: ${theme.pad * 4}px;
-  }
-`
-
-const globalStyle = theme => css`
-  html {
-    background-color: ${theme.colors.bg};
-    font-family: ${theme.font.primary};
-    color: ${theme.colors.primary};
-    padding: 0;
-  }
-
-  body {
-    margin: 0;
-    padding: 0;
-    
-    ${theme.mq.large} {
-      padding-top: ${theme.pad * 2}px;
-    }
-  }
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-
-  style {
-    // fixing an issue with flash of unstyled content
-    display: none !important;
-  }
-`
-const contentStyle = theme => css`
-  ${mainPad(theme)};
-  
+let contentStyle = theme => css`
   margin-top: ${theme.pad * 1}px;
   padding-bottom: ${theme.pad * 2}px;
 
@@ -83,12 +28,11 @@ const Layout = ({ children }) => {
 
   return (
     <ThemeProvider theme={darkMode ? dark : light}>
-      <Global styles={globalStyle} />
+      <Global styles={GlobalStyles} />
       <Header />
-      <div css={contentStyle}>{children}</div>
+      <div css={contentStyle} className={"mainPad"}>{children}</div>
     </ThemeProvider>
   )
 }
 
 export default Layout
-export {mainPad}

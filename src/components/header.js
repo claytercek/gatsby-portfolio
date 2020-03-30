@@ -1,12 +1,9 @@
 import { Link, StaticQuery } from "gatsby"
 import React, { Component } from "react"
-import {mainPad} from "./layout";
 import { css } from "@emotion/core"
-import theme, {breakpoints} from "./theme"
 import Headroom from "react-headroom"
 
 const headerStyle = theme => css`
-  ${mainPad(theme)};
   align-items: flex-start;
   justify-content: space-between;
   background-color: ${theme.colors.bg};
@@ -51,7 +48,6 @@ const navStyle = theme => css`
     list-style-type: none;
     padding: 0;
     margin: 0;
-    ${mainPad(theme)};
     margin-top: 70px;
   }
 
@@ -215,13 +211,13 @@ class Header extends Component {
 
     return (
       <Headroom pinStart={this.state.pinStart} forcePin={this.state.opened} wrapperStyle={{zIndex: 10}}>
-        <header css={headerStyle} className={this.state.opened ? "opened" : ""}>
+        <header css={headerStyle} className={this.state.opened ? "mainPad opened" : "mainPad"}>
           <Link css={logoStyle} to={"/"}>
             <span>{splitString[0]}</span> {splitString.slice(1).join(" ")}
           </Link>
           <button css={buttonStyle} onClick={this.toggleOpen}/>
           <nav css={navStyle}>
-            <ul >
+            <ul className={"mainPad"}>
               {data.menu.map((link, index) => {
                 return (
                   <li css={linkStyle}>
