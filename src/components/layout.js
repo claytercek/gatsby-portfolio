@@ -30,7 +30,7 @@ const Layout = ({ children }) => {
     <ThemeProvider theme={darkMode ? dark : light}>
       <Global styles={GlobalStyles} />
       <Header />
-      <div css={contentStyle} className={"mainPad"}>{children}</div>
+      <div css={contentStyle} className={"l-mainPad"}>{children}</div>
     </ThemeProvider>
   )
 }

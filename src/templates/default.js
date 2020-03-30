@@ -13,7 +13,7 @@ export default ({ data }) => {
   const html = post.html.replace(/(\r\n|\n|\r)/gm, "");
   return (
     <Layout>
-      <main css={bodyStyle} >
+      <main css={bodyStyle} className="u-pageContent">
         <Fade bottom distance={"40px"}>
           <div css={headerTextStyle}>
             {post.frontmatter.category && <h3>{post.frontmatter.category}</h3>}

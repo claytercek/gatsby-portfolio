@@ -14,7 +14,7 @@ function GridItem(props) {
           <div className="content abs">
             <h2>{props.title}</h2>
             <p>{props.excerpt}</p>
-            <h3>view more +</h3>
+            <h3 className="u-underline-anim--active">view more</h3>
           </div>
         </article>
       </Link>
@@ -144,12 +144,18 @@ const itemStyle = theme => css`
         bottom: -4px;
         height: 1px;
         background-color: black;
-        left: 0;
-        right: 14%;
 
         ${theme.mq.medium} {
           background-color: white;
         }
+      }
+
+      &::before {
+        content: ' +';
+        position: absolute;
+        top: 50%;
+        right: -15%;
+        transform: translateY(-50%);
       }
     }
 

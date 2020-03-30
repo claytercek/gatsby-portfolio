@@ -67,39 +67,22 @@ const navStyle = theme => css`
   }
 `
 
-var overflow = 0;
 
 const linkStyle = theme => css`
   a {
     color: ${theme.colors.primary};
     text-decoration: none;
     position: relative;
-    display: inline-block;
     margin-bottom: 1.2rem;
+    padding-bottom: 0.5rem;
 
     &::after{
-      content: '';
-      position: absolute;
-      width: 0; 
       height: 15%;
-      display: block;
       margin-top: 5px;
-      right: -${overflow}px;
-      bottom: -15%;
       background: ${theme.colors.accent};
-      transition: all .2s ease;
-      z-index: -5;
     }
-    
-    &:hover::after, &.current::after {
-      width: calc(100% + ${overflow * 2}px);
-      left: -${overflow}px;
-    }
-
-    /* &:active::after, &.current::after {
-      background: ${theme.colors.primary};
-    } */
   }
+
   text-transform: uppercase;
   font-size: 1em;
   font-weight:700;
@@ -211,17 +194,17 @@ class Header extends Component {
 
     return (
       <Headroom pinStart={this.state.pinStart} forcePin={this.state.opened} wrapperStyle={{zIndex: 10}}>
-        <header css={headerStyle} className={this.state.opened ? "mainPad opened" : "mainPad"}>
+        <header css={headerStyle} className={this.state.opened ? "l-mainPad opened" : "l-mainPad"}>
           <Link css={logoStyle} to={"/"}>
             <span>{splitString[0]}</span> {splitString.slice(1).join(" ")}
           </Link>
           <button css={buttonStyle} onClick={this.toggleOpen}/>
           <nav css={navStyle}>
-            <ul className={"mainPad"}>
+            <ul className={"l-mainPad"}>
               {data.menu.map((link, index) => {
                 return (
                   <li css={linkStyle}>
-                    <Link activeClassName="current" to={link.slug}>{link.name}</Link>
+                    <Link activeClassName="u-underline-anim--active" className="u-underline-anim" to={link.slug}>{link.name}</Link>
                   </li>
                 )
               })}

@@ -31,7 +31,7 @@ export default theme => css`
     display: none !important;
   }
 
-  .mainPad {
+  .l-mainPad {
     margin: 0;
     max-width: ${1440}px;
     padding-left: ${theme.pad * 1.5}px;

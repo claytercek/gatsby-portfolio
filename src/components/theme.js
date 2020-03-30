@@ -17,7 +17,7 @@ const base = {
   mq: breakpoints,
   pad: 16,
   lineWidth: "1px",
-  bezier: "cubic-bezier(0.4, 0.4, 0, 1)",
+  bezier: "cubic-bezier(.555, .205, .295, .975)",
 }
 
 export const dark = {
