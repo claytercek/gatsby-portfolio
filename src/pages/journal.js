@@ -64,14 +64,31 @@ const articleStyle = theme => css`
       }
     }
 
+    :hover {
+      .image {
+        .gatsby-image-wrapper {
+          ${theme.mq.medium} {
+            width: 105%;
+            height: 105%;
+          }
+        }
+      }
+    }
+
     .image {
       position: relative;
+      overflow: hidden;
       
       .gatsby-image-wrapper {
         display: inline-block;
         width: 100%;
         height: 100%;
+
         ${theme.mq.medium} {
+          transition: width 0.3s ${theme.bezier}, height 0.3s ${theme.bezier} ;
+          transform: translate(-50%, -50%);
+          top: 50%;
+          left: 50%;
           position: absolute !important;
         }
       }
