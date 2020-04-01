@@ -58,7 +58,10 @@ const articleStyle = theme => css`
   article {
 
     .image, .text {
-      width:50%;
+      width: 100%;
+      ${theme.mq.medium} {
+        width:50%;
+      }
     }
 
     .image {
@@ -68,7 +71,9 @@ const articleStyle = theme => css`
         display: inline-block;
         width: 100%;
         height: 100%;
-        position: absolute !important;
+        ${theme.mq.medium} {
+          position: absolute !important;
+        }
       }
     }
 
@@ -109,7 +114,7 @@ const articleStyle = theme => css`
       }
     }
 
-    ${theme.mq.large} {
+    ${theme.mq.medium} {
       display: flex;
 
       .image {

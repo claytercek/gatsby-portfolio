@@ -28,7 +28,7 @@ export const headerTextStyle = theme => css`
   }
 
   h3 {
-    font-weight: 400;
+    font-weight: 700;
     color: ${theme.colors.accent};
     text-transform: uppercase;
     margin: 0;
