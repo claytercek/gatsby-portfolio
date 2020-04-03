@@ -25,6 +25,7 @@
     "gatsby-source-filesystem": "^2.1.37",
     "gatsby-transformer-remark": "^2.6.35",
     "gatsby-transformer-sharp": "^2.3.3",
+    "get-video-dimensions": "^1.0.0",
     "html-react-parser": "^0.10.1",
     "node-sass": "^4.13.0",
     "prop-types": "^15.7.2",
