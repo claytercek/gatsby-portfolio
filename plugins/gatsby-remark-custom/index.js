@@ -1,7 +1,8 @@
 const remark = require("remark");
 const visit = require("unist-util-visit");
 const path = require(`path`);
-const getDimensions = require('get-video-dimensions');
+const ffprobe = require('ffprobe');
+const ffprobeStatic = require('ffprobe-static');
 
 module.exports = ({ markdownAST, markdownNode, getNode }, pluginOptions) => {
   // add data 
@@ -60,8 +61,9 @@ module.exports = ({ markdownAST, markdownNode, getNode }, pluginOptions) => {
       let parentDirectory = getNode(markdownNode.parent).dir;
       let videoPath = path.join(parentDirectory, node.url);
 
-      let dimensions = await getDimensions(videoPath);
-      let aspectRatio = dimensions.width / dimensions.height;
+      let probe = await ffprobe(videoPath, { path: ffprobeStatic.path });
+      let stream = probe.streams[0];
+      let aspectRatio = stream.width / stream.height;
 
       node.type = "html";
 
