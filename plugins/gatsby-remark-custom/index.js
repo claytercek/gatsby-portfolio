@@ -51,5 +51,24 @@ module.exports = ({ markdownAST }, pluginOptions) => {
         }
     })
 
+    // replace image nodes with 'mp4' ending with video node
+    videoSuffices = ["mp4", "webm"];
+    visit(markdownAST, "image", node => {
+        // Do stuff with heading nodes
+        let isVideo = videoSuffices.some((suffix) => (
+            node.url.endsWith(suffix)
+        ))
+
+        if (!isVideo) return;
+
+        console.dir(node);
+
+        node.type = "html";
+
+        node.value = "<video autoplay loop muted playsinline>\n"
+        node.value += `  <source src="${node.url}" type="video/mp4">\n`
+        node.value += "</video\n"
+    })
+
     return markdownAST
 }

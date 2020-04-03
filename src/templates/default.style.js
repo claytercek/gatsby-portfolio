@@ -80,6 +80,11 @@ export const bodyStyle = theme => css`
   .imageWrapper {
     margin-bottom: ${shevy.baseSpacing(1)};
 
+    video {
+      max-width: 100%;
+    }
+
+
     + p:not(.imageWrapper), + ul, + table, + h3, + h4 {
       margin-top: ${shevy.baseSpacing(1.5)};
     }
@@ -89,9 +94,18 @@ export const bodyStyle = theme => css`
     }
   
     ${theme.mq.medium} {
+
+      video {
+        /* flex-basis: 10%; */
+        flex: 1;
+        max-height: 100vh;
+        width: auto;
+      }
+
       display: flex;
       margin-bottom: ${theme.pad}px;
       justify-content: center;
+      align-items: center;
       
       > * {
         margin-bottom: 0;
