@@ -96,10 +96,9 @@ export const bodyStyle = theme => css`
     ${theme.mq.medium} {
 
       video {
-        /* flex-basis: 10%; */
+        width: 30%;
         flex: 1;
-        max-height: 100vh;
-        width: auto;
+        /* max-height: 100vh; */
       }
 
       display: flex;
