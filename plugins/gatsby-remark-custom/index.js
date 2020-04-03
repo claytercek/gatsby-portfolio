@@ -61,13 +61,13 @@ module.exports = ({ markdownAST }, pluginOptions) => {
 
         if (!isVideo) return;
 
-        console.dir(node);
-
         node.type = "html";
 
-        node.value = "<video autoplay loop muted playsinline>\n"
-        node.value += `  <source src="${node.url}" type="video/mp4">\n`
-        node.value += "</video\n"
+        node.value = `
+            <video autoplay loop muted playsinline>
+                <source src="${node.url}" type="video/mp4">
+            </video>`;
+
     })
 
     return markdownAST
