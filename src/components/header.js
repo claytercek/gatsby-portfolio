@@ -46,7 +46,7 @@ const navStyle = theme => css`
 
   ul {
     list-style-type: none;
-    padding: 0;
+    /* padding: 0; */
     margin: 0;
     margin-top: 70px;
   }
@@ -89,8 +89,11 @@ const linkStyle = theme => css`
 
   ${theme.mq.medium} {
     margin-left: ${theme.pad * 2}px;
-
     font-size: 1em;
+    
+    a {
+      margin-bottom: 0;
+    }
   }
 `
 
@@ -200,7 +203,7 @@ class Header extends Component {
           </Link>
           <button css={buttonStyle} onClick={this.toggleOpen}/>
           <nav css={navStyle}>
-            <ul className={"l-mainPad"}>
+            <ul className="l-mainPad">
               {data.menu.map((link, index) => {
                 return (
                   <li css={linkStyle}>
