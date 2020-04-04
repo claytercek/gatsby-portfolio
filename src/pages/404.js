@@ -73,6 +73,7 @@ const itemStyle = theme => css`
 export default ({ data }) => {
   return (
     <Layout>
+      <SEO title="404"/>
       <main>
       <h4>error 404</h4>
       </main>

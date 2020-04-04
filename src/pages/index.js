@@ -2,6 +2,7 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Helmet from "react-helmet"
 import Img from "gatsby-image"
 import { css } from "@emotion/core"
 
@@ -26,6 +27,7 @@ function GridItem(props) {
 export default ({ data }) => {
   return (
     <Layout>
+      <SEO/>
       <main>
         <ul css={listStyle}>
           {data.allMarkdownRemark.edges.map(({ node }, index) => {
@@ -33,7 +35,7 @@ export default ({ data }) => {
               <GridItem
                 title={node.frontmatter.title}
                 image={node.frontmatter.image}
-                excerpt={node.excerpt}
+                excerpt={node.frontmatter.description || node.excerpt}
                 slug={node.fields.slug}
                 key={node.id}
               />
@@ -198,6 +200,7 @@ export const query = graphql`
           }
           frontmatter {
             title
+            description
             image {
               childImageSharp {
                 fluid(maxWidth: 800, maxHeight: 600) {

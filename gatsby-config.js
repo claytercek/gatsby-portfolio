@@ -1,12 +1,20 @@
 module.exports = {
   siteMetadata: {
     title: `Clay Tercek`,
-    siteUrl: `https://claytercek.com`,
     description: `Clay Tercek's Personal Portfolio`,
-    titleTemplate: "%s · Clay Tercek",
+    author: "Clay Tercek",
     url: "https://claytercek.com",
-    image: "/images/default_image.jpg",
+    image: "/default-thumb.png",
     twitterUsername: "@claytercek",
+    keywords: [
+      'development', 
+      'design', 
+      'web', 
+      'interface', 
+      'ui', 
+      'digital', 
+      'interactive'
+    ],
     menu: [
       {
         name: "work",
@@ -16,10 +24,10 @@ module.exports = {
         name: "journal",
         slug: "/journal/",
       },
-      {
-        name: "about",
-        slug: "/about/",
-      },
+      // {
+      //   name: "about",
+      //   slug: "/about/",
+      // },
     ],
     social: [
       {

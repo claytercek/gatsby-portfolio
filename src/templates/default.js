@@ -1,8 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
-import rehypeReact from "rehype-react"
 import Layout from "../components/layout"
-import { css } from "@emotion/core"
+import SEO from "../components/seo"
 import Fade from 'react-reveal/Fade';
 import { headerTextStyle, bodyStyle } from "./default.style"
 import Img from "gatsby-image";
@@ -11,8 +10,21 @@ import parse from 'html-react-parser';
 export default ({ data }) => {
   const post = data.markdownRemark;
   const html = post.html.replace(/(\r\n|\n|\r)/gm, "");
+
+  console.log(post.frontmatter.image);
   return (
     <Layout>
+      
+      <SEO
+        title={post.frontmatter.title}
+        description={post.frontmatter.description || post.excerpt}
+        image={post.frontmatter.image ? {
+          src: post.frontmatter.image.childImageSharp.fixed.src,
+          height: post.frontmatter.image.childImageSharp.fixed.height,
+          width: 1024
+        } : null}
+
+      />
       <main css={bodyStyle} className="u-pageContent">
         <Fade bottom distance={"40px"}>
           <div css={headerTextStyle}>
@@ -37,10 +49,14 @@ export const query = graphql`
       frontmatter {
         title
         category
+        description
         image {
           childImageSharp {
             fluid(maxWidth: 2048, maxHeight: 1280, quality: 100) {
               ...GatsbyImageSharpFluid
+            }
+            fixed(width: 1024) {
+              ...GatsbyImageSharpFixed
             }
           }
         }
