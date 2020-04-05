@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: claytercek/gatsby-portfolio
+  name: git-gateway
   branch: master
 
 media_folder: static/assets
