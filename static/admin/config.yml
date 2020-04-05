@@ -3,8 +3,8 @@ backend:
   repo: claytercek/gatsby-portfolio
   branch: master
 
-media_folder: static/img
-public_folder: /img
+media_folder: static/assets
+public_folder: /assets
 site_url: https://claytercek.com
 
 collections:
