@@ -20,6 +20,7 @@ collections:
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Draft", name: "draft", widget: "boolean" }
       - { label: "Thumbnail", name: "image", widget: "image" }
+      - { label: "Content", name: "body", widget: "markdown" }
   - name: "journal"
     label: "Journal"
     folder: "content/journal"
@@ -32,4 +33,5 @@ collections:
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Draft", name: "draft", widget: "boolean" }
       - { label: "Thumbnail", name: "image", widget: "image" }
+      - { label: "Content", name: "body", widget: "markdown" }
 
