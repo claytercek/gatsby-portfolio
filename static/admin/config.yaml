@@ -1,0 +1,35 @@
+backend:
+  name: github
+  repo: claytercek/gatsby-portfolio
+  branch: master
+
+media_folder: static/img
+public_folder: /img
+site_url: https://claytercek.com
+
+collections:
+  - name: "work"
+    label: "Work"
+    folder: "content/work"
+    create: true
+    slug: "{{slug}}"
+    editor:
+     preview: false
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Draft", name: "draft", widget: "boolean" }
+      - { label: "Thumbnail", name: "image", widget: "image" }
+  - name: "journal"
+    label: "Journal"
+    folder: "content/journal"
+    create: true
+    slug: "{{slug}}"
+    editor:
+     preview: false
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Draft", name: "draft", widget: "boolean" }
+      - { label: "Thumbnail", name: "image", widget: "image" }
+
