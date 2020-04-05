@@ -6,7 +6,7 @@ draft: false
 image: "screencap.png"
 ---
 
-This project was created using touchdesigner. The system takes a video as input, and then using the feedback TOP and noise displacement to achieve the "sand in the wind" aesthetic. The following two videos show what the system outputs when fed a static image, with varying settings on the noise and delay.
+This project was created using touchdesigner. The system takes a video as input, and then uses the feedback TOP and noise displacement to achieve the "dust in the wind" aesthetic. The following two videos show what the system outputs when fed a static image, with varying settings on the noise and delay.
 
 ![](static_01-converted.mp4)
 ![](static_02-converted.mp4)

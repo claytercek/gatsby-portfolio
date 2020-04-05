@@ -18,6 +18,7 @@ const base = {
   pad: 16,
   lineWidth: "1px",
   bezier: "cubic-bezier(.555, .205, .295, .975)",
+  easeIn: "cubic-bezier(.07,.58,.41,1)"
 }
 
 export const dark = {

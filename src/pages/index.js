@@ -1,17 +1,23 @@
-import React from "react"
+import React, { useState } from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Helmet from "react-helmet"
 import Img from "gatsby-image"
 import { css } from "@emotion/core"
 
 function GridItem(props) {
+  const [loaded, setLoaded] = useState(false);
   return (
-    <li {...props} css={itemStyle}>
+    <li {...props} css={itemStyle} className={loaded ? "loaded" : ""}>
       <Link to={props.slug}>
         <article>
-          {props.image && <Img fluid={props.image.childImageSharp.fluid} className="abs" /> }
+          {props.image && 
+            <Img 
+              fluid={props.image.childImageSharp.fluid} 
+              className="abs" 
+              onLoad={()=> {setLoaded(true)}}
+            /> 
+          }
           <div className="content abs">
             <h2>{props.title}</h2>
             <p>{props.excerpt}</p>
@@ -38,6 +44,7 @@ export default ({ data }) => {
                 excerpt={node.frontmatter.description || node.excerpt}
                 slug={node.fields.slug}
                 key={node.id}
+                style={{transitionDelay: (index * 100) + "ms"}}
               />
             )
           })}
@@ -76,6 +83,15 @@ const listStyle = theme => css`
 
 const itemStyle = theme => css`
   position: relative;
+
+  &:not(.loaded) {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  transform: translateY(0);
+
+  transition: opacity 0.6s ${theme.bezier}, transform 0.8s ${theme.easeIn};
   
   .gatsby-image-wrapper {
     height: 50vw;
