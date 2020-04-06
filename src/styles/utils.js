@@ -44,6 +44,14 @@ export default theme => css`
       }
     }
   }
+
+  .fadeInUp {
+    ${fadeInUp(theme)};
+  }
+`
+export const fadeInUp = theme => css`
+  animation: 0.6s ${theme.bezier} ${opacityIn} forwards,
+    0.8s ${theme.easeIn} ${positionUp} forwards;
 `
 
 const oldLinkUnderline = keyframes`
@@ -67,5 +75,25 @@ const newLinkUnderline = keyframes`
   100% {
       left: 0;
       right: 0
+  }
+`
+
+const opacityIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+`
+
+const positionUp = keyframes`
+  0% {
+    transform: translateY(30px);
+  }
+
+  100% {
+    transform: translateY(0);
   }
 `

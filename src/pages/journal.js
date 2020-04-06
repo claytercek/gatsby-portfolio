@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -6,12 +6,19 @@ import { css } from "@emotion/core"
 import Img from "gatsby-image"
 
 function JournalItem(props) {
+  const [loaded, setLoaded] = useState(false)
   return (
-    <li {...props} css={articleStyle}>
+    <li {...props} css={articleStyle} className={loaded ? "loaded fadeInUp" : ""}>
       <Link to={props.slug}>
         <article>
           <div className="image">
-            {props.image && <Img fluid={props.image.childImageSharp.fluid} />}
+            {props.image && 
+              <Img 
+                fluid={props.image.childImageSharp.fluid} 
+                onLoad={() => {
+                  setLoaded(true)
+                }}
+              />}
           </div>
           <div className="text">
             <h2>{props.title}</h2>
@@ -49,6 +56,8 @@ export default ({ data }) => {
 }
 
 const articleStyle = theme => css`
+  opacity: 0;
+
   margin-bottom: ${theme.pad}px;
   ${theme.mq.large} {
     margin-bottom: ${theme.pad * 3}px;

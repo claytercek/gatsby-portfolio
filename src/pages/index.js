@@ -8,7 +8,7 @@ import { css } from "@emotion/core"
 function GridItem(props) {
   const [loaded, setLoaded] = useState(false)
   return (
-    <li {...props} css={itemStyle} className={loaded ? "loaded" : ""}>
+    <li {...props} css={itemStyle} className={loaded ? "loaded fadeInUp" : ""}>
       <Link to={props.slug}>
         <article>
           {props.image && (
@@ -45,7 +45,7 @@ export default ({ data }) => {
                 excerpt={node.frontmatter.description || node.excerpt}
                 slug={node.fields.slug}
                 key={node.id}
-                style={{ transitionDelay: index * 100 + "ms" }}
+                style={{ animationDelay: index * 100 + "ms" }}
               />
             )
           })}
@@ -83,14 +83,7 @@ const listStyle = theme => css`
 const itemStyle = theme => css`
   position: relative;
 
-  &:not(.loaded) {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  transform: translateY(0);
-
-  transition: opacity 0.6s ${theme.bezier}, transform 0.8s ${theme.easeIn};
+  opacity: 0;
 
   .gatsby-image-wrapper {
     height: 50vw;
