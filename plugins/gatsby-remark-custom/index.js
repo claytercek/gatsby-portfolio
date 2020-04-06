@@ -56,13 +56,14 @@ module.exports = (test , pluginOptions) => {
   })
 
   // replace image nodes with 'mp4' ending with video node
+  // for images, make paths relative to static folder for gatsby-remark-images
   visit(markdownAST, "image", async node => {
+
+    let parentDirectory = getNode(markdownNode.parent).dir;
+
     if (node.url.endsWith("mp4")) {
-
-
-      let parentDirectory = getNode(markdownNode.parent).dir;
-      let videoPath = path.join(__dirname, "../../static", node.url);
-      console.log("video: " + node.url);
+      // is vidoe
+      let assetPath = path.join(__dirname, "../../static", node.url);
 
       node.type = "html";
       let aspectRatio = 1;
@@ -72,7 +73,7 @@ module.exports = (test , pluginOptions) => {
         </video>`;
 
       try {
-        let probe = await ffprobe(videoPath, { path: ffprobeStatic.path });
+        let probe = await ffprobe(assetPath, { path: ffprobeStatic.path });
         let stream = probe.streams[0];
         aspectRatio = stream.width / stream.height;
         node.value = `
@@ -84,7 +85,9 @@ module.exports = (test , pluginOptions) => {
         console.error("could not find video file: " + node.url);
       } 
     } else {
-      console.log("image: " + node.url);
+      //is image
+    let assetPath = path.join("../../static", node.url);
+      node.url = assetPath;
     }
   })
 

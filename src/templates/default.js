@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Fade from 'react-reveal/Fade';
+import Reveal from 'react-reveal/Reveal';
 import { headerTextStyle, bodyStyle } from "./default.style"
 import Img from "gatsby-image";
 import parse from 'html-react-parser';
@@ -10,8 +10,6 @@ import parse from 'html-react-parser';
 export default ({ data }) => {
   const post = data.markdownRemark;
   const html = post.html.replace(/(\r\n|\n|\r)/gm, "");
-
-  console.log(post.frontmatter.image);
   return (
     <Layout>
       
@@ -26,7 +24,7 @@ export default ({ data }) => {
 
       />
       <main css={bodyStyle} className="u-pageContent">
-        <Fade bottom distance={"40px"}>
+        <Reveal effect="fadeInUp">
           <div css={headerTextStyle}>
             {post.frontmatter.category && <h3>{post.frontmatter.category}</h3>}
             <h2>{post.frontmatter.title}</h2>
@@ -35,7 +33,7 @@ export default ({ data }) => {
             <Img fluid={post.frontmatter.image.childImageSharp.fluid}/>
           </div>
           {parse(html)}
-        </Fade>
+        </Reveal>
       </main>
     </Layout>
   )

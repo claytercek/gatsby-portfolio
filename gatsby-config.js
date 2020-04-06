@@ -77,7 +77,6 @@ module.exports = {
         plugins: [
           `gatsby-remark-custom`,
           `gatsby-remark-external-links`,
-          `gatsby-remark-relative-images`,
           {
             resolve: `gatsby-remark-images`,
             options: {
