@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
     title: `Clay Tercek`,
-    description: `Developer and designer based in Philadelphia, specialising in rich interactive experiences both spacial and digital.`,
+    description: `Interactive developer and designer based in Philadelphia, specializing in rich interactive experiences in spaces both physical and digital.`,
     author: "Clay Tercek",
-    url: "https://claytercek.com",
+    siteUrl: "https://claytercek.com",
     image: "/default-thumb.png",
     twitterUsername: "@claytercek",
     keywords: [
@@ -24,10 +24,10 @@ module.exports = {
         name: "journal",
         slug: "/journal/",
       },
-      // {
-      //   name: "about",
-      //   slug: "/about/",
-      // },
+      {
+        name: "about",
+        slug: "/about/",
+      },
     ],
     social: [
       {

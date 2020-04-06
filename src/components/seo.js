@@ -13,7 +13,7 @@ function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
             description
             author
             keywords
-            url
+            siteUrl
             image
           }
         }
@@ -29,7 +29,7 @@ function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
     height: metaImage ? metaImage.height : 512,
   }
 
-  const canonical = pathname ? `${site.siteMetadata.url}${pathname}` : null
+  const canonical = pathname ? `${site.siteMetadata.siteUrl}${pathname}` : null
 
   return (
     <Helmet
@@ -86,7 +86,7 @@ function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
         .concat([
           {
             property: "og:image",
-            content: `${site.siteMetadata.url}${image.src}`,
+            content: `${site.siteMetadata.siteUrl}${image.src}`,
           },
           {
             property: "og:image:width",
