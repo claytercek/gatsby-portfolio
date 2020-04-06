@@ -11,10 +11,6 @@ export default theme => css`
   body {
     margin: 0;
     padding: 0;
-
-    ${theme.mq.large} {
-      padding-top: ${theme.pad * 2}px;
-    }
   }
 
   a {

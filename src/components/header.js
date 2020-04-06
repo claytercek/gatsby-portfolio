@@ -176,7 +176,7 @@ class Header extends Component {
 
   updateWindowDimensions() {
     var pinStart = parseInt(
-      window.getComputedStyle(document.body).paddingTop,
+      window.getComputedStyle(document.getElementById("js-top-pad")).paddingTop,
       10
     )
     this.setState({ pinStart: pinStart })

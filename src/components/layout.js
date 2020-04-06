@@ -1,6 +1,7 @@
 import React from "react"
 // import useDarkMode from "use-dark-mode"
 import Header from "./header"
+import Footer from "./footer"
 import { ThemeProvider } from "emotion-theming"
 import { dark, light } from "./theme"
 import { Global, css } from "@emotion/core"
@@ -21,6 +22,14 @@ let contentStyle = theme => css`
   }
 `
 
+let wrapperStyle = theme => css`
+  min-height: 100vh;
+
+  ${theme.mq.large} {
+    padding-top: ${theme.pad * 2}px;
+  }
+`
+
 const Layout = ({ children }) => {
   // following code isnt loading correctly on build
   // const darkMode = useDarkMode(false).value;
@@ -29,10 +38,13 @@ const Layout = ({ children }) => {
   return (
     <ThemeProvider theme={darkMode ? dark : light}>
       <Global styles={GlobalStyles} />
-      <Header />
-      <div css={contentStyle} className={"l-mainPad"}>
-        {children}
+      <div css={wrapperStyle} id="js-top-pad">
+        <Header />
+        <div css={contentStyle} className={"l-mainPad"}>
+          {children}
+        </div>
       </div>
+      <Footer/>
     </ThemeProvider>
   )
 }
