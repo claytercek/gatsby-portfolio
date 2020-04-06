@@ -28,9 +28,9 @@ const footerStyle = theme => css`
   }
 
   margin: 0;
-   * {
-     margin: 0;
-   }
+  * {
+    margin: 0;
+  }
 
   .copyright, .contact {
     font-weight: 400;
