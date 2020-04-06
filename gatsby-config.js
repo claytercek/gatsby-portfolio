@@ -58,19 +58,26 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        path: `${__dirname}/static/assets`,
+        name: 'assets',
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         name: `pages`,
         path: `${__dirname}/content/`,
       },
     },
-    `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
           `gatsby-remark-custom`,
-          "gatsby-remark-copy-linked-files",
           `gatsby-remark-external-links`,
+          `gatsby-remark-relative-images`,
           {
             resolve: `gatsby-remark-images`,
             options: {
@@ -85,15 +92,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: "gatsby-plugin-use-dark-mode",
-      options: {
-        classNameDark: "dark-mode",
-        classNameLight: "light-mode",
-        storageKey: "darkMode",
-        minify: true,
-      },
-    },
     `gatsby-plugin-catch-links`
   ],
 }

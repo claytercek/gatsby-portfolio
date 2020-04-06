@@ -4,7 +4,8 @@ const path = require(`path`);
 const ffprobe = require('ffprobe');
 const ffprobeStatic = require('ffprobe-static');
 
-module.exports = ({ markdownAST, markdownNode, getNode }, pluginOptions) => {
+module.exports = (test , pluginOptions) => {
+  const { markdownAST, markdownNode, getNode } = test; 
   // add data 
   markdownAST.children.forEach(node => {
     if (!node.data) node.data = {};
@@ -56,21 +57,34 @@ module.exports = ({ markdownAST, markdownNode, getNode }, pluginOptions) => {
 
   // replace image nodes with 'mp4' ending with video node
   visit(markdownAST, "image", async node => {
-    // Do stuff with heading nodes
     if (node.url.endsWith("mp4")) {
-      let parentDirectory = getNode(markdownNode.parent).dir;
-      let videoPath = path.join(parentDirectory, node.url);
 
-      let probe = await ffprobe(videoPath, { path: ffprobeStatic.path });
-      let stream = probe.streams[0];
-      let aspectRatio = stream.width / stream.height;
+
+      let parentDirectory = getNode(markdownNode.parent).dir;
+      let videoPath = path.join(__dirname, "../../static", node.url);
+      console.log("video: " + node.url);
 
       node.type = "html";
-
+      let aspectRatio = 1;
       node.value = `
-            <video autoplay loop muted playsinline style="flex:${aspectRatio}">
-              <source src="${node.url}" type="video/mp4">
-            </video>`;
+        <video autoplay loop muted playsinline style="flex:${aspectRatio}">
+          <source src="${node.url}" type="video/mp4">
+        </video>`;
+
+      try {
+        let probe = await ffprobe(videoPath, { path: ffprobeStatic.path });
+        let stream = probe.streams[0];
+        aspectRatio = stream.width / stream.height;
+        node.value = `
+          <video autoplay loop muted playsinline style="flex:${aspectRatio}">
+            <source src="${node.url}" type="video/mp4">
+          </video>`;
+
+      } catch(err) {
+        console.error("could not find video file: " + node.url);
+      } 
+    } else {
+      console.log("image: " + node.url);
     }
   })
 

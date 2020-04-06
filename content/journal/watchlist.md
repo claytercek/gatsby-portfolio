@@ -1,8 +1,8 @@
 ---
-title: "Watchlist"
-date: "2019-03-21"
-category: "case study"
-image: "featured.jpg"
+title: watchlist
+date: 2019-03-21
+category: case study
+image: /assets/watchlist_featured.jpg
 draft: false
 ---
 
@@ -25,7 +25,7 @@ My original idea was to have items in a standard list, with the poster image on 
 
 I took this 'prototype' and showed it to a couple people to gather some input. The general feedback said that I might have made it a little too simple. People wanted more information than just a description and title. With that I went back to the drawing board.
 
-![v1 screens](v1.jpg)
+![v1 screens](/assets/watchlist_v1.jpg)
 
 ## Second iteration
 
@@ -35,7 +35,7 @@ The detail view is pretty simple, just showing the title, description, and poste
 
 One of the advantages of developing within the apple ecosystem is that it is really easy to create beautiful designs that look like they came straight from HQ. I decided to capitalize on this, shifting from my original design to something a lot cleaner and sleeker. This meant no more colorful gradient backgrounds, rounded corners, and Helvetica everywhere.
 
-![v2 screens](v2.jpg)
+![v2 screens](/assets/watchlist_v2.jpg)
 
 ---
 
@@ -105,7 +105,7 @@ Suffice to say AlamoFire really makes requests a lot less complicated. -->
 
 # Final Product
 
-![v3 screens](v3.jpg)
+![v3 screens](/assets/watchlist_v3.jpg)
 
 
 All of this design and development resulted in Watchlist, the native app for iOS! It has a very simple and intuitive structure, with three pages:
