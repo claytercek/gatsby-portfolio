@@ -6,18 +6,20 @@ import Img from "gatsby-image"
 import { css } from "@emotion/core"
 
 function GridItem(props) {
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(false)
   return (
     <li {...props} css={itemStyle} className={loaded ? "loaded" : ""}>
       <Link to={props.slug}>
         <article>
-          {props.image && 
-            <Img 
-              fluid={props.image.childImageSharp.fluid} 
-              className="abs" 
-              onLoad={()=> {setLoaded(true)}}
-            /> 
-          }
+          {props.image && (
+            <Img
+              fluid={props.image.childImageSharp.fluid}
+              className="abs"
+              onLoad={() => {
+                setLoaded(true)
+              }}
+            />
+          )}
           <div className="content abs">
             <h2>{props.title}</h2>
             <p>{props.excerpt}</p>
@@ -29,11 +31,10 @@ function GridItem(props) {
   )
 }
 
-
 export default ({ data }) => {
   return (
     <Layout>
-      <SEO/>
+      <SEO />
       <main>
         <ul css={listStyle}>
           {data.allMarkdownRemark.edges.map(({ node }, index) => {
@@ -44,7 +45,7 @@ export default ({ data }) => {
                 excerpt={node.frontmatter.description || node.excerpt}
                 slug={node.fields.slug}
                 key={node.id}
-                style={{transitionDelay: (index * 100) + "ms"}}
+                style={{ transitionDelay: index * 100 + "ms" }}
               />
             )
           })}
@@ -54,9 +55,7 @@ export default ({ data }) => {
   )
 }
 
-
-
-// styles 
+// styles
 
 const listStyle = theme => css`
   list-style-type: none;
@@ -92,7 +91,7 @@ const itemStyle = theme => css`
   transform: translateY(0);
 
   transition: opacity 0.6s ${theme.bezier}, transform 0.8s ${theme.easeIn};
-  
+
   .gatsby-image-wrapper {
     height: 50vw;
 
@@ -103,7 +102,7 @@ const itemStyle = theme => css`
 
   .abs {
     ${theme.mq.medium} {
-      position:absolute !important;
+      position: absolute !important;
       left: 0;
       right: 0;
       bottom: 0;
@@ -157,8 +156,8 @@ const itemStyle = theme => css`
       letter-spacing: 0.06em;
 
       &::after {
-        content: '';
-        position:absolute;
+        content: "";
+        position: absolute;
         bottom: -4px;
         height: 1px;
         background-color: black;
@@ -169,7 +168,7 @@ const itemStyle = theme => css`
       }
 
       &::before {
-        content: ' +';
+        content: " +";
         position: absolute;
         top: 50%;
         right: -15%;
@@ -184,8 +183,8 @@ const itemStyle = theme => css`
 
   ${theme.mq.medium} {
     &:nth-child(5n-1) {
-    grid-column: span 2;
-    grid-row: span 2;
+      grid-column: span 2;
+      grid-row: span 2;
     }
 
     &:nth-child(5n-3),
@@ -203,8 +202,8 @@ const itemStyle = theme => css`
 export const query = graphql`
   query {
     allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC },
-      filter: {fields: {draft: {ne: true}, type: {eq: "work"}}}
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { fields: { draft: { ne: true }, type: { eq: "work" } } }
     ) {
       totalCount
       edges {

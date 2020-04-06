@@ -8,7 +8,7 @@ draft: false
 
 ## Watchlist is an iOS app allowing users to keep track of the movies and tv shows that they are interested in watching, with a sleek and intuitive UI.
 
-The goal with this project was first and foremost to learn the Xcode programming environment and swift language. Because of that, I pursued the idea of Watchlist. I felt like a movie/tv watchlist app would allow me to learn a lot of the important techniques and functionality that is required for developing for iOS without getting too complicated for a ten week course, such as page segues, persistent data storage, and external API integration. 
+The goal with this project was first and foremost to learn the Xcode programming environment and swift language. Because of that, I pursued the idea of Watchlist. I felt like a movie/tv watchlist app would allow me to learn a lot of the important techniques and functionality that is required for developing for iOS without getting too complicated for a ten week course, such as page segues, persistent data storage, and external API integration.
 
 Now while not an entirely unique idea, I felt that the way similar apps on the app store had been executed always lacked something. Some lacked an intuitive interface, some didn't have up to date search, some were far too overcomplicated, and some just didn't look good. My goal was to create a simple interface that was easy to understand and operate, while still having the important functionality one would expect from an app like this.
 
@@ -17,7 +17,6 @@ Now while not an entirely unique idea, I felt that the way similar apps on the a
 # Visual Design
 
 The first phase of creating this app was imagining the interface. With one of my main design goals being simplicity, I wanted to minimize the amount of different views and pages that were possible within the app. Therefor I designed the search page to be almost identical to the home page, though with the addition of a search bar at the top.
-
 
 ## First iteration
 
@@ -29,7 +28,7 @@ I took this 'prototype' and showed it to a couple people to gather some input. T
 
 ## Second iteration
 
-Because my quick user testing showed that users would like a bit more info, I figured it might be better to have a detail screen instead of all the movie info being visible from the list view. I decided to strip most of the information from the list view, so that its just a poster image (or a title if no poster can be found). This also allowed for a lot more items to visible at first glance, because now instead of one item stretching the full width of the container, we can fit three on a line. 
+Because my quick user testing showed that users would like a bit more info, I figured it might be better to have a detail screen instead of all the movie info being visible from the list view. I decided to strip most of the information from the list view, so that its just a poster image (or a title if no poster can be found). This also allowed for a lot more items to visible at first glance, because now instead of one item stretching the full width of the container, we can fit three on a line.
 
 The detail view is pretty simple, just showing the title, description, and poster image along with a few extra details like runtime, genres and original air date.
 
@@ -49,9 +48,9 @@ The one thing that I still am not a fan of after ten weeks of using it is the co
 
 ## API Integration
 
-Obviously I didn't have the time or resources to create my own database of all movies and tv shows, so the next best thing was accessing a third party API. I looked around for a while to find an API that had all of the information I wanted, and I landed on [themoviedb](https://www.themoviedb.org/documentation/api). Their API gives me access to all of the search functionality and information for movies and tv shows that I wanted, all for a total cost of **$0**. I originally wanted to also include where the user could stream/buy a given item, but no free APIs offered such functionality.
+Obviously I didn't have the time or resources to create my own database of all movies and tv shows, so the next best thing was accessing a third party API. I looked around for a while to find an API that had all of the information I wanted, and I landed on [themoviedb](https://www.themoviedb.org/documentation/api). Their API gives me access to all of the search functionality and information for movies and tv shows that I wanted, all for a total cost of **\$0**. I originally wanted to also include where the user could stream/buy a given item, but no free APIs offered such functionality.
 
-For implementing the API, I used [AlamoFire](https://github.com/Alamofire/Alamofire), a third party framework. I decided to use it because Swift's suggested way for making api calls with just native code seemed a lot more complicated, and AlamoFire seemed to be industry standard. 
+For implementing the API, I used [AlamoFire](https://github.com/Alamofire/Alamofire), a third party framework. I decided to use it because Swift's suggested way for making api calls with just native code seemed a lot more complicated, and AlamoFire seemed to be industry standard.
 
 <!-- Here's an example of an api request using AlamoFire:
 
@@ -106,7 +105,6 @@ Suffice to say AlamoFire really makes requests a lot less complicated. -->
 # Final Product
 
 ![v3 screens](/assets/watchlist_v3.jpg)
-
 
 All of this design and development resulted in Watchlist, the native app for iOS! It has a very simple and intuitive structure, with three pages:
 

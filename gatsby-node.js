@@ -1,7 +1,7 @@
 const path = require(`path`)
 var fs = require("fs")
 const { createFilePath } = require(`gatsby-source-filesystem`)
-const { fmImagesToRelative } = require('gatsby-remark-relative-images')
+const { fmImagesToRelative } = require("gatsby-remark-relative-images")
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
@@ -25,7 +25,8 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     createNodeField({
       node,
       name: `draft`,
-      value: (process.env.NODE_ENV === 'production') ? node.frontmatter.draft : false,
+      value:
+        process.env.NODE_ENV === "production" ? node.frontmatter.draft : false,
     })
   }
 }
@@ -35,8 +36,8 @@ exports.createPages = ({ actions, graphql, reporter }) => {
   return graphql(`
     {
       allMarkdownRemark(
-        sort: {fields: [frontmatter___date], order: DESC},
-        filter: {fields: {draft: {ne: true}}}
+        sort: { fields: [frontmatter___date], order: DESC }
+        filter: { fields: { draft: { ne: true } } }
         limit: 1000
       ) {
         edges {
@@ -50,10 +51,9 @@ exports.createPages = ({ actions, graphql, reporter }) => {
       }
     }
   `).then(result => {
-    const posts = result.data.allMarkdownRemark.edges;
+    const posts = result.data.allMarkdownRemark.edges
 
     posts.forEach(({ node }) => {
-
       // pages/{type}/{type}-single.js
       let template = path.resolve(
         `./src/templates/${node.fields.type}-single.js`

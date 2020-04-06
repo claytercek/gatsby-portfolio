@@ -1,4 +1,4 @@
-import { jsx, css, keyframes } from '@emotion/core'
+import { jsx, css, keyframes } from "@emotion/core"
 
 export default theme => css`
   .u-underline-anim,
@@ -15,7 +15,7 @@ export default theme => css`
       width: 0;
       right: 0;
       position: absolute;
-      transition: all .25s ${theme.bezier};
+      transition: all 0.25s ${theme.bezier};
     }
 
     &:hover {
@@ -39,14 +39,12 @@ export default theme => css`
       &:after {
         width: auto;
         transition: none;
-        animation: .25s ${theme.bezier} ${oldLinkUnderline}, 
-        .25s ${theme.bezier} .25s ${newLinkUnderline};
+        animation: 0.25s ${theme.bezier} ${oldLinkUnderline},
+          0.25s ${theme.bezier} 0.25s ${newLinkUnderline};
       }
     }
   }
-  
 `
-
 
 const oldLinkUnderline = keyframes`
   0% {

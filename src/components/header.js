@@ -51,7 +51,6 @@ const navStyle = theme => css`
     margin-top: 70px;
   }
 
-
   ${theme.mq.medium} {
     position: static;
     height: unset;
@@ -67,7 +66,6 @@ const navStyle = theme => css`
   }
 `
 
-
 const linkStyle = theme => css`
   a {
     color: ${theme.colors.primary};
@@ -76,7 +74,7 @@ const linkStyle = theme => css`
     margin-bottom: 1.2rem;
     padding-bottom: 0.5rem;
 
-    &::after{
+    &::after {
       height: 15%;
       margin-top: 5px;
       background: ${theme.colors.accent};
@@ -85,12 +83,12 @@ const linkStyle = theme => css`
 
   text-transform: uppercase;
   font-size: 1em;
-  font-weight:700;
+  font-weight: 700;
 
   ${theme.mq.medium} {
     margin-left: ${theme.pad * 2}px;
     font-size: 1em;
-    
+
     a {
       margin-bottom: 0;
     }
@@ -142,7 +140,6 @@ const buttonStyle = theme => css`
     bottom: 6px;
   }
 
-
   .opened & {
     &::before {
       transform: rotate(45deg) translate(3px, 3px);
@@ -152,62 +149,76 @@ const buttonStyle = theme => css`
     }
   }
 
-
   ${theme.mq.medium} {
     display: none;
   }
-
 `
 
 class Header extends Component {
   constructor(props) {
-    super(props);
-    this.state = { 
+    super(props)
+    this.state = {
       opened: false,
       pinStart: 0,
-     }
-    this.toggleOpen = this.toggleOpen.bind(this);
-    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+    }
+    this.toggleOpen = this.toggleOpen.bind(this)
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
   }
 
   componentDidMount() {
-    this.updateWindowDimensions();
-    window.addEventListener('resize', this.updateWindowDimensions);
+    this.updateWindowDimensions()
+    window.addEventListener("resize", this.updateWindowDimensions)
   }
-  
+
   componentWillUnmount() {
-    window.removeEventListener('resize', this.updateWindowDimensions);
+    window.removeEventListener("resize", this.updateWindowDimensions)
   }
 
   updateWindowDimensions() {
-    var pinStart = parseInt(window.getComputedStyle(document.body).paddingTop, 10);
-    this.setState({ pinStart: pinStart});
+    var pinStart = parseInt(
+      window.getComputedStyle(document.body).paddingTop,
+      10
+    )
+    this.setState({ pinStart: pinStart })
   }
 
   toggleOpen() {
     this.setState(state => ({
-      opened: !state.opened
-    }));
+      opened: !state.opened,
+    }))
   }
 
   render() {
-    var data = this.props.data.site.siteMetadata;
+    var data = this.props.data.site.siteMetadata
 
-    const splitString = data.title.split(" ");
+    const splitString = data.title.split(" ")
 
     return (
-      <Headroom pinStart={this.state.pinStart} forcePin={this.state.opened} wrapperStyle={{zIndex: 10}}>
-        <header css={headerStyle} className={this.state.opened ? "l-mainPad opened" : "l-mainPad"}>
+      <Headroom
+        pinStart={this.state.pinStart}
+        forcePin={this.state.opened}
+        wrapperStyle={{ zIndex: 10 }}
+      >
+        <header
+          css={headerStyle}
+          className={this.state.opened ? "l-mainPad opened" : "l-mainPad"}
+        >
           <Link css={logoStyle} to={"/"}>
             <span>{splitString[0]}</span> {splitString.slice(1).join(" ")}
           </Link>
-          <button css={buttonStyle} onClick={this.toggleOpen}/>
+          <button css={buttonStyle} onClick={this.toggleOpen} />
           <nav css={navStyle}>
             <ul className="l-mainPad">
               {data.menu.map((link, index) => {
                 return (
                   <li css={linkStyle}>
-                    <Link activeClassName="u-underline-anim--active" className="u-underline-anim" to={link.slug}>{link.name}</Link>
+                    <Link
+                      activeClassName="u-underline-anim--active"
+                      className="u-underline-anim"
+                      to={link.slug}
+                    >
+                      {link.name}
+                    </Link>
                   </li>
                 )
               })}

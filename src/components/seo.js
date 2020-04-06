@@ -29,9 +29,7 @@ function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
     height: metaImage ? metaImage.height : 512,
   }
 
-  const canonical = pathname
-    ? `${site.siteMetadata.url}${pathname}`
-    : null
+  const canonical = pathname ? `${site.siteMetadata.url}${pathname}` : null
 
   return (
     <Helmet
@@ -85,26 +83,24 @@ function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
           content: metaDescription,
         },
       ]
-        .concat(
-           [
-            {
-              property: "og:image",
-              content: `${site.siteMetadata.url}${image.src}`,
-            },
-            {
-              property: "og:image:width",
-              content: image.width,
-            },
-            {
-              property: "og:image:height",
-              content: image.height,
-            },
-            {
-              name: "twitter:card",
-              content: "summary_large_image",
-            },
-          ]
-        )
+        .concat([
+          {
+            property: "og:image",
+            content: `${site.siteMetadata.url}${image.src}`,
+          },
+          {
+            property: "og:image:width",
+            content: image.width,
+          },
+          {
+            property: "og:image:height",
+            content: image.height,
+          },
+          {
+            name: "twitter:card",
+            content: "summary_large_image",
+          },
+        ])
         .concat(meta)}
     />
   )

@@ -1,27 +1,27 @@
-import { css } from "@emotion/core";
-import theme from "../components/theme";
-import Shevy from 'shevyjs';
+import { css } from "@emotion/core"
+import theme from "../components/theme"
+import Shevy from "shevyjs"
 
 const shevy = new Shevy({
-  baseFontSize: '1.125rem',
+  baseFontSize: "1.125rem",
   baseLineHeight: 1.6,
   baseFontScale: [3.157, 2.369, 1.777, 1.333, 1, 1],
   addMarginBottom: true,
   proximity: false,
-  proximityFactor: 0.5
-});
+  proximityFactor: 0.5,
+})
 
 export const headerTextStyle = theme => css`
   display: flex;
   min-height: calc(50vh - ${theme.pad * 2}px);
-  flex-direction:column;
+  flex-direction: column;
   justify-content: flex-end;
 
   h2 {
     font-size: 3.5rem;
     line-height: 1;
     margin: 0;
-    
+
     ${theme.mq.medium} {
       font-size: 5rem;
     }
@@ -34,7 +34,6 @@ export const headerTextStyle = theme => css`
     margin: 0;
     margin-bottom: ${shevy.baseSpacing(0.25)};
   }
-  
 `
 
 export const bodyStyle = theme => css`
@@ -67,9 +66,12 @@ export const bodyStyle = theme => css`
     line-height: ${shevy.h4.lineHeight};
     margin-bottom: ${shevy.h4.marginBottom};
   }
-  
 
-  p:not(.imageWrapper), ul, table, h3, h4 {
+  p:not(.imageWrapper),
+  ul,
+  table,
+  h3,
+  h4 {
     max-width: 45rem;
 
     + .imageWrapper {
@@ -84,17 +86,19 @@ export const bodyStyle = theme => css`
       max-width: 100%;
     }
 
-
-    + p:not(.imageWrapper), + ul, + table, + h3, + h4 {
+    + p:not(.imageWrapper),
+    + ul,
+    + table,
+    + h3,
+    + h4 {
       margin-top: ${shevy.baseSpacing(1.5)};
     }
-    
+
     > * {
       margin-bottom: ${theme.pad * 1.5}px;
     }
-  
-    ${theme.mq.medium} {
 
+    ${theme.mq.medium} {
       video {
         width: 30%;
         flex: 1;
@@ -105,7 +109,7 @@ export const bodyStyle = theme => css`
       margin-bottom: ${theme.pad}px;
       justify-content: center;
       align-items: center;
-      
+
       > * {
         margin-bottom: 0;
         margin-left: 0 !important;
@@ -116,22 +120,20 @@ export const bodyStyle = theme => css`
         }
       }
     }
-
   }
-
 
   ul {
     list-style-position: inside;
     padding-left: 0;
     list-style-type: none;
     li::before {
-      content:"– "
+      content: "– ";
     }
   }
 
   hr {
     margin-top: ${shevy.baseSpacing(2)};
-    border:  none;
+    border: none;
   }
 
   .linksOnly {
@@ -149,5 +151,4 @@ export const bodyStyle = theme => css`
       background-color: ${theme.colors.accent};
     }
   }
-  
 `

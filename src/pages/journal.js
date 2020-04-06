@@ -3,8 +3,7 @@ import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { css } from "@emotion/core"
-import Img from "gatsby-image";
-
+import Img from "gatsby-image"
 
 function JournalItem(props) {
   return (
@@ -12,7 +11,7 @@ function JournalItem(props) {
       <Link to={props.slug}>
         <article>
           <div className="image">
-            {props.image && <Img fluid={props.image.childImageSharp.fluid} /> }
+            {props.image && <Img fluid={props.image.childImageSharp.fluid} />}
           </div>
           <div className="text">
             <h2>{props.title}</h2>
@@ -28,13 +27,13 @@ function JournalItem(props) {
 export default ({ data }) => {
   return (
     <Layout>
-      <SEO title="journal"/>
+      <SEO title="journal" />
       <main className={"mainContent"}>
         <ul css={listStyle}>
           {data.allMarkdownRemark.edges.map(({ node }, index) => {
             let i = (1 + index).toString().padStart(2, "0")
             return (
-              <JournalItem 
+              <JournalItem
                 title={node.frontmatter.title}
                 image={node.frontmatter.image}
                 category={node.frontmatter.category}
@@ -51,16 +50,16 @@ export default ({ data }) => {
 
 const articleStyle = theme => css`
   margin-bottom: ${theme.pad}px;
-  ${theme.mq.large} { 
+  ${theme.mq.large} {
     margin-bottom: ${theme.pad * 3}px;
   }
 
   article {
-
-    .image, .text {
+    .image,
+    .text {
       width: 100%;
       ${theme.mq.medium} {
-        width:50%;
+        width: 50%;
       }
     }
 
@@ -78,14 +77,14 @@ const articleStyle = theme => css`
     .image {
       position: relative;
       overflow: hidden;
-      
+
       .gatsby-image-wrapper {
         display: inline-block;
         width: 100%;
         height: 100%;
 
         ${theme.mq.medium} {
-          transition: width 0.3s ${theme.bezier}, height 0.3s ${theme.bezier} ;
+          transition: width 0.3s ${theme.bezier}, height 0.3s ${theme.bezier};
           transform: translate(-50%, -50%);
           top: 50%;
           left: 50%;
@@ -139,7 +138,7 @@ const articleStyle = theme => css`
 
       .text {
         padding: ${theme.pad * 3}px;
-        
+
         h2 {
           margin-bottom: 1em;
         }

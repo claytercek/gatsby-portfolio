@@ -7,13 +7,13 @@ module.exports = {
     image: "/default-thumb.png",
     twitterUsername: "@claytercek",
     keywords: [
-      'development', 
-      'design', 
-      'web', 
-      'interface', 
-      'ui', 
-      'digital', 
-      'interactive'
+      "development",
+      "design",
+      "web",
+      "interface",
+      "ui",
+      "digital",
+      "interactive",
     ],
     menu: [
       {
@@ -59,7 +59,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/static/assets`,
-        name: 'assets',
+        name: "assets",
       },
     },
     {
@@ -91,6 +91,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-catch-links`
+    `gatsby-plugin-catch-links`,
   ],
 }

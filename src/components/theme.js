@@ -6,8 +6,8 @@ export const breakpoints = {
 
 // convert breakpoints to media queries
 Object.keys(breakpoints).map(key => {
-  breakpoints[key] = `@media (min-width: ${breakpoints[key]}px)`;
-  return;
+  breakpoints[key] = `@media (min-width: ${breakpoints[key]}px)`
+  return
 })
 
 const base = {
@@ -18,7 +18,7 @@ const base = {
   pad: 16,
   lineWidth: "1px",
   bezier: "cubic-bezier(.555, .205, .295, .975)",
-  easeIn: "cubic-bezier(.07,.58,.41,1)"
+  easeIn: "cubic-bezier(.07,.58,.41,1)",
 }
 
 export const dark = {
@@ -37,10 +37,10 @@ export const light = {
     colors: {
       primary: "#000000",
       bg: "#FFFFFF",
-      accent: "#2222FFDD"
+      accent: "#2222FFDD",
     },
     lineWidth: "1px",
   },
 }
 
-export default base;
+export default base

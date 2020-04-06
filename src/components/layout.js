@@ -4,7 +4,7 @@ import Header from "./header"
 import { ThemeProvider } from "emotion-theming"
 import { dark, light } from "./theme"
 import { Global, css } from "@emotion/core"
-import GlobalStyles from '../styles/global'
+import GlobalStyles from "../styles/global"
 
 require("typeface-montserrat")
 
@@ -30,7 +30,9 @@ const Layout = ({ children }) => {
     <ThemeProvider theme={darkMode ? dark : light}>
       <Global styles={GlobalStyles} />
       <Header />
-      <div css={contentStyle} className={"l-mainPad"}>{children}</div>
+      <div css={contentStyle} className={"l-mainPad"}>
+        {children}
+      </div>
     </ThemeProvider>
   )
 }

@@ -52,7 +52,7 @@ const itemStyle = theme => css`
         border-bottom: ${theme.lineWidth} solid ${theme.colors.primary};
         margin-left: ${theme.pad}px;
         flex: 1;
-        transform:translateY(10px);
+        transform: translateY(10px);
       }
     }
 
@@ -64,7 +64,7 @@ const itemStyle = theme => css`
         border-bottom: ${theme.lineWidth} solid ${theme.colors.primary};
         margin-right: ${theme.pad}px;
         flex: 1;
-        transform:translateY(10px);
+        transform: translateY(10px);
       }
     }
   }
@@ -73,9 +73,9 @@ const itemStyle = theme => css`
 export default ({ data }) => {
   return (
     <Layout>
-      <SEO title="404"/>
+      <SEO title="404" />
       <main>
-      <h4>error 404</h4>
+        <h4>error 404</h4>
       </main>
     </Layout>
   )

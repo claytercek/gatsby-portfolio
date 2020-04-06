@@ -1,4 +1,4 @@
-import { jsx, css } from '@emotion/core'
+import { jsx, css } from "@emotion/core"
 
 export default theme => css`
   html {
@@ -11,7 +11,7 @@ export default theme => css`
   body {
     margin: 0;
     padding: 0;
-    
+
     ${theme.mq.large} {
       padding-top: ${theme.pad * 2}px;
     }
