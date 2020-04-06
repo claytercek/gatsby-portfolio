@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Clay Tercek`,
-    description: `Clay Tercek's Personal Portfolio`,
+    description: `Developer and designer based in Philadelphia, specialising in rich interactive experiences both spacial and digital.`,
     author: "Clay Tercek",
     url: "https://claytercek.com",
     image: "/default-thumb.png",
