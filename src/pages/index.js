@@ -121,6 +121,7 @@ const itemStyle = theme => css`
       flex-direction: column;
       align-items: flex-start;
       line-height: 1;
+      transition: opacity 0.3s ${theme.bezier};
     }
 
     h2 {
