@@ -23,6 +23,7 @@ function JournalItem(props) {
           <div className="text">
             <h2>{props.title}</h2>
             <p>{props.excerpt}</p>
+            <p className="date">{props.date}</p>
             <h4>{props.category}</h4>
           </div>
         </article>
@@ -46,6 +47,7 @@ export default ({ data }) => {
                 category={node.frontmatter.category}
                 excerpt={node.excerpt}
                 slug={node.fields.slug}
+                date={node.frontmatter.date}
               />
             )
           })}
@@ -100,6 +102,7 @@ const articleStyle = theme => css`
           position: absolute !important;
         }
       }
+
     }
 
     .text {
@@ -127,6 +130,19 @@ const articleStyle = theme => css`
         letter-spacing: 0.06em;
       }
 
+
+      .date {
+        display: block;
+        background-color: ${theme.colors.bg};
+        position: absolute;
+        top: ${theme.pad * 2}px;
+        left: -5px;
+        margin: 0;
+        padding: ${theme.pad}px;
+        /* border: 1px solid ${theme.colors.accent}; */
+        box-shadow: 5px 5px ${theme.colors.accent};
+      }
+      
       h4 {
         order: 0;
         font-weight: 700;
@@ -178,7 +194,7 @@ export const query = graphql`
           }
           frontmatter {
             title
-            date
+            date(formatString: "MMMM DD YYYY")
             category
             image {
               childImageSharp {
