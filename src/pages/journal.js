@@ -34,7 +34,7 @@ function JournalItem(props) {
 export default ({ data }) => {
   return (
     <Layout>
-      <SEO title="journal" />
+      <SEO title="journal" pathname="/journal/"/>
       <main className={"mainContent"}>
         <ul css={listStyle}>
           {data.allMarkdownRemark.edges.map(({ node }, index) => {

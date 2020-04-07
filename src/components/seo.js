@@ -15,6 +15,7 @@ function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
             keywords
             siteUrl
             image
+            twitterUsername
           }
         }
       }
@@ -25,8 +26,8 @@ function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
 
   const image = {
     src: metaImage ? metaImage.src : site.siteMetadata.image,
-    width: metaImage ? metaImage.width : 1024,
-    height: metaImage ? metaImage.height : 512,
+    width: metaImage ? metaImage.width : 1024, // known width of default image
+    height: metaImage ? metaImage.height : 512, // known height of default image
   }
 
   const canonical = pathname ? `${site.siteMetadata.siteUrl}${pathname}` : null
@@ -55,6 +56,10 @@ function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
           content: metaDescription,
         },
         {
+          name: 'author',
+          content: site.siteMetadata.author,
+        },
+        {
           name: "keywords",
           content: site.siteMetadata.keywords.join(","),
         },
@@ -72,7 +77,7 @@ function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: site.siteMetadata.twitterUsername,
         },
         {
           name: `twitter:title`,

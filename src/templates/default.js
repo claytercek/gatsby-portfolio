@@ -15,6 +15,7 @@ export default ({ data }) => {
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
+        pathname={post.fields.slug}
         image={
           post.frontmatter.image
             ? {
@@ -63,6 +64,7 @@ export const query = graphql`
       excerpt
       fields {
         slug
+        type
       }
     }
   }

@@ -13,6 +13,7 @@ export default ({ data }) => {
   return (
     <Layout>
       <SEO
+        pathname="/about/"
       />
       <main css={bodyStyle} className="u-pageContent">
         <Reveal effect="fadeInUp">
