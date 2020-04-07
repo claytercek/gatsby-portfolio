@@ -6,6 +6,7 @@ backend:
 media_folder: static/assets
 public_folder: /assets
 site_url: https://claytercek.com
+show_preview_links: false
 
 collections:
   - name: "work"
@@ -18,7 +19,8 @@ collections:
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Draft", name: "draft", widget: "boolean" }
+      - { label: "Description", name: "description", widget: "text", required: false }
+      - { label: "Draft", name: "draft", widget: "boolean", default: "true" }
       - { label: "Thumbnail", name: "image", widget: "image" }
       - { label: "Content", name: "body", widget: "markdown" }
   - name: "journal"
@@ -31,7 +33,8 @@ collections:
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Draft", name: "draft", widget: "boolean" }
+      - { label: "Description", name: "description", widget: "text", required: false }
+      - { label: "Draft", name: "draft", widget: "boolean", default: "true" }
       - { label: "Thumbnail", name: "image", widget: "image" }
       - { label: "Content", name: "body", widget: "markdown" }
 
