@@ -31,24 +31,24 @@ module.exports = {
     ],
     social: [
       {
-        name: "GitHub",
-        slug: "#",
+        name: "Mail",
+        slug: "mailto:hello@claytercek.com",
       },
       {
-        name: "Instagram",
-        slug: "#",
+        name: "GitHub",
+        slug: "https://github.com/claytercek?tab=repositories",
       },
       {
         name: "LinkedIn",
-        slug: "#",
+        slug: "https://www.linkedin.com/in/claytercek/",
       },
       {
         name: "Twitter",
-        slug: "#",
+        slug: "https://twitter.com/claytercek",
       },
       {
-        name: "Email",
-        slug: "#",
+        name: "Instagram",
+        slug: "https://www.instagram.com/clay_tercek_art/?hl=en",
       },
     ],
   },

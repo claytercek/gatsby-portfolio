@@ -190,9 +190,7 @@ class Header extends Component {
 
   render() {
     var data = this.props.data.site.siteMetadata
-
-    const splitString = data.title.split(" ")
-
+    
     return (
       <Headroom
         pinStart={this.state.pinStart}
@@ -204,10 +202,10 @@ class Header extends Component {
           className={this.state.opened ? "l-mainPad opened" : "l-mainPad"}
         >
           <Link css={logoStyle} to={"/"}>
-            <span>{splitString[0]}</span> {splitString.slice(1).join(" ")}
+            {data.title}
           </Link>
           <button css={buttonStyle} onClick={this.toggleOpen} />
-          <nav css={navStyle}>
+          <nav css={navStyle} aria-label="Site Menu">
             <ul className="l-mainPad">
               {data.menu.map((link, index) => {
                 return (
