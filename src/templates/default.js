@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -6,10 +6,14 @@ import Reveal from "react-reveal/Reveal"
 import { headerTextStyle, bodyStyle } from "./default.style"
 import Img from "gatsby-image"
 import parse from "html-react-parser"
+import { addHoverClass } from "../components/utils"
 
 export default ({ data }) => {
   const post = data.markdownRemark
   const html = post.html.replace(/(\r\n|\n|\r)/gm, "")
+  
+  useHoverListener();
+
   return (
     <Layout>
       <SEO
@@ -41,6 +45,23 @@ export default ({ data }) => {
     </Layout>
   )
 }
+
+export const useHoverListener = () => {
+  useEffect(() => {
+
+    var links = document.querySelectorAll(".u-pageContent a");
+
+    links.forEach(link => {
+      link.addEventListener("mouseover", addHoverClass);
+    });
+    return () => (
+      links.forEach(link => {
+        link.removeEventListener("mouseover", addHoverClass);
+      })
+    )
+  });
+}
+
 
 export const query = graphql`
   query($slug: String!) {

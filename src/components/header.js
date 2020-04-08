@@ -2,6 +2,7 @@ import { Link, StaticQuery } from "gatsby"
 import React, { Component } from "react"
 import { css } from "@emotion/core"
 import Headroom from "react-headroom"
+import {addHoverClass} from "./utils"
 
 const headerStyle = theme => css`
   align-items: flex-start;
@@ -214,6 +215,7 @@ class Header extends Component {
                       activeClassName="u-underline-anim--active"
                       className="u-underline-anim"
                       to={link.slug}
+                      onMouseOver={addHoverClass}
                     >
                       {link.name}
                     </Link>

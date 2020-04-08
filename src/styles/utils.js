@@ -18,7 +18,7 @@ export default theme => css`
       transition: all 0.25s ${theme.bezier};
     }
 
-    &:hover {
+    &:hover, &.hover {
       &:after {
         width: 100%;
         left: 0;
@@ -35,7 +35,7 @@ export default theme => css`
       width: auto;
     }
 
-    &:hover {
+    &:hover, &.hover {
       &:after {
         width: auto;
         transition: none;

@@ -17,7 +17,7 @@ const base = {
   mq: breakpoints,
   pad: 16,
   lineWidth: "1px",
-  bezier: "cubic-bezier(.555, .205, .295, .975)",
+  bezier: "cubic-bezier(0.555, 0.205, 0.295, 0.975)",
   easeIn: "cubic-bezier(.07,.58,.41,1)",
 }
 

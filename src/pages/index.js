@@ -4,6 +4,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Img from "gatsby-image"
 import { css } from "@emotion/core"
+import { addHoverClass } from "../components/utils"
 
 function GridItem(props) {
   const [loaded, setLoaded] = useState(false)
@@ -23,7 +24,11 @@ function GridItem(props) {
           <div className="content abs">
             <h2>{props.title}</h2>
             <p>{props.excerpt}</p>
-            <h3 className="u-underline-anim--active">view more</h3>
+            <h3 
+              className="u-underline-anim--active" 
+              onMouseOver={addHoverClass}>
+                view more
+            </h3>
           </div>
         </article>
       </Link>

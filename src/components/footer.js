@@ -1,6 +1,7 @@
 import { Link, StaticQuery } from "gatsby"
 import React, { Component } from "react"
 import { css } from "@emotion/core"
+import {addHoverClass} from "./utils"
 
 function Footer(props) {
   return (
@@ -8,7 +9,12 @@ function Footer(props) {
       <nav aria-label="Social Links">
         <ul>
           {props.data.social.map((item, index) => (
-            <li><a href={item.slug} target="_blank" class="u-underline-anim">
+            <li><a 
+              href={item.slug} 
+              target="_blank" 
+              class="u-underline-anim"
+              onMouseOver={addHoverClass}
+            >
               {item.name}
             </a></li>
           ))}

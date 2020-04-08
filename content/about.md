@@ -2,3 +2,4 @@ I am an interactive developer and designer based in Philadelphia, specializing i
 
 My focus is on creating experiences that surprise, excite, and inspire, whether they be auditory or visual, virtual or physical. My favorite projects are those that seem as if they’re plucked from science fiction, blending physical and digital interaction to inform and entertain.
 
+Feel free to check out <a href="/tercek_resume_public.pdf" target="_blank">my résumé</a> or contact me via one of the links in the footer.

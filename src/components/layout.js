@@ -19,6 +19,7 @@ let contentStyle = theme => css`
 
   ${theme.mq.large} {
     margin-top: ${theme.pad * 2}px;
+    padding-bottom: ${theme.pad * 3}px;
   }
 `
 
