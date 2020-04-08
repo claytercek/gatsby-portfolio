@@ -166,6 +166,7 @@ const navWrapperStyle = theme => css`
 
     nav:first-child {
       margin-top: 0;
+      margin-bottom: 0;
     }
     .social {
       display: none;
