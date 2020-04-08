@@ -31,4 +31,8 @@ export default theme => css`
   body {
     background-color: ${theme.colors.bg};
   }
+
+  .headroom--scrolled {
+    transition: transform 200ms ${theme.bezier} !important;
+  }
 `
