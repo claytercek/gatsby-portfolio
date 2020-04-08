@@ -4,6 +4,101 @@ import { css } from "@emotion/core"
 import Headroom from "react-headroom"
 import {addHoverClass} from "./utils"
 
+class Header extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      opened: false,
+      pinStart: 0,
+    }
+    this.toggleOpen = this.toggleOpen.bind(this)
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
+  }
+
+  componentDidMount() {
+    this.updateWindowDimensions()
+    window.addEventListener("resize", this.updateWindowDimensions)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateWindowDimensions)
+  }
+
+  updateWindowDimensions() {
+    var pinStart = parseInt(
+      window.getComputedStyle(document.getElementById("js-top-pad")).paddingTop,
+      10
+    )
+    this.setState({ pinStart: pinStart })
+  }
+
+  toggleOpen() {
+    this.setState(state => ({
+      opened: !state.opened,
+    }))
+  }
+
+  render() {
+    var data = this.props.data.site.siteMetadata
+    
+    return (
+      <Headroom
+        pinStart={this.state.pinStart}
+        forcePin={this.state.opened}
+        wrapperStyle={{ zIndex: 10 }}
+      >
+        <header
+          css={headerStyle}
+          className={this.state.opened ? "l-mainPad opened" : "l-mainPad"}
+        >
+          <Link css={logoStyle} to={"/"}>
+            {data.title}
+          </Link>
+          <button css={buttonStyle} onClick={this.toggleOpen} />
+          <div css={navWrapperStyle}>
+            <nav aria-label="Site Menu">
+              <ul className="l-mainPad">
+                {data.menu.map((link, index) => {
+                  return (
+                    <li css={linkStyle}>
+                      <Link
+                        activeClassName="u-underline-anim--active"
+                        className="u-underline-anim"
+                        to={link.slug}
+                        onMouseOver={addHoverClass}
+                      >
+                        {link.name}
+                      </Link>
+                    </li>
+                  )
+                })}
+              </ul>
+            </nav>
+            <nav aria-label="Social Links" class="social">
+              <ul className="l-mainPad">
+                {data.social.map((link, index) => {
+                  return (
+                    <li css={socialLinkStyle}>
+                      <Link
+                        activeClassName="u-underline-anim--active"
+                        className="u-underline-anim"
+                        to={link.slug}
+                        onMouseOver={addHoverClass}
+                      >
+                        {link.name}
+                      </Link>
+                    </li>
+                  )
+                })}
+              </ul>
+            </nav>
+          </div>
+        </header>
+      </Headroom>
+    )
+  }
+}
+
 const headerStyle = theme => css`
   align-items: flex-start;
   justify-content: space-between;
@@ -26,7 +121,7 @@ const headerStyle = theme => css`
   }
 `
 
-const navStyle = theme => css`
+const navWrapperStyle = theme => css`
   position: absolute;
   top: 0;
   left: 0;
@@ -40,6 +135,7 @@ const navStyle = theme => css`
   flex-basis: 100%;
   transition: height 0.6s ${theme.bezier};
   overflow: hidden;
+  text-align: right;
 
   .opened & {
     height: 100vh;
@@ -49,7 +145,11 @@ const navStyle = theme => css`
     list-style-type: none;
     /* padding: 0; */
     margin: 0;
-    margin-top: 70px;
+  }
+
+  nav:first-child {
+    margin-top: 80px;
+    margin-bottom: 10px;
   }
 
   ${theme.mq.medium} {
@@ -58,12 +158,18 @@ const navStyle = theme => css`
     flex-basis: auto;
     ul {
       display: flex;
-      margin-top: 0;
       padding: 0;
     }
     overflow: visible;
     margin-right: -4px;
     padding-right: 4px;
+
+    nav:first-child {
+      margin-top: 0;
+    }
+    .social {
+      display: none;
+    }
   }
 `
 
@@ -72,11 +178,11 @@ const linkStyle = theme => css`
     color: ${theme.colors.primary};
     text-decoration: none;
     position: relative;
-    margin-bottom: 1.2rem;
-    padding-bottom: 0.5rem;
+    margin-bottom: 0.7rem;
+    padding-bottom: 0.1rem;
 
     &::after {
-      height: 15%;
+      height: 3px;
       margin-top: 5px;
       background: ${theme.colors.accent};
     }
@@ -91,9 +197,32 @@ const linkStyle = theme => css`
     font-size: 1em;
 
     a {
+      &::after {
+        height: 15%;
+      }
       margin-bottom: 0;
+      padding-bottom: 0.5rem;
     }
   }
+`
+
+const socialLinkStyle = theme => css`
+  a {
+    color: ${theme.colors.primary};
+    text-decoration: none;
+    margin-bottom: 0.8rem;
+
+    opacity: 1;
+    transition: opacity 0.1s ${theme.bezier};
+
+    &:hover {
+      opacity: 0.3;
+    }
+  }
+
+  text-transform: uppercase;
+  font-size: 0.9em;
+  font-weight: 400;
 `
 
 const logoStyle = theme => css`
@@ -155,81 +284,6 @@ const buttonStyle = theme => css`
   }
 `
 
-class Header extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      opened: false,
-      pinStart: 0,
-    }
-    this.toggleOpen = this.toggleOpen.bind(this)
-    this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
-  }
-
-  componentDidMount() {
-    this.updateWindowDimensions()
-    window.addEventListener("resize", this.updateWindowDimensions)
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updateWindowDimensions)
-  }
-
-  updateWindowDimensions() {
-    var pinStart = parseInt(
-      window.getComputedStyle(document.getElementById("js-top-pad")).paddingTop,
-      10
-    )
-    this.setState({ pinStart: pinStart })
-  }
-
-  toggleOpen() {
-    this.setState(state => ({
-      opened: !state.opened,
-    }))
-  }
-
-  render() {
-    var data = this.props.data.site.siteMetadata
-    
-    return (
-      <Headroom
-        pinStart={this.state.pinStart}
-        forcePin={this.state.opened}
-        wrapperStyle={{ zIndex: 10 }}
-      >
-        <header
-          css={headerStyle}
-          className={this.state.opened ? "l-mainPad opened" : "l-mainPad"}
-        >
-          <Link css={logoStyle} to={"/"}>
-            {data.title}
-          </Link>
-          <button css={buttonStyle} onClick={this.toggleOpen} />
-          <nav css={navStyle} aria-label="Site Menu">
-            <ul className="l-mainPad">
-              {data.menu.map((link, index) => {
-                return (
-                  <li css={linkStyle}>
-                    <Link
-                      activeClassName="u-underline-anim--active"
-                      className="u-underline-anim"
-                      to={link.slug}
-                      onMouseOver={addHoverClass}
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                )
-              })}
-            </ul>
-          </nav>
-        </header>
-      </Headroom>
-    )
-  }
-}
-
 export default () => (
   <StaticQuery
     query={graphql`
@@ -238,6 +292,10 @@ export default () => (
           siteMetadata {
             title
             menu {
+              name
+              slug
+            }
+            social {
               name
               slug
             }
