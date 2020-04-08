@@ -140,6 +140,10 @@ export const bodyStyle = theme => css`
     a {
       display: table;
       margin-bottom: ${shevy.baseSpacing(0.25)};
+
+      &::after {
+        bottom: 0;
+      }
     }
   }
 
@@ -148,6 +152,7 @@ export const bodyStyle = theme => css`
       left: 0;
       right: 0;
       height: 2px;
+      bottom: 8%;
       background-color: ${theme.colors.accent};
     }
   }
