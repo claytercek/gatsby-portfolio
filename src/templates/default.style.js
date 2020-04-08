@@ -84,6 +84,7 @@ export const bodyStyle = theme => css`
 
     video {
       max-width: 100%;
+      display: block;
     }
 
     + p:not(.imageWrapper),
