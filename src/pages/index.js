@@ -41,7 +41,7 @@ function GridItem(props) {
 export default ({ data }) => {
   return (
     <Layout>
-      <SEO pathname="/work/" />
+      <SEO pathname="/" />
       <main>
         <ul css={listStyle}>
           {data.allMarkdownRemark.edges.map(({ node }, index) => {
