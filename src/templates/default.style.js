@@ -155,5 +155,11 @@ export const bodyStyle = theme => css`
       bottom: 8%;
       background-color: ${theme.colors.accent};
     }
+
+    transition: color 0.1s;
+
+    &:active {
+      color: ${theme.colors.accent} !important;
+    }
   }
 `

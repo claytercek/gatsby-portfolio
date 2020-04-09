@@ -100,6 +100,12 @@ const itemStyle = theme => css`
     }
   }
 
+  a:active {
+    .gatsby-image-wrapper {
+      opacity: 0.8;
+    }
+  }
+
   .abs {
     ${theme.mq.medium} {
       position: absolute !important;
@@ -128,7 +134,12 @@ const itemStyle = theme => css`
       flex-direction: column;
       align-items: flex-start;
       line-height: 1;
-      transition: opacity 0.3s ${theme.bezier};
+      transition: opacity 0.3s ${theme.bezier} background-color 0.3s ease;
+
+      &:active {
+        transition: background-color 0.1s ease;
+        background-color: ${theme.colors.accentDim};
+      }
     }
 
     h2 {
@@ -183,18 +194,15 @@ const itemStyle = theme => css`
   }
 
   ${theme.mq.medium} {
-    &:nth-child(5n-1) {
+    &:nth-of-type(5n-1) {
       grid-column: span 2;
       grid-row: span 2;
     }
 
-    &:nth-child(5n-3),
-    &:nth-child(6n) {
+    &:nth-of-type(5n-3),
+    &:nth-of-type(6n) {
       grid-row: span 2;
     }
-  }
-
-  ${theme.mq.large} {
   }
 `
 

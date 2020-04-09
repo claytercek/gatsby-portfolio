@@ -26,6 +26,9 @@ export default theme => css`
       bottom: -50%;
       background: ${theme.colors.primary};
     }
+
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+	  tap-highlight-color: rgba(0,0,0,0);
   }
 
   body {
@@ -35,4 +38,6 @@ export default theme => css`
   .headroom--scrolled {
     transition: transform 200ms ${theme.bezier} !important;
   }
+
+  
 `

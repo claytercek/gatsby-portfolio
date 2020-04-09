@@ -90,6 +90,15 @@ const articleStyle = theme => css`
       }
     }
 
+    :active {
+      .image {
+        .gatsby-image-wrapper {
+          opacity: 0.8;
+          transition: opacity 0.1s ${theme.bezier};
+        }
+      }
+    }
+
     .image {
       position: relative;
       overflow: hidden;

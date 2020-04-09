@@ -184,11 +184,22 @@ const linkStyle = theme => css`
     position: relative;
     margin-bottom: 0.7rem;
     padding-bottom: 0.1rem;
+    transition: color 0.3s ${theme.bezier};
 
     &::after {
-      height: 3px;
-      margin-top: 5px;
+      height: 0px;
+      /* margin-top: 5px; */
       background: ${theme.colors.accent};
+    }
+
+    &:hover {
+      color: ${theme.colors.accent};
+      transition: color 0.1s ${theme.bezier};
+    }
+
+    &:active {
+      color: ${theme.colors.accent} !important;
+      transition: color 0.1s;
     }
   }
 
@@ -204,6 +215,10 @@ const linkStyle = theme => css`
       &::after {
         height: 15%;
       }
+      &:hover {
+        color: ${theme.colors.primary};
+      }
+
       margin-bottom: 0;
       padding-bottom: 0.5rem;
     }
@@ -237,6 +252,12 @@ const logoStyle = theme => css`
   color: ${theme.colors.primary};
   span {
     font-weight: 700;
+  }
+
+  transition: color 0.1s;
+
+  &:active {
+    color: ${theme.colors.accent} !important;
   }
 `
 
