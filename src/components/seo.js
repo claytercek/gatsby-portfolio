@@ -56,7 +56,7 @@ function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
           content: metaDescription,
         },
         {
-          name: 'author',
+          name: "author",
           content: site.siteMetadata.author,
         },
         {

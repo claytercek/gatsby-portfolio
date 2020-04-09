@@ -1,7 +1,7 @@
-import { Link, StaticQuery } from "gatsby"
-import React, { Component } from "react"
+import { StaticQuery, graphql } from "gatsby"
+import React from "react"
 import { css } from "@emotion/core"
-import {addHoverClass} from "./utils"
+import { addHoverClass } from "./utils"
 
 function Footer(props) {
   return (
@@ -9,14 +9,18 @@ function Footer(props) {
       <nav aria-label="Social Links">
         <ul>
           {props.data.social.map((item, index) => (
-            <li><a 
-              href={item.slug} 
-              target="_blank" 
-              class="u-underline-anim"
-              onMouseOver={addHoverClass}
-            >
-              {item.name}
-            </a></li>
+            <li>
+              <a
+                href={item.slug}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="u-underline-anim"
+                onMouseOver={addHoverClass}
+                onFocus={addHoverClass}
+              >
+                {item.name}
+              </a>
+            </li>
           ))}
         </ul>
       </nav>
@@ -42,7 +46,8 @@ const footerStyle = theme => css`
     margin: 0;
   }
 
-  .copyright, nav a {
+  .copyright,
+  nav a {
     font-weight: 400;
     text-transform: uppercase;
     font-size: 0.9rem;

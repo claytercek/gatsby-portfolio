@@ -24,10 +24,12 @@ function GridItem(props) {
           <div className="content abs">
             <h2>{props.title}</h2>
             <p>{props.excerpt}</p>
-            <h3 
-              className="u-underline-anim--active" 
-              onMouseOver={addHoverClass}>
-                view more
+            <h3 // eslint-disable-line jsx-a11y/no-noninteractive-element-interactions
+              className="u-underline-anim--active"
+              onMouseOver={addHoverClass}
+              onFocus={addHoverClass}
+            >
+              view more
             </h3>
           </div>
         </article>
@@ -39,7 +41,7 @@ function GridItem(props) {
 export default ({ data }) => {
   return (
     <Layout>
-      <SEO pathname="/work/"/>
+      <SEO pathname="/work/" />
       <main>
         <ul css={listStyle}>
           {data.allMarkdownRemark.edges.map(({ node }, index) => {

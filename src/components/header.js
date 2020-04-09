@@ -1,8 +1,8 @@
-import { Link, StaticQuery } from "gatsby"
+import { Link, StaticQuery, graphql } from "gatsby"
 import React, { Component } from "react"
 import { css } from "@emotion/core"
 import Headroom from "react-headroom"
-import {addHoverClass} from "./utils"
+import { addHoverClass } from "./utils"
 
 class Header extends Component {
   constructor(props) {
@@ -40,7 +40,7 @@ class Header extends Component {
 
   render() {
     var data = this.props.data.site.siteMetadata
-    
+
     return (
       <Headroom
         pinStart={this.state.pinStart}
@@ -66,6 +66,7 @@ class Header extends Component {
                         className="u-underline-anim"
                         to={link.slug}
                         onMouseOver={addHoverClass}
+                        onFocus={addHoverClass}
                       >
                         {link.name}
                       </Link>
@@ -84,6 +85,7 @@ class Header extends Component {
                         className="u-underline-anim"
                         to={link.slug}
                         onMouseOver={addHoverClass}
+                        onFocus={addHoverClass}
                       >
                         {link.name}
                       </Link>

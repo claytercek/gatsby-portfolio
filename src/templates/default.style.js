@@ -1,5 +1,4 @@
 import { css } from "@emotion/core"
-import theme from "../components/theme"
 import Shevy from "shevyjs"
 
 const shevy = new Shevy({

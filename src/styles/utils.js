@@ -1,4 +1,4 @@
-import { jsx, css, keyframes } from "@emotion/core"
+import { css, keyframes } from "@emotion/core"
 
 export default theme => css`
   .u-underline-anim,
@@ -18,7 +18,8 @@ export default theme => css`
       transition: all 0.25s ${theme.bezier};
     }
 
-    &:hover, &.hover {
+    &:hover,
+    &.hover {
       &:after {
         width: 100%;
         left: 0;
@@ -35,7 +36,8 @@ export default theme => css`
       width: auto;
     }
 
-    &:hover, &.hover {
+    &:hover,
+    &.hover {
       &:after {
         width: auto;
         transition: none;

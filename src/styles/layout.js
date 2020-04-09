@@ -1,4 +1,4 @@
-import { jsx, css } from "@emotion/core"
+import { css } from "@emotion/core"
 
 export default theme => css`
   html {

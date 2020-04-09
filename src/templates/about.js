@@ -3,8 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Reveal from "react-reveal/Reveal"
-import { headerTextStyle, bodyStyle } from "./default.style"
-import Img from "gatsby-image"
+import { bodyStyle } from "./default.style"
 import { css } from "@emotion/core"
 import parse from "html-react-parser"
 import { useHoverListener } from "./default"
@@ -13,14 +12,15 @@ export default ({ data }) => {
   const post = data.markdownRemark
   const html = post.html.replace(/(\r\n|\n|\r)/gm, "")
 
-  useHoverListener();
+  useHoverListener()
 
   return (
     <Layout>
-      <SEO
-        pathname="/about/"
-      />
-      <main css={(theme) => [bodyStyle(theme), aboutStyle(theme)]} className="u-pageContent">
+      <SEO pathname="/about/" />
+      <main
+        css={theme => [bodyStyle(theme), aboutStyle(theme)]}
+        className="u-pageContent"
+      >
         <Reveal effect="fadeInUp">
           <div className="aboutText">
             <h2>I'm Clay</h2>
@@ -48,7 +48,7 @@ const aboutStyle = theme => css`
         bottom: 0;
         width: 50px;
         left: 0%;
-        height:8px;
+        height: 8px;
         background-color: ${theme.colors.accent};
       }
 

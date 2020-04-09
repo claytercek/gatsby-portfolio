@@ -11,8 +11,8 @@ import { addHoverClass } from "../components/utils"
 export default ({ data }) => {
   const post = data.markdownRemark
   const html = post.html.replace(/(\r\n|\n|\r)/gm, "")
-  
-  useHoverListener();
+
+  useHoverListener()
 
   return (
     <Layout>
@@ -48,20 +48,17 @@ export default ({ data }) => {
 
 export const useHoverListener = () => {
   useEffect(() => {
-
-    var links = document.querySelectorAll(".u-pageContent a");
+    var links = document.querySelectorAll(".u-pageContent a")
 
     links.forEach(link => {
-      link.addEventListener("mouseover", addHoverClass);
-    });
-    return () => (
+      link.addEventListener("mouseover", addHoverClass)
+    })
+    return () =>
       links.forEach(link => {
-        link.removeEventListener("mouseover", addHoverClass);
+        link.removeEventListener("mouseover", addHoverClass)
       })
-    )
-  });
+  })
 }
-
 
 export const query = graphql`
   query($slug: String!) {

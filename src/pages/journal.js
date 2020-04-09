@@ -8,17 +8,22 @@ import Img from "gatsby-image"
 function JournalItem(props) {
   const [loaded, setLoaded] = useState(false)
   return (
-    <li {...props} css={articleStyle} className={loaded ? "loaded fadeInUp" : ""}>
+    <li
+      {...props}
+      css={articleStyle}
+      className={loaded ? "loaded fadeInUp" : ""}
+    >
       <Link to={props.slug}>
         <article>
           <div className="image">
-            {props.image && 
-              <Img 
-                fluid={props.image.childImageSharp.fluid} 
+            {props.image && (
+              <Img
+                fluid={props.image.childImageSharp.fluid}
                 onLoad={() => {
                   setLoaded(true)
                 }}
-              />}
+              />
+            )}
           </div>
           <div className="text">
             <h2>{props.title}</h2>
@@ -35,11 +40,11 @@ function JournalItem(props) {
 export default ({ data }) => {
   return (
     <Layout>
-      <SEO title="journal" pathname="/journal/"/>
+      <SEO title="journal" pathname="/journal/" />
       <main className={"mainContent"}>
         <ul css={listStyle}>
           {data.allMarkdownRemark.edges.map(({ node }, index) => {
-            let i = (1 + index).toString().padStart(2, "0")
+            // let i = (1 + index).toString().padStart(2, "0")
             return (
               <JournalItem
                 title={node.frontmatter.title}

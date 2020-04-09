@@ -6,8 +6,7 @@ export const breakpoints = {
 
 // convert breakpoints to media queries
 Object.keys(breakpoints).map(key => {
-  breakpoints[key] = `@media (min-width: ${breakpoints[key]}px)`
-  return
+  return (breakpoints[key] = `@media (min-width: ${breakpoints[key]}px)`)
 })
 
 const base = {
