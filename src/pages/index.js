@@ -134,7 +134,7 @@ const itemStyle = theme => css`
       flex-direction: column;
       align-items: flex-start;
       line-height: 1;
-      transition: opacity 0.3s ${theme.bezier} background-color 0.3s ease;
+      transition: opacity 0.3s ${theme.bezier}, background-color 0.3s ease;
 
       &:active {
         transition: background-color 0.1s ease;
