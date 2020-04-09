@@ -115,7 +115,7 @@ export const bodyStyle = theme => css`
         margin-left: 0 !important;
         margin-right: 0 !important;
 
-        &:not(:first-child) {
+        &:not(:first-of-type) {
           margin-left: ${theme.pad}px !important;
         }
       }

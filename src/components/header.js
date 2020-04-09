@@ -60,7 +60,7 @@ class Header extends Component {
               <ul className="l-mainPad">
                 {data.menu.map((link, index) => {
                   return (
-                    <li css={linkStyle}>
+                    <li css={linkStyle} key={link.slug}>
                       <Link
                         activeClassName="u-underline-anim--active"
                         className="u-underline-anim"
@@ -75,20 +75,21 @@ class Header extends Component {
                 })}
               </ul>
             </nav>
-            <nav aria-label="Social Links" class="social">
+            <nav aria-label="Social Links" className="social">
               <ul className="l-mainPad">
                 {data.social.map((link, index) => {
                   return (
-                    <li css={socialLinkStyle}>
-                      <Link
-                        activeClassName="u-underline-anim--active"
+                    <li css={socialLinkStyle} key={link.slug}>
+                      <a
                         className="u-underline-anim"
-                        to={link.slug}
+                        href={link.slug}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         onMouseOver={addHoverClass}
                         onFocus={addHoverClass}
                       >
                         {link.name}
-                      </Link>
+                      </a>
                     </li>
                   )
                 })}
@@ -149,7 +150,7 @@ const navWrapperStyle = theme => css`
     margin: 0;
   }
 
-  nav:first-child {
+  nav:first-of-type {
     margin-top: 80px;
     margin-bottom: 10px;
   }
@@ -166,7 +167,7 @@ const navWrapperStyle = theme => css`
     margin-right: -4px;
     padding-right: 4px;
 
-    nav:first-child {
+    nav:first-of-type {
       margin-top: 0;
       margin-bottom: 0;
     }

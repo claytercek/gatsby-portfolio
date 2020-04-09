@@ -9,12 +9,12 @@ function Footer(props) {
       <nav aria-label="Social Links">
         <ul>
           {props.data.social.map((item, index) => (
-            <li>
+            <li key={item.slug}>
               <a
                 href={item.slug}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="u-underline-anim"
+                className="u-underline-anim"
                 onMouseOver={addHoverClass}
                 onFocus={addHoverClass}
               >
@@ -24,7 +24,7 @@ function Footer(props) {
           ))}
         </ul>
       </nav>
-      <p class="copyright">&copy; Clay Tercek 2020</p>
+      <p className="copyright">&copy; Clay Tercek 2020</p>
     </footer>
   )
 }
