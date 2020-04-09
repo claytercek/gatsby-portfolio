@@ -7,6 +7,7 @@ import { bodyStyle } from "./default.style"
 import { css } from "@emotion/core"
 import parse from "html-react-parser"
 import { useHoverListener } from "./default"
+import Image from "gatsby-image"
 
 export default ({ data }) => {
   const post = data.markdownRemark
@@ -22,6 +23,9 @@ export default ({ data }) => {
         className="u-pageContent"
       >
         <Reveal effect="fadeInUp">
+          <div className="aboutImage">
+            <Image fluid={post.frontmatter.image.childImageSharp.fluid}/>
+          </div>
           <div className="aboutText">
             <h2>I'm Clay</h2>
             {parse(html)}
@@ -33,9 +37,32 @@ export default ({ data }) => {
 }
 
 const aboutStyle = theme => css`
+  ${theme.mq.medium} {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-items: center;
+    margin-top: ${theme.pad * 3}px;
+  }
+  .aboutImage {
+    flex: 1;
+    max-width: 22.5rem;
+    /* min-width: 20rem; */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3rem;
+    ${theme.mq.medium} {
+      margin-right: ${theme.pad * 3}px;
+    }
+  }
   .aboutText {
+    flex: 1;
+    max-width: 45rem;
     h2 {
-      font-size: 3.5rem;
+      font-size: 3rem;
+      ${theme.mq.medium} {
+        font-size: 3.5rem;
+      }
       line-height: 1;
       margin: 0;
       padding-bottom: ${theme.pad * 2}px;
@@ -63,6 +90,15 @@ export const query = graphql`
   query($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
+      frontmatter {
+        image {
+          childImageSharp {
+            fluid(maxWidth: 1024, quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
     }
   }
 `
