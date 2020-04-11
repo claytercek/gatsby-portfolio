@@ -93,7 +93,7 @@ export const query = graphql`
       frontmatter {
         image {
           childImageSharp {
-            fluid(maxWidth: 1024, quality: 100) {
+            fluid(maxWidth: 1024, quality: 100, cropFocus: CENTER) {
               ...GatsbyImageSharpFluid
             }
           }

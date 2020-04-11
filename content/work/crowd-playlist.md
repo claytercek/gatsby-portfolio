@@ -1,12 +1,15 @@
 ---
 title: crowd playlist
 subtitle:
-date: 2019-06-01
+date: 2018-06-01
 draft: false
 image: /assets/crowd_wave.png
 ---
 
 ## crowd-playlist is a web-app allowing users to collaborate and build a playlist together in real time, using the spotify api.
+
+[visit site](http://cly.li/live/crowd)
+[view code](https://github.com/claytercek/crowd-playlist)
 
 My goal with this project was to create a service that my friends and I could use whenever we’re hanging out and listening to music. Instead of one person controlling the aux cord, crowd-playlist allows people to create live playlists together. Users can add any song from the Spotify library to the shared playlist, and it even game-ifies the process by allowing anyone in the group to vote any track up or down the queue.
 
