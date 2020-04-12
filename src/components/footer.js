@@ -5,26 +5,28 @@ import { addHoverClass } from "./utils"
 
 function Footer(props) {
   return (
-    <footer css={footerStyle} className="l-mainPad">
-      <nav aria-label="Social Links">
-        <ul>
-          {props.data.social.map((item, index) => (
-            <li key={item.slug}>
-              <a
-                href={item.slug}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="u-underline-anim"
-                onMouseOver={addHoverClass}
-                onFocus={addHoverClass}
-              >
-                {item.name}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-      <p className="copyright">&copy; Clay Tercek 2020</p>
+    <footer css={footerStyle}>
+      <div className="wrapper l-mainPad">
+        <nav aria-label="Social Links">
+          <ul>
+            {props.data.social.map((item, index) => (
+              <li key={item.slug}>
+                <a
+                  href={item.slug}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="u-underline-anim"
+                  onMouseOver={addHoverClass}
+                  onFocus={addHoverClass}
+                >
+                  {item.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <p className="copyright">&copy; Clay Tercek 2020</p>
+      </div>
     </footer>
   )
 }
@@ -32,13 +34,16 @@ function Footer(props) {
 const footerStyle = theme => css`
   background-color: ${theme.colors.primary};
   color: ${theme.colors.bg};
+  .wrapper {
+    padding-top: ${theme.pad * 2}px;
+    padding-bottom: calc(${theme.pad * 2}px - 0.25rem);
+    margin: 0 auto;
 
-  padding-top: ${theme.pad * 2}px;
-  padding-bottom: calc(${theme.pad * 2}px - 0.25rem);
-
-  ${theme.mq.medium} {
-    display: flex;
-    justify-content: space-between;
+    ${theme.mq.medium} {
+      display: flex;
+      justify-content: space-between;
+    }
+    
   }
 
   margin: 0;

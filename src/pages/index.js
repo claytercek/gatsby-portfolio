@@ -15,13 +15,12 @@ function GridItem(props) {
           {props.image && (
             <Img
               fluid={props.image.childImageSharp.fluid}
-              className="abs"
               onLoad={() => {
                 setLoaded(true)
               }}
             />
           )}
-          <div className="content abs">
+          <div className="content">
             <h2>{props.title}</h2>
             <p>{props.excerpt}</p>
             <h3 // eslint-disable-line jsx-a11y/no-noninteractive-element-interactions
@@ -64,7 +63,7 @@ export default ({ data }) => {
                 <GridItem
                   title={node.frontmatter.title}
                   image={node.frontmatter.image}
-                  excerpt={node.frontmatter.description || node.excerpt}
+                  excerpt={node.excerpt}
                   slug={node.fields.slug}
                   key={node.id}
                   className={last_index_in_row.includes(listIndex) ? "break" : ""}
@@ -108,8 +107,8 @@ const itemStyle = theme => css`
 
     ${theme.mq.large} {
       height: auto;
-      min-height: 20vw;
       display: block;
+      min-height: calc(300px - 5vw);
     }
   }
 
@@ -127,7 +126,8 @@ const itemStyle = theme => css`
     width: 100%;
     margin-bottom: ${theme.pad}px;
     break-after: avoid;
-    break-inside: avoid-column;
+    column-break-after:avoid;
+    break-inside: avoid;
   }
 
   &.break {
@@ -236,7 +236,6 @@ export const query = graphql`
           }
           frontmatter {
             title
-            description
             image {
               childImageSharp {
                 fluid(maxWidth: 800, cropFocus: CENTER) {
