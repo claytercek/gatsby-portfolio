@@ -1,7 +1,7 @@
 ---
 title: crowd playlist
 subtitle:
-date: 2018-06-01
+date: 2019-06-01
 draft: false
 image: /assets/crowd_wave.png
 ---
