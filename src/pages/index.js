@@ -5,6 +5,7 @@ import SEO from "../components/seo"
 import Img from "gatsby-image"
 import { css } from "@emotion/core"
 import { addHoverClass } from "../components/utils"
+import Masonry from 'react-masonry-css'
 
 function GridItem(props) {
   const [loaded, setLoaded] = useState(false)
@@ -37,44 +38,51 @@ function GridItem(props) {
   )
 }
 
+const breakpointColumnsObj = {
+  default: 3,
+  1080: 2,
+  768: 1,
+};
+
 export default ({ data }) => {
 
   // logic so that the more recent items 
   // appear at the top of each column on desktop
 
-  var items_split_3 = [[], [], []];
-  var last_index_in_row = [ 0, 0, 0 ];
-  for (var index in data.allMarkdownRemark.edges) {
-    let el = data.allMarkdownRemark.edges[index];
-    el.listIndex = index;
-    items_split_3[index % 3].push(el);
-    last_index_in_row[index % 3] = index;
-  }
 
-  items_split_3 = [].concat(...items_split_3);
+  const [hide, setHide] = useState(false);
 
   return (
     <Layout>
       <SEO pathname="/" />
+      <input
+        name="isGoing"
+        type="checkbox"
+        checked={hide}
+        onChange={() => setHide(!hide)} />
       <main>
-        <ul css={listStyle}>
-            {items_split_3.map(({node, listIndex}, index) => {
-              return (
-                <GridItem
-                  title={node.frontmatter.title}
-                  image={node.frontmatter.image}
-                  excerpt={node.excerpt}
-                  slug={node.fields.slug}
-                  key={node.id}
-                  className={last_index_in_row.includes(listIndex) ? "break" : ""}
-                  style={{
-                    order: listIndex,
-                    animationDelay: parseInt(listIndex) * 100 + "ms" 
-                  }}
-                />
-              )
-            })}
-        </ul>
+      <Masonry
+        breakpointCols={breakpointColumnsObj}
+        role="list"
+        className="my-masonry-grid"
+        columnClassName="my-masonry-grid_column"
+        css={listStyle}>
+          {data.allMarkdownRemark.edges.map(({node}, index) => {
+            return (
+              <GridItem
+                role="listItem"
+                title={node.frontmatter.title}
+                image={node.frontmatter.image}
+                excerpt={node.excerpt}
+                slug={node.fields.slug}
+                key={node.id}
+                style={{
+                  animationDelay: parseInt(index) * 100 + "ms" 
+                }}
+              />
+            )
+          })}
+        </Masonry>
       </main>
     </Layout>
   )
@@ -88,11 +96,12 @@ const listStyle = theme => css`
   padding: 0;
 
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  margin-left: -${theme.pad}px; /* gutter size offset */
 
-  ${theme.mq.large} {
-    display: block;
-    columns: 3;
+  .my-masonry-grid_column {
+    padding-left: ${theme.pad}px; /* gutter size */
+    background-clip: padding-box;
   }
 `
 
@@ -105,7 +114,7 @@ const itemStyle = theme => css`
   .gatsby-image-wrapper {
     height: 50vw;
 
-    ${theme.mq.large} {
+    ${theme.mq.medium} {
       height: auto;
       display: block;
       min-height: calc(300px - 5vw);
@@ -118,7 +127,7 @@ const itemStyle = theme => css`
     }
   }
 
-  ${theme.mq.large} {
+  ${theme.mq.medium} {
     display: inline-block !important;
     margin: 0;
     padding: 0;
@@ -126,13 +135,7 @@ const itemStyle = theme => css`
     width: 100%;
     margin-bottom: ${theme.pad}px;
     break-after: avoid;
-    column-break-after:avoid;
     break-inside: avoid;
-  }
-
-  &.break {
-    break-after:column !important;
-    display:block !important;
   }
 
   .content {
@@ -140,7 +143,7 @@ const itemStyle = theme => css`
     font-size: 1rem;
     padding: ${theme.pad}px;
 
-    ${theme.mq.large} {
+    ${theme.mq.medium} {
       position: absolute !important;
       left: 0;
       right: 0;
@@ -198,7 +201,7 @@ const itemStyle = theme => css`
         height: 1px;
         background-color: black;
 
-        ${theme.mq.large} {
+        ${theme.mq.medium} {
           background-color: white;
         }
       }
