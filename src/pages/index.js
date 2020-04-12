@@ -39,7 +39,7 @@ function GridItem(props) {
 }
 
 export default ({ data }) => {
-  
+
   // logic so that the more recent items 
   // appear at the top of each column on desktop
 
@@ -52,7 +52,7 @@ export default ({ data }) => {
     last_index_in_row[index % 3] = index;
   }
 
-  items_split_3 = items_split_3.flat();
+  items_split_3 = [].concat(...items_split_3);
 
   return (
     <Layout>
