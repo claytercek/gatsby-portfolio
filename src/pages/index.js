@@ -9,7 +9,7 @@ import { addHoverClass } from "../components/utils"
 function GridItem(props) {
   const [loaded, setLoaded] = useState(false)
   return (
-    <li {...props} css={itemStyle} className={loaded ? "loaded fadeInUp" : ""}>
+    <li {...props} css={itemStyle} className={(loaded ? "loaded fadeInUp " : "") + props.className}>
       <Link to={props.slug}>
         <article>
           {props.image && (
@@ -39,23 +39,42 @@ function GridItem(props) {
 }
 
 export default ({ data }) => {
+  
+  // logic so that the more recent items 
+  // appear at the top of each column on desktop
+
+  var items_split_3 = [[], [], []];
+  var last_index_in_row = [ 0, 0, 0 ];
+  for (var index in data.allMarkdownRemark.edges) {
+    let el = data.allMarkdownRemark.edges[index];
+    el.listIndex = index;
+    items_split_3[index % 3].push(el);
+    last_index_in_row[index % 3] = index;
+  }
+
+  items_split_3 = items_split_3.flat();
+
   return (
     <Layout>
       <SEO pathname="/" />
       <main>
         <ul css={listStyle}>
-          {data.allMarkdownRemark.edges.map(({ node }, index) => {
-            return (
-              <GridItem
-                title={node.frontmatter.title}
-                image={node.frontmatter.image}
-                excerpt={node.frontmatter.description || node.excerpt}
-                slug={node.fields.slug}
-                key={node.id}
-                style={{ animationDelay: index * 100 + "ms" }}
-              />
-            )
-          })}
+            {items_split_3.map(({node, listIndex}, index) => {
+              return (
+                <GridItem
+                  title={node.frontmatter.title}
+                  image={node.frontmatter.image}
+                  excerpt={node.frontmatter.description || node.excerpt}
+                  slug={node.fields.slug}
+                  key={node.id}
+                  className={last_index_in_row.includes(listIndex) ? "break" : ""}
+                  style={{
+                    order: listIndex,
+                    animationDelay: parseInt(listIndex) * 100 + "ms" 
+                  }}
+                />
+              )
+            })}
         </ul>
       </main>
     </Layout>
@@ -68,35 +87,29 @@ const listStyle = theme => css`
   list-style-type: none;
   margin: 0;
   padding: 0;
-  > * {
-    display: block;
-  }
 
-  grid-auto-flow: dense;
-
-  ${theme.mq.medium} {
-    display: grid;
-    grid-gap: ${theme.pad}px;
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 30vw;
-  }
+  display: flex;
+  flex-direction: column;
 
   ${theme.mq.large} {
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 20vw;
+    display: block;
+    columns: 3;
   }
 `
 
 const itemStyle = theme => css`
   position: relative;
-
+  display: block;
   opacity: 0;
+  margin: 0;
 
   .gatsby-image-wrapper {
     height: 50vw;
 
-    ${theme.mq.medium} {
+    ${theme.mq.large} {
       height: auto;
+      min-height: 20vw;
+      display: block;
     }
   }
 
@@ -106,15 +119,20 @@ const itemStyle = theme => css`
     }
   }
 
-  .abs {
-    ${theme.mq.medium} {
-      position: absolute !important;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      top: 0;
-      z-index: -1;
-    }
+  ${theme.mq.large} {
+    display: inline-block !important;
+    margin: 0;
+    padding: 0;
+    background-color: red;
+    width: 100%;
+    margin-bottom: ${theme.pad}px;
+    break-after: avoid;
+    break-inside: avoid-column;
+  }
+
+  &.break {
+    break-after:column !important;
+    display:block !important;
   }
 
   .content {
@@ -122,7 +140,13 @@ const itemStyle = theme => css`
     font-size: 1rem;
     padding: ${theme.pad}px;
 
-    ${theme.mq.medium} {
+    ${theme.mq.large} {
+      position: absolute !important;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+
       padding: ${theme.pad * 1.5}px;
       font-size: 1rem;
       margin: 0;
@@ -174,7 +198,7 @@ const itemStyle = theme => css`
         height: 1px;
         background-color: black;
 
-        ${theme.mq.medium} {
+        ${theme.mq.large} {
           background-color: white;
         }
       }
@@ -190,18 +214,6 @@ const itemStyle = theme => css`
 
     &:hover {
       opacity: 1;
-    }
-  }
-
-  ${theme.mq.medium} {
-    &:nth-of-type(5n-1) {
-      grid-column: span 2;
-      grid-row: span 2;
-    }
-
-    &:nth-of-type(5n-3),
-    &:nth-of-type(6n) {
-      grid-row: span 2;
     }
   }
 `
@@ -227,7 +239,7 @@ export const query = graphql`
             description
             image {
               childImageSharp {
-                fluid(maxWidth: 800, maxHeight: 600, cropFocus: CENTER) {
+                fluid(maxWidth: 800, cropFocus: CENTER) {
                   ...GatsbyImageSharpFluid
                 }
               }
