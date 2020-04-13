@@ -221,6 +221,7 @@ const itemStyle = theme => css`
       align-content: flex-start;
 
       li {
+        line-height: 1;
         display: block;
         background: ${theme.colors.accentLight};
         color: ${theme.colors.accent};
@@ -228,7 +229,7 @@ const itemStyle = theme => css`
         border-radius: 50px;
         margin-right: ${theme.pad / 2}px;
         margin-bottom: ${theme.pad / 2}px;
-        font-weight: 400;
+        font-weight: 500;
 
         ${theme.mq.medium} {
           background: ${theme.colors.bg};

@@ -13,7 +13,7 @@ export default ({ data }) => {
   const html = post.html.replace(/(\r\n|\n|\r)/gm, "")
 
   useHoverListener()
-
+  
   return (
     <Layout>
       <SEO
@@ -35,6 +35,13 @@ export default ({ data }) => {
           <div css={headerTextStyle}>
             {post.frontmatter.category && <h3>{post.frontmatter.category}</h3>}
             <h2>{post.frontmatter.title}</h2>
+            {post.frontmatter.tags && 
+              <ul className="tags">
+                {post.frontmatter.tags.map((tag) => (
+                  <li>{tag}</li>
+                ))}
+              </ul>
+            }
           </div>
           <div className="imageWrapper" style={{ display: "block" }}>
             <Img fluid={post.frontmatter.image.childImageSharp.fluid} />
@@ -68,6 +75,7 @@ export const query = graphql`
         title
         category
         description
+        tags
         image {
           childImageSharp {
             fluid(maxWidth: 2048, maxHeight: 1280, quality: 100, cropFocus: CENTER) {

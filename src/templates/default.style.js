@@ -33,6 +33,36 @@ export const headerTextStyle = theme => css`
     margin: 0;
     margin-bottom: ${shevy.baseSpacing(0.25)};
   }
+
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    margin-top: ${theme.pad * 2}px;
+    width: 70%;
+    max-width: 500px;
+    font-size: 1rem;
+
+
+    li {
+      line-height: 1;
+      display: block;
+      background: ${theme.colors.accentLight};
+      color: ${theme.colors.accent};
+      padding: ${theme.pad / 2}px ${theme.pad}px;
+      border-radius: 50px;
+      margin-right: ${theme.pad / 2}px;
+      margin-bottom: ${theme.pad / 2}px;
+      font-weight: 500;
+
+      &::before {
+        content:"";
+      }
+    }
+  }
 `
 
 export const bodyStyle = theme => css`
