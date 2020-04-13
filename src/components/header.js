@@ -3,6 +3,7 @@ import React, { Component } from "react"
 import { css } from "@emotion/core"
 import Headroom from "react-headroom"
 import { addHoverClass } from "./utils"
+import Filter from './filter'
 
 class Header extends Component {
   constructor(props) {
@@ -54,6 +55,12 @@ class Header extends Component {
           <Link css={logoStyle} to={"/"}>
             {data.title}
           </Link>
+          <span style={{flexGrow: 1}}/> 
+          {this.props.allTags && <Filter
+            allTags={this.props.allTags}
+            activeTags={this.props.activeTags}
+            setTags={this.props.setTags}
+          />}
           <button css={buttonStyle} onClick={this.toggleOpen} />
           <div css={navWrapperStyle}>
             <nav aria-label="Site Menu">
@@ -104,7 +111,6 @@ class Header extends Component {
 
 const headerStyle = theme => css`
   align-items: flex-start;
-  justify-content: space-between;
   background-color: ${theme.colors.bg};
   display: flex;
   flex-wrap: wrap;
@@ -271,6 +277,7 @@ const buttonStyle = theme => css`
   cursor: pointer;
   width: 36px;
   height: 24px;
+  margin-left: ${theme.pad}px;
 
   border: none;
   outline: none;
@@ -278,7 +285,7 @@ const buttonStyle = theme => css`
   &::before,
   &::after {
     content: " ";
-    height: 3px;
+    height: 4px;
     width: 28px;
     position: absolute;
     left: 8px;
@@ -309,7 +316,7 @@ const buttonStyle = theme => css`
   }
 `
 
-export default () => (
+export default (props) => (
   <StaticQuery
     query={graphql`
       query {
@@ -328,6 +335,6 @@ export default () => (
         }
       }
     `}
-    render={query => <Header data={query} />}
+    render={query => <Header data={query} {...props} />}
   />
 )

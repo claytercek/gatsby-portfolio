@@ -68,7 +68,6 @@ export default ({ data }) => {
   //   });
 
   // for each item to have ANY tag selected
-
   const noTagsSelected = activeTags.allFalse();
 
   const hasTags = (arr) => 
@@ -82,14 +81,12 @@ export default ({ data }) => {
   
 
   return (
-    <Layout>
+    <Layout
+      allTags={allTags}
+      activeTags={activeTags}
+      setTags={setTags}>
       <SEO pathname="/" />
       <main>
-        <Filter 
-          allTags={allTags}
-          activeTags={activeTags}
-          setTags={setTags}
-        />
         <Masonry
           breakpointCols={breakpointColumnsObj}
           role="list"
@@ -104,7 +101,7 @@ export default ({ data }) => {
                   image={node.frontmatter.image}
                   excerpt={node.excerpt}
                   slug={node.fields.slug}
-                  key={node.id + allTags}
+                  key={node.id}
                   style={{
                     animationDelay: parseInt(index) * 100 + "ms" 
                   }}
@@ -167,7 +164,6 @@ const itemStyle = theme => css`
     display: inline-block !important;
     margin: 0;
     padding: 0;
-    background-color: red;
     width: 100%;
     margin-bottom: ${theme.pad}px;
     break-after: avoid;

@@ -37,7 +37,8 @@ export const light = {
       primary: "#000000",
       bg: "#FFFFFF",
       accent: "#2222FFEE",
-      accentDim:"#1B1BCCEE"
+      accentDim:"#1B1BCCEE",
+      accentLight:"#0000FF1F"
     },
     lineWidth: "1px",
   },
