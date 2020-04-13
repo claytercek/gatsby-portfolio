@@ -3,6 +3,7 @@ title: crowd playlist
 subtitle:
 date: 2019-06-01
 draft: false
+tags: [react, web]
 image: /assets/crowd_wave.png
 ---
 

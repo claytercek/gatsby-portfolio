@@ -6,35 +6,34 @@ import Img from "gatsby-image"
 import { css } from "@emotion/core"
 import { addHoverClass } from "../components/utils"
 import Masonry from 'react-masonry-css'
+import Filter from '../components/filter'
 
 function GridItem(props) {
   const [loaded, setLoaded] = useState(false)
   return (
-    <li {...props} css={itemStyle} className={(loaded ? "loaded fadeInUp " : "") + props.className}>
-      <Link to={props.slug}>
-        <article>
-          {props.image && (
-            <Img
-              fluid={props.image.childImageSharp.fluid}
-              onLoad={() => {
-                setLoaded(true)
-              }}
-            />
-          )}
-          <div className="content">
-            <h2>{props.title}</h2>
-            <p>{props.excerpt}</p>
-            <h3 // eslint-disable-line jsx-a11y/no-noninteractive-element-interactions
-              className="u-underline-anim--active"
-              onMouseOver={addHoverClass}
-              onFocus={addHoverClass}
-            >
-              view more
-            </h3>
-          </div>
-        </article>
-      </Link>
-    </li>
+    <Link to={props.slug} {...props} css={itemStyle} className={(loaded ? "loaded fadeInUp " : "") + props.className}>
+      <article>
+        {props.image && (
+          <Img
+            fluid={props.image.childImageSharp.fluid}
+            onLoad={() => {
+              setLoaded(true)
+            }}
+          />
+        )}
+        <div className="content">
+          <h2>{props.title}</h2>
+          <p>{props.excerpt}</p>
+          <h3 // eslint-disable-line jsx-a11y/no-noninteractive-element-interactions
+            className="u-underline-anim--active"
+            onMouseOver={addHoverClass}
+            onFocus={addHoverClass}
+          >
+            view more
+          </h3>
+        </div>
+      </article>
+    </Link>
   )
 }
 
@@ -45,47 +44,84 @@ const breakpointColumnsObj = {
 };
 
 export default ({ data }) => {
+  // get all tags, remove duplicates, and sort alphabetically 
+  var allTags = new Set();
+  data.allMarkdownRemark.edges.forEach(({node}) => {
+    let tags = node.frontmatter.tags;
+    tags.forEach(tag => {
+      allTags.add(tag);
+    });
+  });
+  allTags = Array.from(allTags).sort();
+  const tagObj = {};
 
-  // logic so that the more recent items 
-  // appear at the top of each column on desktop
+  allTags.forEach((key) => {
+    tagObj[key] = false;
+  })
 
+  const [activeTags, setTags] = useState(tagObj);
 
-  const [hide, setHide] = useState(false);
+  // for each item to have EVERY tag selected
+  // const hasTags = (arr) => 
+  //   Object.entries(activeTags).every(function([key, value]) { 
+  //     return !value || arr.includes(key); 
+  //   });
+
+  // for each item to have ANY tag selected
+
+  const noTagsSelected = activeTags.allFalse();
+
+  const hasTags = (arr) => 
+  noTagsSelected|| arr.some(function(val) { 
+      return activeTags[val];
+    });
+
+  const nodes = data.allMarkdownRemark.edges.filter(({node}) => {
+    return hasTags(node.frontmatter.tags);
+  })
+  
 
   return (
     <Layout>
       <SEO pathname="/" />
-      <input
-        name="isGoing"
-        type="checkbox"
-        checked={hide}
-        onChange={() => setHide(!hide)} />
       <main>
-      <Masonry
-        breakpointCols={breakpointColumnsObj}
-        role="list"
-        className="my-masonry-grid"
-        columnClassName="my-masonry-grid_column"
-        css={listStyle}>
-          {data.allMarkdownRemark.edges.map(({node}, index) => {
-            return (
-              <GridItem
-                role="listItem"
-                title={node.frontmatter.title}
-                image={node.frontmatter.image}
-                excerpt={node.excerpt}
-                slug={node.fields.slug}
-                key={node.id}
-                style={{
-                  animationDelay: parseInt(index) * 100 + "ms" 
-                }}
-              />
-            )
-          })}
+        <Filter 
+          allTags={allTags}
+          activeTags={activeTags}
+          setTags={setTags}
+        />
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          role="list"
+          className="my-masonry-grid"
+          columnClassName="my-masonry-grid_column"
+          css={listStyle}>
+            {nodes.map(({node}, index) => {
+              return (
+                <GridItem
+                  role="listItem"
+                  title={node.frontmatter.title}
+                  image={node.frontmatter.image}
+                  excerpt={node.excerpt}
+                  slug={node.fields.slug}
+                  key={node.id + allTags}
+                  style={{
+                    animationDelay: parseInt(index) * 100 + "ms" 
+                  }}
+                />
+              )
+            })}
         </Masonry>
       </main>
     </Layout>
   )
+}
+
+Object.prototype.allFalse = function() { 
+  for (var i in this) {
+      if (this[i] === true) return false;
+  }
+  return true;
 }
 
 // styles
@@ -121,7 +157,7 @@ const itemStyle = theme => css`
     }
   }
 
-  a:active {
+  &:active {
     .gatsby-image-wrapper {
       opacity: 0.8;
     }
@@ -239,6 +275,7 @@ export const query = graphql`
           }
           frontmatter {
             title
+            tags
             image {
               childImageSharp {
                 fluid(maxWidth: 800, cropFocus: CENTER) {

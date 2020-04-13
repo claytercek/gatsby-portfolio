@@ -3,6 +3,7 @@ title: portfolio site 2018
 subtitle:
 date: 2018-09-01
 draft: false
+tags: [wordpress, web]
 image: /assets/2018_home.png
 ---
 

@@ -3,6 +3,7 @@ title: generative dust
 subtitle:
 date: 2019-10-01
 draft: false
+tags: [touchdesigner, experiment]
 image: /assets/dust_screencap.png
 ---
 
