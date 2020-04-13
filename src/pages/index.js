@@ -24,6 +24,11 @@ function GridItem(props) {
         <div className="content">
           <h2>{props.title}</h2>
           <p>{props.excerpt}</p>
+          <ul className="tags">
+            {props.tags.map(tag => (
+              <li>{tag}</li>
+            ))}
+          </ul>
           <h3 // eslint-disable-line jsx-a11y/no-noninteractive-element-interactions
             className="u-underline-anim--active"
             onMouseOver={addHoverClass}
@@ -101,6 +106,7 @@ export default ({ data }) => {
                   image={node.frontmatter.image}
                   excerpt={node.excerpt}
                   slug={node.fields.slug}
+                  tags={node.frontmatter.tags}
                   key={node.id}
                   style={{
                     animationDelay: parseInt(index) * 100 + "ms" 
@@ -201,6 +207,35 @@ const itemStyle = theme => css`
       }
     }
 
+    .tags {
+      display: flex;
+      flex: 1;
+      flex-wrap: wrap;
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      margin-top: ${theme.pad}px;
+      width: 70%;
+      font-size: 1rem;
+      align-items: flex-start;
+      align-content: flex-start;
+
+      li {
+        display: block;
+        background: ${theme.colors.accentLight};
+        color: ${theme.colors.accent};
+        padding: ${theme.pad / 2}px ${theme.pad}px;
+        border-radius: 50px;
+        margin-right: ${theme.pad / 2}px;
+        margin-bottom: ${theme.pad / 2}px;
+        font-weight: 400;
+
+        ${theme.mq.medium} {
+          background: ${theme.colors.bg};
+        }
+      }
+    }
+
     h2 {
       margin-top: 0;
       margin-bottom: 0.5rem;
@@ -211,7 +246,6 @@ const itemStyle = theme => css`
       line-height: 1.5;
       font-size: 1rem;
       margin: 0;
-      flex: 1;
       font-size: 1em;
       letter-spacing: 0.06em;
     }

@@ -2,11 +2,7 @@ import { StaticQuery, graphql } from "gatsby"
 import React from "react"
 import { css } from "@emotion/core"
 
-function Filter({allTags, setTags, activeTags}) {
-
-  const hide = () =>
-    console.log("HELLO HELLOOOOO");
-    
+function Filter({allTags, setTags, activeTags}) {    
   return (
     <div css={filterStyle}>
       <input aria-hidden="true" className="u-sr-only" type="checkbox" name="show/hide filter" id="filter"/>
