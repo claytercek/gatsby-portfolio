@@ -56,11 +56,12 @@ class Header extends Component {
             {data.title}
           </Link>
           <span style={{flexGrow: 1}}/> 
+          {/* disabling this for now
           {this.props.allTags && <Filter
             allTags={this.props.allTags}
             activeTags={this.props.activeTags}
             setTags={this.props.setTags}
-          />}
+          />} */}
           <button css={buttonStyle} onClick={this.toggleOpen} />
           <div css={navWrapperStyle}>
             <nav aria-label="Site Menu">
