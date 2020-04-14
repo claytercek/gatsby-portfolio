@@ -1,5 +1,5 @@
 ---
-title: watchlist
+title: building watchlist
 date: 2019-03-21
 category: case study
 image: /assets/watchlist_featured.jpg

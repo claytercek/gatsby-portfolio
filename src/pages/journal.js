@@ -197,7 +197,9 @@ const listStyle = theme => css`
 
 export const query = graphql`
   query {
-    allMarkdownRemark(filter: { fields: { type: { eq: "journal" } } }) {
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { fields: { type: { eq: "journal" } } }) {
       totalCount
       edges {
         node {

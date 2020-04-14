@@ -17,8 +17,8 @@ My goal with this project was to create a service that my friends and I could us
 ![playlist view](/assets/crowd_owner.png)
 ![playlist view - mobile](/assets/crowd_guest-mobile.png)
 
-![search view - mobile](/assets/crowd_guest-mobile-search.png)
-![search view](/assets/crowd_owner-search.png)
+<!-- ![search view - mobile](/assets/crowd_guest-mobile-search.png)
+![search view](/assets/crowd_owner-search.png) -->
 
 For the visual design of the app, I tried to keep the aesthetic very simple. The whole app is two pages, one for creating/joining a group, and the other for both search and playlist view.
 
