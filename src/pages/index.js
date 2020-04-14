@@ -73,7 +73,7 @@ export default ({ data }) => {
   //   });
 
   // for each item to have ANY tag selected
-  const noTagsSelected = activeTags.allFalse();
+  const noTagsSelected = allFalse(activeTags);
 
   const hasTags = (arr) => 
   noTagsSelected|| arr.some(function(val) { 
@@ -120,9 +120,9 @@ export default ({ data }) => {
   )
 }
 
-Object.prototype.allFalse = function() { 
-  for (var i in this) {
-      if (this[i] === true) return false;
+const allFalse = function(obj) { 
+  for (var i in obj) {
+      if (obj[i] === true) return false;
   }
   return true;
 }
