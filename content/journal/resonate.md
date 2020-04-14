@@ -15,6 +15,8 @@ draft: false
 
 **The solution:** We created Resonate which helps users discover newly recommended songs based on moods, activity, and current location.
 
+**my role:** project manager.
+
 ## Understanding the Project
 
 We started out by listing our projects strengths, weaknesses, opportunities, and threats in order to understand the possibilities and the limitations.

@@ -12,6 +12,9 @@ image: /assets/resonate_icon.png
 
 **Awards:** [Muse Rose Gold](https://museaward.com/winner-info.php?id=2275), GDUSA American Web Design Award
 
+[view code](https://github.com/wwwApp/resonate)
+[view case study](/journal/resonate/)
+
 Users can browse the map and find playlists created and pinned to various locations. The Playlists are user moderated, so popular playlists that truly represent a given location will gain more "hearts" and bubble to the top of the list.
 
 ![home screen](/assets/resonate_home.png)
