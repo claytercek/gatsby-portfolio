@@ -215,7 +215,7 @@ const itemStyle = theme => css`
       padding: 0;
       margin: 0;
       margin-top: ${theme.pad}px;
-      max-width: 250px;
+      max-width: 80%;
       font-size: 1rem;
       align-items: flex-start;
       align-content: flex-start;
@@ -232,9 +232,8 @@ const itemStyle = theme => css`
         font-weight: 400;
 
         ${theme.mq.medium} {
-          background: transparent;
-          color: ${theme.colors.bg};
-          border: 1px solid ${theme.colors.bg};
+          background: ${theme.colors.bg};
+          color: ${theme.colors.accent};
         }
       }
     }
