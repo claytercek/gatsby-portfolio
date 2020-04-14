@@ -29,13 +29,13 @@ function GridItem(props) {
               <li>{tag}</li>
             ))}
           </ul>
-          <h3 // eslint-disable-line jsx-a11y/no-noninteractive-element-interactions
+          {/* <h3 // eslint-disable-line jsx-a11y/no-noninteractive-element-interactions
             className="u-underline-anim--active"
             onMouseOver={addHoverClass}
             onFocus={addHoverClass}
           >
             view more
-          </h3>
+          </h3> */}
         </div>
       </article>
     </Link>
@@ -215,7 +215,7 @@ const itemStyle = theme => css`
       padding: 0;
       margin: 0;
       margin-top: ${theme.pad}px;
-      width: 70%;
+      max-width: 250px;
       font-size: 1rem;
       align-items: flex-start;
       align-content: flex-start;
@@ -229,10 +229,12 @@ const itemStyle = theme => css`
         border-radius: 50px;
         margin-right: ${theme.pad / 2}px;
         margin-bottom: ${theme.pad / 2}px;
-        font-weight: 500;
+        font-weight: 400;
 
         ${theme.mq.medium} {
-          background: ${theme.colors.bg};
+          background: transparent;
+          color: ${theme.colors.bg};
+          border: 1px solid ${theme.colors.bg};
         }
       }
     }

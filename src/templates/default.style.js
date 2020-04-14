@@ -41,9 +41,9 @@ export const headerTextStyle = theme => css`
     list-style-type: none;
     padding: 0;
     margin: 0;
-    margin-top: ${theme.pad * 2}px;
+    margin-top: ${theme.pad * 1}px;
     width: 70%;
-    max-width: 500px;
+    max-width: 400px;
     font-size: 1rem;
 
 
@@ -56,7 +56,7 @@ export const headerTextStyle = theme => css`
       border-radius: 50px;
       margin-right: ${theme.pad / 2}px;
       margin-bottom: ${theme.pad / 2}px;
-      font-weight: 500;
+      font-weight: 400;
 
       &::before {
         content:"";

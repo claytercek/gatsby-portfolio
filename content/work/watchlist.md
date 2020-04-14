@@ -2,7 +2,7 @@
 title: watchlist
 date: 2019-03-20T21:50:09.792Z
 draft: false
-tags: [app]
+tags: [app, ios, swift]
 image: /assets/watchlist_featured.jpg
 ---
 

@@ -4,7 +4,7 @@ subtitle:
 date: 2019-01-01
 draft: false
 image: /assets/2019_home.png
-tags: [wordpress, web]
+tags: [wordpress, web, cms]
 description: Wordpress portfolio website with unique motion and transitions.
 ---
 
