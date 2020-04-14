@@ -3,7 +3,7 @@ title: gore interactives
 date: 2019-08-01
 description: Touchscreen experiences built for W. L. Gore & Associates' Capabilities Center, each communicating the development process and value of a different Gore product.
 draft: false
-tags: [spacial, cinder, c++]
+tags: [spatial, cinder, c++]
 image: /assets/gore_perf-01.jpg
 ---
 

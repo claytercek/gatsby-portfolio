@@ -1,13 +1,13 @@
 ---
 title: museum of feelings
 date: 2019-03-01
-description: Spacial experience built for SC Johnson/Glade where visitors explored five immersive rooms driven by scents.
+description: Spatial experience built for SC Johnson/Glade where visitors explored five immersive rooms driven by scents.
 draft: false
-tags: [touchdesigner, projection, spacial]
+tags: [touchdesigner, projection, spatial]
 image: /assets/mof_fog.jpg
 ---
 
-## Spacial experience built for SC Johnson/Glade where visitors explored five immersive rooms driven by different scents.
+## Spatial experience built for SC Johnson/Glade where visitors explored five immersive rooms driven by different scents.
 
 One of my roles for this project was to research the fog and lighting for the "calm room." Our team experimented with many different fog and smoke machines (yes, there is a difference!) to see which would be the best candidate to produce the low-lying, cloud like fog that we were after. We eventually landed on liquid CO2 cooled fog, which uses the freezing temperature of the CO2 to keep the fog from rising and dissipating into the air. 
 
