@@ -101,7 +101,7 @@ export default ({ data }) => {
             {nodes.map(({node}, index) => {
               return (
                 <GridItem
-                  role="listItem"
+                  role="listitem"
                   title={node.frontmatter.title}
                   image={node.frontmatter.image}
                   excerpt={node.excerpt}
