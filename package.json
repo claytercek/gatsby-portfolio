@@ -15,6 +15,7 @@
     "gatsby-plugin-emotion": "^4.1.15",
     "gatsby-plugin-ffmpeg": "^0.3.1",
     "gatsby-plugin-google-analytics": "^2.2.2",
+    "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-manifest": "^2.4.0",
     "gatsby-plugin-netlify-cms": "^4.2.2",
     "gatsby-plugin-offline": "^3.0.19",
@@ -40,7 +41,6 @@
     "react-reveal": "^1.2.2",
     "rehype-react": "^4.0.1",
     "shevyjs": "^1.1.0",
-    "typeface-montserrat": "^0.0.75",
     "use-dark-mode": "^2.3.1"
   },
   "devDependencies": {
