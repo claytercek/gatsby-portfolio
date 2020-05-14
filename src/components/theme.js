@@ -11,7 +11,7 @@ Object.keys(breakpoints).map(key => {
 
 const base = {
   font: {
-    primary: "'Jost', helvetica, sans-serif",
+    primary: "montserrat, helvetica, sans-serif",
   },
   mq: breakpoints,
   pad: 16,

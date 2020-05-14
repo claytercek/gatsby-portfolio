@@ -7,6 +7,8 @@ import { dark, light } from "./theme"
 import { Global, css } from "@emotion/core"
 import GlobalStyles from "../styles/global"
 
+require("typeface-montserrat")
+
 let contentStyle = theme => css`
   margin-top: ${theme.pad * 1}px;
   padding-bottom: ${theme.pad * 2}px;
