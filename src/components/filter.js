@@ -52,8 +52,14 @@ const filterStyle = theme => css`
       cursor: pointer;
       display: inline-block;
       color: ${theme.colors.primary};
-      margin-bottom: 16px;
-      margin-right: 24px;
+      margin-right: 16px;
+      margin-bottom: 8px;
+
+      ${theme.mq.small} {
+        margin-right: 24px;
+        margin-bottom: 16px;
+      }
+
       letter-spacing:0.06em;
     }
 
@@ -63,9 +69,11 @@ const filterStyle = theme => css`
   }
 
   .divider {
-    &::after {
-      content: "|";
-      margin-right: 24px;
+    ${theme.mq.medium} {
+      &::after {
+        content: "|";
+        margin-right: 24px;
+      } 
     }
   }
 
