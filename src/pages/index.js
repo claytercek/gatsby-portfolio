@@ -49,49 +49,38 @@ const breakpointColumnsObj = {
 };
 
 export default ({ data }) => {
-  // get all tags, remove duplicates, and sort alphabetically 
-  var allTags = new Set();
-  data.allMarkdownRemark.edges.forEach(({node}) => {
-    let tags = node.frontmatter.tags;
-    tags.forEach(tag => {
-      allTags.add(tag);
-    });
-  });
-  allTags = Array.from(allTags).sort();
-  const tagObj = {};
 
-  allTags.forEach((key) => {
-    tagObj[key] = false;
-  })
+  const [activeTag, setTag] = useState(-1);
 
-  const [activeTags, setTags] = useState(tagObj);
-
-  // for each item to have EVERY tag selected
-  // const hasTags = (arr) => 
-  //   Object.entries(activeTags).every(function([key, value]) { 
-  //     return !value || arr.includes(key); 
-  //   });
-
-  // for each item to have ANY tag selected
-  const noTagsSelected = allFalse(activeTags);
-
-  const hasTags = (arr) => 
-  noTagsSelected|| arr.some(function(val) { 
-      return activeTags[val];
-    });
-
+  const hasTags = (arr) => {
+    switch (activeTag) {
+      case -1:
+        return true;
+      case 0:
+        return arr.includes("experiment");
+      case 1:
+        return arr.includes("client");
+      case 2:
+        return !arr.includes("experiment") && !arr.includes("client");
+      default:
+        return true;
+    }
+  };
+  
   const nodes = data.allMarkdownRemark.edges.filter(({node}) => {
     return hasTags(node.frontmatter.tags);
   })
+
   
 
   return (
-    <Layout
-      allTags={allTags}
-      activeTags={activeTags}
-      setTags={setTags}>
+    <Layout>
       <SEO pathname="/" />
       <main>
+        <Filter 
+          allTags={["experiment", "client", "project"]} 
+          setTag={(index) => setTag(index)} 
+          activeTag={activeTag} />
         <Masonry
           breakpointCols={breakpointColumnsObj}
           role="list"

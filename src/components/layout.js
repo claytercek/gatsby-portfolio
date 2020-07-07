@@ -40,10 +40,7 @@ const Layout = ({ children, allTags, activeTags, setTags }) => {
     <ThemeProvider theme={darkMode ? dark : light}>
       <Global styles={GlobalStyles} />
       <div css={wrapperStyle} id="js-top-pad">
-        <Header 
-          allTags={allTags}
-          activeTags={activeTags}
-          setTags={setTags}/>
+        <Header />
         <div css={contentStyle} className={"l-mainPad"}>
           {children}
         </div>

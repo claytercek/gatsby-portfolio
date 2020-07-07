@@ -3,7 +3,7 @@ title: museum of feelings
 date: 2019-03-01
 description: Spatial experience built for SC Johnson/Glade where visitors explored five immersive rooms driven by scents.
 draft: false
-tags: [touchdesigner, projection, spatial]
+tags: [touchdesigner, projection, spatial, client]
 image: /assets/mof_fog.jpg
 ---
 

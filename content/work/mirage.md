@@ -3,7 +3,7 @@ title: brooklyn mirage
 date: 2019-06-01
 description: Projection mapped content for The Brooklyn Mirage, Brooklyn's largest outdoor space. Totally immersive content, with projections covering all walls of the venue. 
 draft: false
-tags: [animation, projection]
+tags: [animation, projection, client]
 image: /assets/mirage_grid.jpg
 ---
 

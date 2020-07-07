@@ -3,7 +3,6 @@ import React, { Component } from "react"
 import { css } from "@emotion/core"
 import Headroom from "react-headroom"
 import { addHoverClass } from "./utils"
-import Filter from './filter'
 
 class Header extends Component {
   constructor(props) {
@@ -55,13 +54,7 @@ class Header extends Component {
           <Link css={logoStyle} to={"/"}>
             {data.title}
           </Link>
-          <span style={{flexGrow: 1}}/> 
-          {/* disabling this for now
-          {this.props.allTags && <Filter
-            allTags={this.props.allTags}
-            activeTags={this.props.activeTags}
-            setTags={this.props.setTags}
-          />} */}
+          <span style={{flexGrow: 1}}/>
           <button css={buttonStyle} onClick={this.toggleOpen} />
           <div css={navWrapperStyle}>
             <nav aria-label="Site Menu">
