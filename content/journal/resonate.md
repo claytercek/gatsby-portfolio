@@ -7,7 +7,7 @@ description: Resonate is a mobile app built off of the spotify api that allows p
 draft: false
 ---
 
-## description: Resonate is a mobile app built off of the spotify api that allows people to explore any location's local music taste, and helps find the perfect playlist to fit the mood.
+## Resonate is a mobile app built off of the spotify api that allows people to explore any location's local music taste, and helps find the perfect playlist to fit the mood.
 
 ## About the project
 
