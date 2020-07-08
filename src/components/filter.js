@@ -39,7 +39,10 @@ function Filter({allTags, setTag, activeTag}) {
 
 const filterStyle = theme => css`
   ul {
-    display: flex;
+    display:none;
+    ${theme.mq.medium} {
+      display: flex;
+    }
     list-style-type: none;
     padding: 0;
     margin: 0;

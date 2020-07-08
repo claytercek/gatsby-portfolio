@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -9,7 +9,7 @@ import Masonry from 'react-masonry-css'
 import Filter from '../components/filter'
 
 function GridItem(props) {
-  const [loaded, setLoaded] = useState(false)
+  const [loaded, setLoaded] = useState(true)
   return (
     <Link to={props.slug} {...props} css={itemStyle} className={(loaded ? "loaded fadeInUp " : "") + props.className}>
       <article>
@@ -51,6 +51,9 @@ const breakpointColumnsObj = {
 export default ({ data }) => {
 
   const [activeTag, setTag] = useState(-1);
+  const [listKey, setKey] = useState(0);
+
+  const incKey = () => setKey(listKey + 1)
 
   const hasTags = (arr) => {
     switch (activeTag) {
@@ -79,13 +82,17 @@ export default ({ data }) => {
       <main>
         <Filter 
           allTags={["experiment", "client", "project"]} 
-          setTag={(index) => setTag(index)} 
+          setTag={(index) => {
+            setTag(index);
+            incKey();
+          }} 
           activeTag={activeTag} />
         <Masonry
           breakpointCols={breakpointColumnsObj}
           role="list"
           className="my-masonry-grid"
           columnClassName="my-masonry-grid_column"
+          key={listKey}
           css={listStyle}>
             {nodes.map(({node}, index) => {
               return (
@@ -169,6 +176,7 @@ const itemStyle = theme => css`
     margin-bottom: ${theme.pad / 2}px;
     font-size: 1rem;
     padding: ${theme.pad}px;
+    overflow: hidden;
 
     ${theme.mq.medium} {
       position: absolute !important;
@@ -205,7 +213,7 @@ const itemStyle = theme => css`
       margin: 0;
       margin-top: ${theme.pad}px;
       max-width: 80%;
-      font-size: 1rem;
+      font-size: 0.875rem;
       align-items: flex-start;
       align-content: flex-start;
 

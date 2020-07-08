@@ -6,7 +6,7 @@ import { css } from "@emotion/core"
 import Img from "gatsby-image"
 
 function JournalItem(props) {
-  const [loaded, setLoaded] = useState(false)
+  const [loaded, setLoaded] = useState(true)
   return (
     <li
       {...props}
