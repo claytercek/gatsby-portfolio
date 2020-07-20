@@ -47,4 +47,22 @@ export default theme => css`
       padding-right: ${theme.pad * 4}px;
     }
   }
+
+  .l-fullWidth {
+    margin-left: ${theme.pad * -1.5}px;
+    margin-right: ${theme.pad * -1.5}px;
+
+    ${theme.mq.medium} {
+      font-size: 1.2rem;
+      margin-left: ${theme.pad * -2}px;
+      margin-right: ${theme.pad * -2}px;
+    }
+
+    ${theme.mq.large} {
+      font-size: 1.2rem;
+      margin-left: ${theme.pad * -4}px;
+      margin-right: ${theme.pad * -4}px;
+    }
+
+  }
 `

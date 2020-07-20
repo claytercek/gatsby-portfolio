@@ -8,6 +8,7 @@ import { css } from "@emotion/core"
 import parse from "html-react-parser"
 import { useHoverListener } from "./default"
 import Image from "gatsby-image"
+import Form from "../components/form"
 
 export default ({ data }) => {
   const post = data.markdownRemark
@@ -16,10 +17,10 @@ export default ({ data }) => {
   useHoverListener()
 
   return (
-    <Layout>
-      <SEO pathname="/about/" />
+    <Layout style={{paddingBottom: 0}}>
+      <SEO pathname="/info/" />
       <main
-        css={theme => [bodyStyle(theme), aboutStyle(theme)]}
+        css={theme => [bodyStyle(theme), infoStyle(theme)]}
         className="u-pageContent"
       >
         <Reveal effect="fadeInUp">
@@ -30,20 +31,29 @@ export default ({ data }) => {
             <h2>I'm Clay</h2>
             {parse(html)}
           </div>
+          <Form style="flex-basis: 100%"/>
         </Reveal>
       </main>
     </Layout>
   )
 }
 
-const aboutStyle = theme => css`
+const infoStyle = theme => css`
   ${theme.mq.medium} {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
     justify-items: center;
     margin-top: ${theme.pad * 3}px;
+    > div:nth-child(3) {
+      flex-basis: 100%;
+    }
   }
+
+  > div:nth-child(3) {
+    margin-bottom: 0;
+  }
+
   .aboutImage {
     flex: 1;
     max-width: 22.5rem;

@@ -25,8 +25,8 @@ module.exports = {
         slug: "/journal/",
       },
       {
-        name: "about",
-        slug: "/about/",
+        name: "info",
+        slug: "/info/",
       },
     ],
     social: [

@@ -31,7 +31,7 @@ let wrapperStyle = theme => css`
   }
 `
 
-const Layout = ({ children, allTags, activeTags, setTags }) => {
+const Layout = ({ children, allTags, activeTags, setTags, style }) => {
   // following code isnt loading correctly on build
   // const darkMode = useDarkMode(false).value;
   const darkMode = false
@@ -41,7 +41,7 @@ const Layout = ({ children, allTags, activeTags, setTags }) => {
       <Global styles={GlobalStyles} />
       <div css={wrapperStyle} id="js-top-pad">
         <Header />
-        <div css={contentStyle} className={"l-mainPad"}>
+        <div css={contentStyle} className={"l-mainPad"} style={style}>
           {children}
         </div>
       </div>
