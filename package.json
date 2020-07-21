@@ -9,7 +9,7 @@
     "emotion-theming": "^10.0.19",
     "ffprobe": "^1.1.0",
     "ffprobe-static": "^3.0.0",
-    "gatsby": "^2.17.11",
+    "gatsby": "^2.24.7",
     "gatsby-image": "^2.2.31",
     "gatsby-plugin-catch-links": "^2.1.25",
     "gatsby-plugin-emotion": "^4.1.15",
@@ -51,7 +51,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
+    "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build  --log-pages",
     "develop": "gatsby develop -H 0.0.0.0",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "yarn build && yarn develop",

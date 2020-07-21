@@ -5,10 +5,16 @@ function Form() {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [message, setMessage] = useState("")
+  const [botField, setBotField] = useState("")
 
   const [success, setSuccess] = useState(false)
 
   const handleSubmit = e => {
+    if (botField.length > 0) {
+      setSuccess(true)
+      return
+    }
+    
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -29,7 +35,11 @@ function Form() {
       <h2>Want to work together?</h2>
       {(success && <p>Your message has been received! I will reach out to discuss next steps as soon as possible.</p>) || (
         <form name="contact" data-netlify="true" onSubmit={handleSubmit}>
-          <input type="hidden" name="form-name" value="contact" />
+          <p class="u-sr-only">
+            <label>Don’t fill this out if you're human: <input name="bot-field" 
+              value={botField}
+              onChange={e => setBotField(e.target.value)}/></label>
+          </p>
           <p>
             <label htmlFor="input-name" className="u-sr-only">
               Name:
@@ -78,7 +88,7 @@ function Form() {
           </p>
 
           <p>
-            <input type="submit" />
+            <input type="submit" value="submit"/>
           </p>
         </form>
       )}
@@ -104,6 +114,10 @@ const formStyle = theme => css`
     max-width: none !important;
   }
 
+  h2 {
+    margin-bottom: 0;
+  }
+
   form {
     p:last-child {
       width: 100%;
@@ -114,6 +128,9 @@ const formStyle = theme => css`
 
     input,
     textarea {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
       width: 100%;
       background: ${theme.colors.bg}33;
       border: none;
@@ -121,9 +138,15 @@ const formStyle = theme => css`
       padding: ${theme.pad}px;
       margin: 0;
       color: ${theme.colors.bg};
+      font-family: ${theme.font.primary};
+      font-weight: 300;
 
       &::placeholder {
         color: ${theme.colors.bg}99;
+      }
+
+      &:focus {
+        outline: ${theme.colors.bg}99 2px solid;
       }
     }
 
