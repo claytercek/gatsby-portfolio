@@ -84,6 +84,7 @@ function Form() {
               rows="4"
               value={message}
               onChange={e => setMessage(e.target.value)}
+              
             />
           </p>
 
@@ -140,6 +141,7 @@ const formStyle = theme => css`
       color: ${theme.colors.bg};
       font-family: ${theme.font.primary};
       font-weight: 300;
+      resize: none;
 
       &::placeholder {
         color: ${theme.colors.bg}99;
