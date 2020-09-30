@@ -1,14 +1,15 @@
-import React from "react"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import SEO from 'components/seo'
+import React from 'react'
 
-export default ({ data }) => {
+export default function NoMatch({data}) {
   return (
-    <Layout>
+    <div>
       <SEO title="404" />
       <main>
         <h4>error 404</h4>
       </main>
-    </Layout>
+    </div>
   )
 }
+
+NoMatch.displayName = '404'

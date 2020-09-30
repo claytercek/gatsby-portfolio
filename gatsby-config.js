@@ -1,65 +1,64 @@
 module.exports = {
   siteMetadata: {
     title: `Clay Tercek`,
-    description: `Interactive developer and designer based in Philadelphia, specializing in rich experiences in spaces both physical and digital.`,
-    author: "Clay Tercek",
-    siteUrl: "https://claytercek.com",
-    image: "/default-thumb.png",
-    twitterUsername: "@claytercek",
+    description: `Interaction designer and creative developer based in Philadelphia, specializing in rich experiences in spaces both physical and digital.`,
+    author: 'Clay Tercek',
+    siteUrl: 'https://claytercek.com',
+    image: '/default-thumb.png',
+    twitterUsername: '@claytercek',
     keywords: [
-      "development",
-      "design",
-      "web",
-      "interface",
-      "ui",
-      "digital",
-      "interactive",
+      'development',
+      'design',
+      'web',
+      'interface',
+      'ui',
+      'digital',
+      'interactive',
     ],
     menu: [
       {
-        name: "work",
-        slug: "/",
+        name: 'work',
+        slug: '/',
       },
       {
-        name: "journal",
-        slug: "/journal/",
+        name: 'notes',
+        slug: '/notes/',
       },
       {
-        name: "info",
-        slug: "/info/",
+        name: 'about',
+        slug: '/about/',
       },
     ],
     social: [
       {
-        name: "Mail",
-        slug: "mailto:hello@claytercek.com",
+        name: 'Mail',
+        slug: 'mailto:hello@claytercek.com',
       },
       {
-        name: "GitHub",
-        slug: "https://github.com/claytercek?tab=repositories",
+        name: 'GitHub',
+        slug: 'https://github.com/claytercek?tab=repositories',
       },
       {
-        name: "LinkedIn",
-        slug: "https://www.linkedin.com/in/claytercek/",
+        name: 'LinkedIn',
+        slug: 'https://www.linkedin.com/in/claytercek/',
       },
       {
-        name: "Twitter",
-        slug: "https://twitter.com/claytercek",
+        name: 'Twitter',
+        slug: 'https://twitter.com/claytercek',
       },
       {
-        name: "Instagram",
-        slug: "https://www.instagram.com/clay_tercek_art/?hl=en",
+        name: 'Instagram',
+        slug: 'https://www.instagram.com/clay_tercek_art/?hl=en',
       },
     ],
   },
   plugins: [
     `gatsby-plugin-emotion`,
-    `gatsby-plugin-netlify-cms`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/static/assets`,
-        name: "assets",
+        name: 'assets',
       },
     },
     {
@@ -78,6 +77,13 @@ module.exports = {
           `gatsby-remark-custom`,
           `gatsby-remark-external-links`,
           {
+            resolve: `gatsby-remark-relative-images`,
+            options: {
+              staticFolderName: 'static',
+              include: ['image'],
+            },
+          },
+          {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 1440,
@@ -92,12 +98,6 @@ module.exports = {
     },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-catch-links`,
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: "UA-132200952-1",
-      },
-    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

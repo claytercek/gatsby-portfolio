@@ -1,16 +1,13 @@
 const path = require(`path`)
-var fs = require("fs")
-const { createFilePath } = require(`gatsby-source-filesystem`)
-const { fmImagesToRelative } = require("gatsby-remark-relative-images")
+var fs = require('fs')
+const {createFilePath} = require(`gatsby-source-filesystem`)
 
-exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions
-
-  fmImagesToRelative(node) // convert image paths for gatsby images
+exports.onCreateNode = ({node, getNode, actions}) => {
+  const {createNodeField} = actions
 
   if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({ node, getNode, basePath: `pages` })
-    const type = slug.split("/")[1]
+    const slug = createFilePath({node, getNode, basePath: `pages`})
+    const type = slug.split('/')[1]
     createNodeField({
       node,
       name: `slug`,
@@ -26,18 +23,18 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       node,
       name: `draft`,
       value:
-        process.env.NODE_ENV === "production" ? node.frontmatter.draft : false,
+        process.env.NODE_ENV === 'production' ? node.frontmatter.draft : false,
     })
   }
 }
 
-exports.createPages = ({ actions, graphql, reporter }) => {
-  const { createPage } = actions
+exports.createPages = ({actions, graphql}) => {
+  const {createPage} = actions
   return graphql(`
     {
       allMarkdownRemark(
-        sort: { fields: [frontmatter___date], order: DESC }
-        filter: { fields: { draft: { ne: true } } }
+        sort: {fields: [frontmatter___date], order: DESC}
+        filter: {fields: {draft: {ne: true}}}
         limit: 1000
       ) {
         edges {
@@ -53,10 +50,10 @@ exports.createPages = ({ actions, graphql, reporter }) => {
   `).then(result => {
     const posts = result.data.allMarkdownRemark.edges
 
-    posts.forEach(({ node }) => {
+    posts.forEach(({node}) => {
       // pages/{type}/{type}-single.js
       let template = path.resolve(
-        `./src/templates/${node.fields.type}-single.js`
+        `./src/templates/${node.fields.type}-single.js`,
       )
 
       // pages/{type}/{type}.js
@@ -79,5 +76,14 @@ exports.createPages = ({ actions, graphql, reporter }) => {
         },
       })
     })
+  })
+}
+
+// absolute imports
+exports.onCreateWebpackConfig = ({stage, actions}) => {
+  actions.setWebpackConfig({
+    resolve: {
+      modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+    },
   })
 }

@@ -1,10 +1,10 @@
-import React from "react"
-import PropTypes from "prop-types"
-import Helmet from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import React from 'react'
+import PropTypes from 'prop-types'
+import Helmet from 'react-helmet'
+import {useStaticQuery, graphql} from 'gatsby'
 
-function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
-  const { site } = useStaticQuery(
+function SEO({description, lang, meta, image: metaImage, title, pathname}) {
+  const {site} = useStaticQuery(
     graphql`
       query {
         site {
@@ -19,7 +19,7 @@ function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
           }
         }
       }
-    `
+    `,
   )
 
   const metaDescription = description || site.siteMetadata.description
@@ -44,7 +44,7 @@ function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
         canonical
           ? [
               {
-                rel: "canonical",
+                rel: 'canonical',
                 href: canonical,
               },
             ]
@@ -56,12 +56,12 @@ function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
           content: metaDescription,
         },
         {
-          name: "author",
+          name: 'author',
           content: site.siteMetadata.author,
         },
         {
-          name: "keywords",
-          content: site.siteMetadata.keywords.join(","),
+          name: 'keywords',
+          content: site.siteMetadata.keywords.join(','),
         },
         {
           property: `og:title`,
@@ -90,23 +90,23 @@ function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
       ]
         .concat([
           {
-            property: "og:image",
+            property: 'og:image',
             content: `${site.siteMetadata.siteUrl}${image.src}`,
           },
           {
-            property: "og:image:width",
+            property: 'og:image:width',
             content: image.width,
           },
           {
-            property: "og:image:height",
+            property: 'og:image:height',
             content: image.height,
           },
           {
-            name: "twitter:card",
-            content: "summary_large_image",
+            name: 'twitter:card',
+            content: 'summary_large_image',
           },
           {
-            name: "twitter:image",
+            name: 'twitter:image',
             content: `${site.siteMetadata.siteUrl}${image.src}`,
           },
         ])

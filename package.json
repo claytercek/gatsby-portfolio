@@ -1,69 +1,66 @@
 {
   "name": "gatsby-portfolio",
   "private": true,
-  "version": "0.1.0",
+  "version": "1.1.0",
   "author": "Clay Tercek <code@claytercek.com>",
   "dependencies": {
-    "@emotion/core": "^10.0.22",
-    "@emotion/styled": "^10.0.23",
-    "emotion-theming": "^10.0.19",
+    "@emotion/core": "^10.0.35",
+    "@emotion/styled": "^10.0.27",
+    "emotion-theming": "^10.0.27",
     "ffprobe": "^1.1.0",
     "ffprobe-static": "^3.0.0",
-    "gatsby": "^2.24.7",
-    "gatsby-image": "^2.2.31",
-    "gatsby-plugin-catch-links": "^2.1.25",
-    "gatsby-plugin-emotion": "^4.1.15",
+    "gatsby": "^2.24.66",
+    "gatsby-image": "^2.4.20",
+    "gatsby-plugin-catch-links": "^2.3.13",
+    "gatsby-plugin-emotion": "^4.3.12",
     "gatsby-plugin-ffmpeg": "^0.3.1",
-    "gatsby-plugin-google-analytics": "^2.2.2",
-    "gatsby-plugin-manifest": "^2.4.0",
-    "gatsby-plugin-netlify-cms": "^4.2.2",
-    "gatsby-plugin-offline": "^3.0.19",
-    "gatsby-plugin-react-helmet": "^3.1.14",
-    "gatsby-plugin-sass": "^2.1.23",
-    "gatsby-plugin-sharp": "^2.2.37",
-    "gatsby-plugin-use-dark-mode": "^1.1.2",
+    "gatsby-plugin-manifest": "^2.4.32",
+    "gatsby-plugin-react-helmet": "^3.3.12",
+    "gatsby-plugin-sharp": "^2.6.37",
     "gatsby-remark-external-links": "^0.0.4",
-    "gatsby-remark-images": "^3.1.31",
-    "gatsby-remark-relative-images": "^0.3.0",
-    "gatsby-source-filesystem": "^2.1.37",
-    "gatsby-transformer-remark": "^2.6.35",
-    "gatsby-transformer-sharp": "^2.3.3",
-    "html-react-parser": "^0.10.1",
-    "netlify-cms-app": "^2.12.3",
-    "node-sass": "^4.13.0",
-    "prop-types": "^15.7.2",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
-    "react-headroom": "git://github.com/claytercek/react-headroom.git",
-    "react-helmet": "^5.2.1",
-    "react-masonry-css": "^1.0.14",
-    "react-reveal": "^1.2.2",
-    "rehype-react": "^4.0.1",
-    "shevyjs": "^1.1.0",
-    "typeface-montserrat": "^0.0.75",
-    "use-dark-mode": "^2.3.1"
+    "gatsby-remark-images": "^3.3.31",
+    "gatsby-remark-relative-images": "^2.0.2",
+    "gatsby-source-filesystem": "^2.3.31",
+    "gatsby-transformer-remark": "^2.8.36",
+    "gatsby-transformer-sharp": "^2.5.16",
+    "html-react-parser": "^0.14.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-helmet": "^6.1.0",
+    "rehype-react": "^6.1.0"
   },
   "devDependencies": {
-    "prettier": "^1.19.1"
+    "eslint": "^7.10.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-react": "^7.21.2",
+    "eslint-plugin-react-hooks": "^4.1.2",
+    "husky": "^4.3.0",
+    "lint-staged": ">=10",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.1.2",
+    "stylelint": "^13.7.2",
+    "stylelint-config-standard": "^20.0.0"
   },
-  "keywords": [
-    "gatsby"
-  ],
   "license": "MIT",
   "scripts": {
     "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build  --log-pages",
     "develop": "gatsby develop -H 0.0.0.0",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "yarn build && yarn develop",
+    "start": "run-s -n build serve",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "lint": "run-s -n lint:*",
+    "lint:js": "eslint . --fix --max-warnings 8",
+    "lint:style": "stylelint --fix --mw 8 \"**/*.{css,scss,sass,js,jsx}\"",
+    "lint:format": "prettier --write \"**/*.{js,jsx,json,md}\""
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+  "lint-staged": {
+    "*.{js,jsx}": "eslint --cache --fix",
+    "*.{css,scss,sass,js,jsx}": "stylelint --fix",
+    "*.{js,jsx,json,md}": "prettier --write"
   }
 }

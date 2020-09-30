@@ -5,7 +5,9 @@ date: 2018-10-01
 draft: false
 image: /assets/stack_zoom.png
 tags: [game, web]
-description: A fun game that challenges your brains ability to multitask, playable in the browser!
+description:
+  A fun game that challenges your brains ability to multitask, playable in the
+  browser!
 ---
 
 ## A fun game that challenges your brains ability to multitask, playable in the browser!

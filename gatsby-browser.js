@@ -1,2 +1,2 @@
 // fix ios active styles
-document.addEventListener("touchstart", function(){}, true);
+document.addEventListener('touchstart', function () {}, true)
