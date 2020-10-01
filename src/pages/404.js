@@ -1,4 +1,4 @@
-import SEO from 'components/seo'
+import SEO from 'components/utils/seo'
 import React from 'react'
 
 export default function NoMatch({data}) {

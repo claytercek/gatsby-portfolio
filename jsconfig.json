@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src",
-    "target": "es2020"
+    "baseUrl": "./src"
   },
   "include": ["src"]
 }
