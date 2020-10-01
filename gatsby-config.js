@@ -98,17 +98,17 @@ module.exports = {
     },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-catch-links`,
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `Clay Tercek`,
-        short_name: `Clay Tercek`,
-        icon: 'static/favicon.png',
-        start_url: `/`,
-        background_color: `#FFFFFF`,
-        theme_color: `#2222FF`,
-        display: `minimal-ui`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-manifest`,
+    //   options: {
+    //     name: `Clay Tercek`,
+    //     short_name: `Clay Tercek`,
+    //     icon: 'static/favicon.png',
+    //     start_url: `/`,
+    //     background_color: `#FFFFFF`,
+    //     theme_color: `#2222FF`,
+    //     display: `minimal-ui`,
+    //   },
+    // },
   ],
 }

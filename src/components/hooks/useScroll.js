@@ -11,7 +11,7 @@ function ScrollProvider(props) {
     config: {tension: tensions[index % tensions.length]},
   }))
 
-  const lastScrollPos = useRef(window.scrollY)
+  const lastScrollPos = useRef(0)
 
   const onScroll = useCallback(
     e => {
@@ -30,10 +30,11 @@ function ScrollProvider(props) {
       }))
       lastScrollPos.current = window.scrollY
     },
-    [set],
+    [set, springs],
   )
 
   useEffect(() => {
+    lastScrollPos.current = window.scrollY
     window.addEventListener('scroll', onScroll)
     return () => {
       removeEventListener('scroll', onScroll)
