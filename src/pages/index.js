@@ -10,11 +10,9 @@ export default function Index({data}) {
     <Layout.Wrapper>
       <Layout.Main>
         <ScrollProvider count={data.allMarkdownRemark.totalCount}>
-          <ul css={{display: 'flex', flexWrap: 'wrap'}}>
-            {works.map(({node}, index) => (
-              <Card node={node} key={node.id} index={index} />
-            ))}
-          </ul>
+          {works.map(({node}, index) => (
+            <Card node={node} key={node.id} index={index} />
+          ))}
         </ScrollProvider>
       </Layout.Main>
     </Layout.Wrapper>
