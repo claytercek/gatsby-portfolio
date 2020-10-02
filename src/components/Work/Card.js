@@ -1,12 +1,11 @@
 import {useScroll} from 'components/hooks/useScroll'
 import {Link} from 'gatsby'
 import Image from 'gatsby-image'
-import React, {useLayoutEffect, useRef, useState} from 'react'
+import React from 'react'
 import {animated} from 'react-spring'
 
 export default function Card({node, index}) {
-  const ref = useRef()
-  const animProps = useScroll(index, ref)
+  const {props: springProps, ref} = useScroll(index)
 
   return (
     <animated.li
@@ -29,7 +28,7 @@ export default function Card({node, index}) {
           transform: 'none !important',
         },
       }}
-      style={animProps}
+      style={springProps}
     >
       <Link to={node.fields.slug}>
         <Image

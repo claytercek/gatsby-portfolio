@@ -1,4 +1,10 @@
-import React, {useLayoutEffect, useState} from 'react'
+import React, {
+  createRef,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react'
 import {useSprings} from 'react-spring'
 
 const ScrollContext = React.createContext()
@@ -6,18 +12,39 @@ const ScrollContext = React.createContext()
 const tensions = [80, 170, 200, 150, 110, 180]
 
 function ScrollProvider(props) {
-  const [springs, set] = useSprings(props.count, index => ({
+  const [springs, set, stop] = useSprings(props.count, index => ({
     to: {transform: `translatey(-${window.pageYOffset}px)`},
     config: {tension: tensions[index % tensions.length]},
   }))
 
+  const [tops, setTops] = useState(Array(props.count).fill(null))
+
+  const refs = React.useRef([])
+
+  if (refs.current.length !== props.count) {
+    // add or remove refs
+    refs.current = Array(props.count)
+      .fill()
+      .map((_, i) => refs.current[i] || createRef())
+  }
+
   const wrapperRef = React.useRef(null)
-  const [height, setHeight] = useState(null)
+  const [height, setHeight] = useState('auto')
 
   useLayoutEffect(() => {
-    function updateHeight() {
+    function onResize() {
+      // reset all layouts
+      stop()
       setHeight('auto')
+      setTops(old => old.fill(null))
+
+      // set static height and 'tops'
       setHeight(wrapperRef.current.clientHeight)
+      const newTops = []
+      for (let i in refs.current) {
+        newTops.push(refs.current[i].current.offsetTop)
+      }
+      setTops(newTops)
     }
     function onScroll() {
       set(() => ({
@@ -25,16 +52,16 @@ function ScrollProvider(props) {
       }))
     }
     window.addEventListener('scroll', onScroll)
-    window.addEventListener('resize', updateHeight)
-    updateHeight() // run on initial layout
+    window.addEventListener('resize', onResize)
+    onResize() // run on initial layout
     return () => {
-      window.removeEventListener('resize', updateHeight)
-      removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onResize)
+      window.removeEventListener('scroll', onScroll)
     }
-  }, [set])
+  }, [set, refs, stop])
 
   return (
-    <ScrollContext.Provider value={springs}>
+    <ScrollContext.Provider value={{springs, refs, tops}}>
       <ul
         {...props}
         ref={wrapperRef}
@@ -51,30 +78,22 @@ function ScrollProvider(props) {
   )
 }
 
-function useScroll(index, ref) {
+function useScroll(index) {
   const context = React.useContext(ScrollContext)
   if (context === undefined) {
     throw new Error(`useScroll must be used within a ScrollProvider`)
   }
 
-  const [top, setTop] = useState(null)
-
-  useLayoutEffect(() => {
-    function updateTop() {
-      setTop(null)
-      setTop(ref.current.offsetTop)
-    }
-    window.addEventListener('resize', updateTop)
-    updateTop() // run on initial layout
-    return () => {
-      window.removeEventListener('resize', updateTop)
-    }
-  }, [ref])
-
   return {
-    top,
-    position: 'static',
-    ...(top !== null && {position: 'fixed', ...context[index]}),
+    props:
+      context.tops[index] !== null
+        ? {
+            top: context.tops[index],
+            position: 'fixed',
+            ...context.springs[index],
+          }
+        : {},
+    ref: context.refs.current[index],
   }
 }
 
