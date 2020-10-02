@@ -1,5 +1,6 @@
 import React, {
   createRef,
+  useCallback,
   useEffect,
   useLayoutEffect,
   useRef,
@@ -12,7 +13,7 @@ const ScrollContext = React.createContext()
 const tensions = [80, 170, 200, 150, 110, 180]
 
 function ScrollProvider(props) {
-  const [springs, set, stop] = useSprings(props.count, index => ({
+  const [springs, set] = useSprings(props.count, index => ({
     to: {transform: `translatey(-${window.pageYOffset}px)`},
     config: {tension: tensions[index % tensions.length]},
   }))
@@ -31,26 +32,27 @@ function ScrollProvider(props) {
   const wrapperRef = React.useRef(null)
   const [height, setHeight] = useState('auto')
 
-  useLayoutEffect(() => {
-    function onResize() {
-      // reset all layouts
-      stop()
-      setHeight('auto')
-      setTops(old => old.fill(null))
+  const onResize = useCallback(() => {
+    // reset all layouts
+    setTops(old => old.fill(null))
+    setHeight('auto')
 
-      // set static height and 'tops'
-      setHeight(wrapperRef.current.clientHeight)
-      const newTops = []
-      for (let i in refs.current) {
-        newTops.push(refs.current[i].current.offsetTop)
-      }
-      setTops(newTops)
+    // set static height and 'tops'
+    setHeight(wrapperRef.current.clientHeight)
+    const newTops = []
+    for (let i in refs.current) {
+      newTops.push(refs.current[i].current.offsetTop)
     }
-    function onScroll() {
-      set(() => ({
-        transform: `translatey(-${window.pageYOffset}px)`,
-      }))
-    }
+    setTops(newTops)
+  }, [])
+
+  const onScroll = useCallback(() => {
+    set(() => ({
+      transform: `translatey(-${window.pageYOffset}px)`,
+    }))
+  }, [set])
+
+  useEffect(() => {
     window.addEventListener('scroll', onScroll)
     window.addEventListener('resize', onResize)
     onResize() // run on initial layout
@@ -58,7 +60,7 @@ function ScrollProvider(props) {
       window.removeEventListener('resize', onResize)
       window.removeEventListener('scroll', onScroll)
     }
-  }, [set, refs, stop])
+  }, [onScroll, onResize])
 
   return (
     <ScrollContext.Provider value={{springs, refs, tops}}>
