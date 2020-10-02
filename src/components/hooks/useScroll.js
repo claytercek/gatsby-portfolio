@@ -1,11 +1,4 @@
-import React, {
-  createRef,
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from 'react'
+import React, {createRef, useCallback, useEffect, useState} from 'react'
 import {useSprings} from 'react-spring'
 
 const ScrollContext = React.createContext()
@@ -14,7 +7,7 @@ const tensions = [80, 170, 200, 150, 110, 180]
 
 function ScrollProvider(props) {
   const [springs, set] = useSprings(props.count, index => ({
-    to: {transform: `translatey(-${window.pageYOffset}px)`},
+    to: {transform: `translatey(0px)`},
     config: {tension: tensions[index % tensions.length]},
   }))
 
