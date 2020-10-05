@@ -2,9 +2,10 @@ import {css} from '@emotion/core'
 import React from 'react'
 import {borderLine, shadow} from 'styles/mixins'
 
-export default function Window({children}) {
+export default function Window({children, tag}) {
+  const Tag = tag ?? 'div'
   return (
-    <div css={wrapperStyle}>
+    <Tag css={wrapperStyle}>
       <span aria-hidden="true" css={barStyle}>
         <span css={circleStyle} />
         <span css={circleStyle} />
@@ -12,7 +13,7 @@ export default function Window({children}) {
         <span css={linesStyle} />
       </span>
       <div>{children}</div>
-    </div>
+    </Tag>
   )
 }
 

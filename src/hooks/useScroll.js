@@ -1,9 +1,10 @@
 import React, {createRef, useCallback, useEffect, useState} from 'react'
 import {useSprings} from 'react-spring'
+import {breakpoints} from 'styles/theme'
 
 const ScrollContext = React.createContext()
 
-const tensions = [80, 170, 200, 150, 110, 180]
+const tensions = [100, 170, 200, 150, 110, 180]
 
 function ScrollProvider(props) {
   const [springs, set] = useSprings(props.count, index => ({
@@ -30,6 +31,7 @@ function ScrollProvider(props) {
     setTops(old => old.fill(null))
     setHeight('auto')
 
+    if (window.innerWidth < breakpoints.small) return
     // set static height and 'tops'
     setHeight(wrapperRef.current.clientHeight)
     const newTops = []
@@ -90,7 +92,7 @@ function useScroll(index) {
             position: 'fixed',
             ...context.springs[index],
           }
-        : {},
+        : {position: 'relative'},
     ref: context.refs.current[index],
   }
 }

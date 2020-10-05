@@ -11,9 +11,9 @@ export default function Card({node, index}) {
   const {props: springProps, ref} = useScroll(index)
   return (
     <animated.li ref={ref} css={cardStyle} style={springProps}>
-      <Link to={node.fields.slug}>
-        <Window>
-          <div css={{display: 'flex', alignItems: 'baseline'}}>
+      <Link to={node.fields.slug} title={node.frontmatter.title}>
+        <Window tag="article">
+          <header css={{display: 'flex', alignItems: 'baseline'}}>
             <h3
               css={theme => ({
                 marginBottom: theme.spacing.small,
@@ -23,7 +23,7 @@ export default function Card({node, index}) {
               {node.frontmatter.title}
             </h3>
             <span>{node.frontmatter.type}</span>
-          </div>
+          </header>
           <Image
             fixed={node.frontmatter.image.childImageSharp.fixed}
             css={theme => [borderLine(theme)]}
