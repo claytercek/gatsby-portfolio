@@ -1,6 +1,6 @@
 ---
 title: stack
-subtitle:
+type: website
 date: 2018-10-01
 draft: false
 image: /assets/stack_zoom.png

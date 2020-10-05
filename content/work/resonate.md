@@ -1,5 +1,6 @@
 ---
 title: resonate
+type: app
 subtitle: react native app
 date: 2019-03-22
 description:

@@ -1,41 +1,61 @@
-import {useScroll} from 'components/hooks/useScroll'
+import {useScroll} from 'hooks/useScroll'
 import {Link} from 'gatsby'
 import Image from 'gatsby-image'
 import React from 'react'
 import {animated} from 'react-spring'
+import Window from './Window'
+import {borderLine} from 'styles/mixins'
+import {css} from '@emotion/core'
 
 export default function Card({node, index}) {
   const {props: springProps, ref} = useScroll(index)
-
   return (
-    <animated.li
-      ref={ref}
-      css={{
-        width: '40%',
-        height: 'auto',
-        display: 'block',
-        marginBottom: '-2rem',
-
-        '&:nth-of-type(3n)': {
-          alignSelf: 'center',
-        },
-
-        '&:nth-of-type(3n + 2)': {
-          alignSelf: 'flex-end',
-        },
-
-        '@media (prefers-reduced-motion)': {
-          transform: 'none !important',
-        },
-      }}
-      style={springProps}
-    >
+    <animated.li ref={ref} css={cardStyle} style={springProps}>
       <Link to={node.fields.slug}>
-        <Image
-          fluid={node.frontmatter.image.childImageSharp.fluid}
-          css={{minHeight: '30vh'}}
-        />
+        <Window>
+          <div css={{display: 'flex', alignItems: 'baseline'}}>
+            <h3
+              css={theme => ({
+                marginBottom: theme.spacing.small,
+                marginRight: theme.spacing.small,
+              })}
+            >
+              {node.frontmatter.title}
+            </h3>
+            <span>{node.frontmatter.type}</span>
+          </div>
+          <Image
+            fixed={node.frontmatter.image.childImageSharp.fixed}
+            css={theme => [{minHeight: '30vh'}, borderLine(theme)]}
+          />
+        </Window>
       </Link>
     </animated.li>
   )
 }
+
+const cardStyle = theme => css`
+  display: block;
+  margin-bottom: -128px;
+
+  .gatsby-image-wrapper {
+    max-width: 60vw;
+  }
+
+  &:nth-of-type(11n-10),
+  &:nth-of-type(11n-8),
+  &:nth-of-type(11n-6),
+  &:nth-of-type(11n-3) {
+    align-self: flex-end;
+  }
+
+  &:nth-of-type(11n-7),
+  &:nth-of-type(11n-4),
+  &:nth-of-type(11n-1) {
+    align-self: center;
+  }
+
+  @media (prefers-reduced-motion) {
+    transform: none !important;
+  }
+`

@@ -1,6 +1,6 @@
 ---
 title: crowd playlist
-subtitle:
+type: web-app
 date: 2019-06-01
 draft: false
 tags: [react, web, node]

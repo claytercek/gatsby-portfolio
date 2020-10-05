@@ -1,5 +1,6 @@
 ---
 title: museum of feelings
+type: spatial
 date: 2019-03-01
 description:
   Spatial experience built for SC Johnson/Glade where visitors explored five

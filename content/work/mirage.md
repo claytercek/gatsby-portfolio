@@ -1,5 +1,6 @@
 ---
 title: brooklyn mirage
+type: spatial
 date: 2019-06-01
 description:
   Projection mapped content for The Brooklyn Mirage, Brooklyn's largest outdoor

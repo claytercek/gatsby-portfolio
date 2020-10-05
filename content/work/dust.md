@@ -1,6 +1,6 @@
 ---
 title: generative dust
-subtitle:
+type: experiment
 date: 2019-10-01
 draft: false
 tags: [touchdesigner, experiment]

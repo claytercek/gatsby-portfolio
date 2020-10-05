@@ -1,8 +1,8 @@
 import Layout from 'components/layout/Layout'
 import React from 'react'
 import {graphql} from 'gatsby'
-import Card from 'components/Work/Card'
-import {ScrollProvider} from 'components/hooks/useScroll'
+import Card from 'components/work/Card'
+import {ScrollProvider} from 'hooks/useScroll'
 
 export default function Index({data}) {
   const works = data.allMarkdownRemark.edges
@@ -34,10 +34,11 @@ export const query = graphql`
           }
           frontmatter {
             title
+            type
             image {
               childImageSharp {
-                fluid(maxWidth: 800, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFluid
+                fixed(height: 360, cropFocus: CENTER) {
+                  ...GatsbyImageSharpFixed
                 }
               }
             }

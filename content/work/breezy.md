@@ -1,5 +1,6 @@
 ---
 title: Breezy
+type: experiment
 date: 2020-05-01
 draft: false
 tags: [web, threejs, shaders, experiment]

@@ -1,5 +1,6 @@
 ---
 title: Sympathize
+type: experiment
 date: 2020-05-15
 draft: false
 tags: [svelte, experiment, data-vis]

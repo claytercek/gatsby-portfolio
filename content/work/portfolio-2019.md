@@ -1,6 +1,6 @@
 ---
 title: portfolio site 2019
-subtitle:
+type: website
 date: 2019-01-01
 draft: false
 image: /assets/2019_home.png

@@ -1,6 +1,6 @@
 ---
 title: portfolio site 2018
-subtitle:
+type: website
 date: 2018-09-01
 draft: false
 tags: [wordpress, web, cms]

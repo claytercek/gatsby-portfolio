@@ -1,5 +1,6 @@
 ---
 title: watchlist
+type: app
 date: 2019-03-20T21:50:09.792Z
 draft: false
 tags: [app, ios, swift]

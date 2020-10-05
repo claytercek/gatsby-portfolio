@@ -1,5 +1,6 @@
 ---
 title: gore interactives
+type: spatial
 date: 2019-08-01
 description:
   Touchscreen experiences built for W. L. Gore & Associates' Capabilities

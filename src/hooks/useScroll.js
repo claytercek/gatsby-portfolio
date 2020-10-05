@@ -34,7 +34,10 @@ function ScrollProvider(props) {
     setHeight(wrapperRef.current.clientHeight)
     const newTops = []
     for (let i in refs.current) {
-      newTops.push(refs.current[i].current.offsetTop)
+      newTops.push(
+        window.pageYOffset +
+          refs.current[i].current.getBoundingClientRect().top,
+      )
     }
     setTops(newTops)
   }, [])

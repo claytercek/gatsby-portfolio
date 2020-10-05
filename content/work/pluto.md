@@ -1,5 +1,6 @@
 ---
 title: pluto
+type: app
 date: 2020-04-15
 description:
   A social network that prioritizes meaningful connections, giving users a
