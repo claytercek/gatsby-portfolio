@@ -7,7 +7,7 @@ const tensions = [80, 170, 200, 150, 110, 180]
 
 function ScrollProvider(props) {
   const [springs, set] = useSprings(props.count, index => ({
-    to: {transform: `translatey(0px)`},
+    to: {transform: `translate3d(0, 0px, 0)`},
     config: {tension: tensions[index % tensions.length]},
   }))
 
@@ -44,7 +44,7 @@ function ScrollProvider(props) {
 
   const onScroll = useCallback(() => {
     set(() => ({
-      transform: `translatey(-${window.pageYOffset}px)`,
+      transform: `translate3d(0, -${window.pageYOffset}px, 0)`,
     }))
   }, [set])
 

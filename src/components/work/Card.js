@@ -26,7 +26,7 @@ export default function Card({node, index}) {
           </div>
           <Image
             fixed={node.frontmatter.image.childImageSharp.fixed}
-            css={theme => [{minHeight: '30vh'}, borderLine(theme)]}
+            css={theme => [borderLine(theme)]}
           />
         </Window>
       </Link>
@@ -38,21 +38,39 @@ const cardStyle = theme => css`
   display: block;
   margin-bottom: -128px;
 
+  max-width: 72vw;
+
+  @media (max-width: ${theme.breakpoints.small + 1}px) {
+    &:nth-of-type(2n) {
+      align-self: flex-end;
+    }
+  }
+
   .gatsby-image-wrapper {
-    max-width: 60vw;
+    max-width: 100%;
+    min-height: 0;
   }
 
-  &:nth-of-type(11n-10),
-  &:nth-of-type(11n-8),
-  &:nth-of-type(11n-6),
-  &:nth-of-type(11n-3) {
-    align-self: flex-end;
-  }
+  ${theme.mq.small} {
+    width: auto;
 
-  &:nth-of-type(11n-7),
-  &:nth-of-type(11n-4),
-  &:nth-of-type(11n-1) {
-    align-self: center;
+    .gatsby-image-wrapper {
+      min-height: 30vh;
+      max-width: 60vw;
+    }
+
+    &:nth-of-type(11n-10),
+    &:nth-of-type(11n-8),
+    &:nth-of-type(11n-6),
+    &:nth-of-type(11n-3) {
+      align-self: flex-end;
+    }
+
+    &:nth-of-type(11n-7),
+    &:nth-of-type(11n-4),
+    &:nth-of-type(11n-1) {
+      align-self: center;
+    }
   }
 
   @media (prefers-reduced-motion) {

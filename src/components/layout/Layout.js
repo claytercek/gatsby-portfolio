@@ -17,7 +17,13 @@ function Main(props) {
   return (
     <main
       css={theme => ({
-        padding: theme.spacing.xlarge,
+        padding: theme.spacing.medium,
+        [theme.mq.small]: {
+          padding: theme.spacing.large,
+        },
+        [theme.mq.large]: {
+          padding: theme.spacing.xlarge,
+        },
       })}
       {...props}
     />

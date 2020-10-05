@@ -14,3 +14,15 @@ export const spacing = {
   large: '32px',
   xlarge: '64px',
 }
+
+export const breakpoints = {
+  small: 576,
+  medium: 768,
+  large: 1280,
+}
+
+export const mq = {}
+
+Object.keys(breakpoints).forEach(
+  key => (mq[key] = `@media (min-width: ${breakpoints[key]}px)`),
+)

@@ -9,7 +9,11 @@ export default css`
 
   html {
     font-size: 100%;
-    font-family: 'poppins', -apple-system, Roboto, 'Open Sans', 'Helvetica Neue',
+    font-family: 'poppins',
+      -apple-system,
+      Roboto,
+      'Open Sans',
+      'Helvetica Neue',
       sans-serif;
   }
 
@@ -50,8 +54,9 @@ export default css`
   }
 
   img,
-  picture {
-    display: block;
+  picture,
+  .gatsby-image-wrapper {
+    display: block !important;
   }
 
   a {
