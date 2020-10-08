@@ -1,18 +1,42 @@
 import {useScroll} from 'hooks/useScroll'
-import {Link} from 'gatsby'
 import Image from 'gatsby-image'
-import React from 'react'
-import {animated} from 'react-spring'
+import React, {useRef} from 'react'
+import {animated, useSpring} from 'react-spring'
 import Window from './Window'
 import {borderLine} from 'styles/mixins'
 import {css} from '@emotion/core'
+import {TransitionLink} from 'gatsby-plugin-transition-link/components/TransitionLink'
+import useAnimationState from 'hooks/useAnimationState'
+import useMeasure from 'react-use-measure'
 
 export default function Card({node, index}) {
   const {props: springProps, ref} = useScroll(index)
+  const {mount, inView} = useAnimationState(ref)
+
+  const [windowRef, bounds] = useMeasure()
+
+  const windowAnim = useSpring({
+    transform: mount ? (inView ? 'scale(100%)' : 'scale(80%)') : 'scale(0%)',
+  })
+
   return (
     <animated.li ref={ref} css={cardStyle} style={springProps}>
-      <Link to={node.fields.slug} title={node.frontmatter.title}>
-        <Window tag="article">
+      <TransitionLink
+        to={node.fields.slug}
+        title={node.frontmatter.title}
+        exit={{
+          length: 1,
+        }}
+        entry={{
+          delay: 0.6,
+        }}
+      >
+        <Window
+          tag={animated.article}
+          css={{overflow: 'hidden'}}
+          ref={windowRef}
+          style={windowAnim}
+        >
           <header css={{display: 'flex', alignItems: 'baseline'}}>
             <h3
               css={theme => ({
@@ -29,7 +53,7 @@ export default function Card({node, index}) {
             css={theme => [borderLine(theme)]}
           />
         </Window>
-      </Link>
+      </TransitionLink>
     </animated.li>
   )
 }
@@ -37,6 +61,7 @@ export default function Card({node, index}) {
 const cardStyle = theme => css`
   display: block;
   margin-bottom: -128px;
+  overflow: hidden;
 
   max-width: 72vw;
 

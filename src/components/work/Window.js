@@ -2,10 +2,10 @@ import {css} from '@emotion/core'
 import React from 'react'
 import {borderLine, shadow} from 'styles/mixins'
 
-export default function Window({children, tag}) {
+function Window({children, tag, ...rest}, ref) {
   const Tag = tag ?? 'div'
   return (
-    <Tag css={wrapperStyle}>
+    <Tag ref={ref} css={wrapperStyle} {...rest}>
       <span aria-hidden="true" css={barStyle}>
         <span css={circleStyle} />
         <span css={circleStyle} />
@@ -66,3 +66,5 @@ const linesStyle = theme => css`
     background: ${theme.colors.black};
   }
 `
+
+export default React.forwardRef(Window)

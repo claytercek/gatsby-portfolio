@@ -98,6 +98,12 @@ module.exports = {
     },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-catch-links`,
+    {
+      resolve: 'gatsby-plugin-transition-link',
+      options: {
+        injectPageProps: false,
+      },
+    },
     // {
     //   resolve: `gatsby-plugin-manifest`,
     //   options: {
