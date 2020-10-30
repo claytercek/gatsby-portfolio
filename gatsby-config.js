@@ -53,6 +53,7 @@ module.exports = {
     ],
   },
   plugins: [
+    `gatsby-plugin-typegen`,
     `gatsby-plugin-emotion`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -83,16 +84,16 @@ module.exports = {
               include: ['image'],
             },
           },
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 1440,
-              wrapperStyle: fluidResult => `flex:${fluidResult.aspectRatio};`,
-              linkImagesToOriginal: false,
-              withWebp: true,
-              quality: 80,
-            },
-          },
+          // {
+          //   resolve: `gatsby-remark-images`,
+          //   options: {
+          //     maxWidth: 1440,
+          //     wrapperStyle: fluidResult => `flex:${fluidResult.aspectRatio};`,
+          //     linkImagesToOriginal: false,
+          //     withWebp: true,
+          //     quality: 80,
+          //   },
+          // },
         ],
       },
     },

@@ -1,16 +1,16 @@
 import Layout from 'components/layout/Layout'
 import React from 'react'
-import {graphql} from 'gatsby'
+import {graphql, PageProps} from 'gatsby'
 import Card from 'components/work/Card'
 import {ScrollProvider} from 'hooks/useScroll'
 
-export default function Index({data}) {
+export default function Index({data}: PageProps<GatsbyTypes.IndexPageQuery>) {
   const works = data.allMarkdownRemark.edges
   return (
     <Layout.Wrapper>
       <Layout.Main>
         <ScrollProvider count={data.allMarkdownRemark.totalCount}>
-          {works.map(({node}, index) => (
+          {works.map(({node}: {node: any}, index: number) => (
             <Card node={node} key={node.id} index={index} />
           ))}
         </ScrollProvider>
@@ -20,7 +20,7 @@ export default function Index({data}) {
 }
 
 export const query = graphql`
-  query {
+  query IndexPage {
     allMarkdownRemark(
       sort: {fields: [frontmatter___date], order: DESC}
       filter: {fields: {draft: {ne: true}, type: {eq: "work"}}}

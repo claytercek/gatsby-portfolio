@@ -1,19 +1,24 @@
 import React, {useEffect} from 'react'
-import {graphql} from 'gatsby'
+import {graphql, PageProps} from 'gatsby'
+import Layout from 'components/layout/Layout'
 
-export default function Default({data}) {
+export default function Default({
+  data,
+}: PageProps<GatsbyTypes.DefaultTemplateQuery>) {
   const post = data.markdownRemark
-  const html = post.html.replace(/(\r\n|\n|\r)/gm, '')
+  const html = post?.html?.replace(/(\r\n|\n|\r)/gm, '')
 
   return (
-    <div>
-      <h2>{post.title}</h2>
-    </div>
+    <Layout.Wrapper>
+      <Layout.Main>
+        <h1>{post?.frontmatter?.title}</h1>
+      </Layout.Main>
+    </Layout.Wrapper>
   )
 }
 
 export const query = graphql`
-  query($slug: String!) {
+  query DefaultTemplate($slug: String!) {
     markdownRemark(fields: {slug: {eq: $slug}}) {
       html
       frontmatter {
@@ -30,9 +35,6 @@ export const query = graphql`
               cropFocus: CENTER
             ) {
               ...GatsbyImageSharpFluid
-            }
-            fixed(width: 1024, cropFocus: CENTER) {
-              ...GatsbyImageSharpFixed
             }
           }
         }

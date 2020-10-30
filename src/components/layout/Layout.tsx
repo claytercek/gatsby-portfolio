@@ -2,9 +2,10 @@ import React from 'react'
 import {Global} from '@emotion/core'
 import globalStyles from 'styles/global'
 import {ThemeProvider} from 'emotion-theming'
-import * as theme from 'styles/theme'
+import theme, {Theme} from 'styles/theme'
 
-function Wrapper({children}) {
+// eslint-disable-next-line @typescript-eslint/ban-types
+function Wrapper({children}: React.PropsWithChildren<{}>) {
   return (
     <ThemeProvider theme={theme}>
       {children}
@@ -13,10 +14,11 @@ function Wrapper({children}) {
   )
 }
 
-function Main(props) {
+// eslint-disable-next-line @typescript-eslint/ban-types
+function Main(props: React.PropsWithChildren<{}>) {
   return (
     <main
-      css={theme => ({
+      css={(theme: Theme) => ({
         padding: theme.spacing.medium,
         [theme.mq.small]: {
           padding: theme.spacing.large,

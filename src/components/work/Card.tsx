@@ -2,42 +2,25 @@ import {useScroll} from 'hooks/useScroll'
 import Image from 'gatsby-image'
 import React, {useRef} from 'react'
 import {animated, useSpring} from 'react-spring'
-import Window from './Window'
 import {borderLine} from 'styles/mixins'
 import {css} from '@emotion/core'
-import {TransitionLink} from 'gatsby-plugin-transition-link/components/TransitionLink'
 import useAnimationState from 'hooks/useAnimationState'
-import useMeasure from 'react-use-measure'
+import {Link} from 'gatsby'
+import {Theme} from 'styles/theme'
+import {WorkNode} from 'globals'
 
-export default function Card({node, index}) {
+export default function Card({node, index}: {index: number; node: WorkNode}) {
   const {props: springProps, ref} = useScroll(index)
   const {mount, inView} = useAnimationState(ref)
 
-  const [windowRef, bounds] = useMeasure()
-
   const windowAnim = useSpring({
-    transform: mount ? (inView ? 'scale(100%)' : 'scale(80%)') : 'scale(0%)',
+    transform: mount ? (inView ? 'scale(100%)' : 'scale(90%)') : 'scale(0%)',
   })
 
   return (
     <animated.li ref={ref} css={cardStyle} style={springProps}>
-      <TransitionLink
-        to={node.fields.slug}
-        title={node.frontmatter.title}
-        exit={{
-          length: 1,
-        }}
-        entry={{
-          delay: 0.6,
-        }}
-      >
-        <Window
-          tag={animated.article}
-          css={{overflow: 'hidden'}}
-          ref={windowRef}
-          style={windowAnim}
-        >
-          <header css={{display: 'flex', alignItems: 'baseline'}}>
+      <Link to={node.fields.slug}>
+        {/* <header css={{display: 'flex', alignItems: 'baseline'}}>
             <h3
               css={theme => ({
                 marginBottom: theme.spacing.small,
@@ -47,23 +30,18 @@ export default function Card({node, index}) {
               {node.frontmatter.title}
             </h3>
             <span>{node.frontmatter.type}</span>
-          </header>
-          <Image
-            fixed={node.frontmatter.image.childImageSharp.fixed}
-            css={theme => [borderLine(theme)]}
-          />
-        </Window>
-      </TransitionLink>
+          </header> */}
+        <Image {...node.frontmatter.image.childImageSharp} />
+      </Link>
     </animated.li>
   )
 }
 
-const cardStyle = theme => css`
+const cardStyle = (theme: Theme) => css`
   display: block;
   margin-bottom: -128px;
-  overflow: hidden;
-
   max-width: 72vw;
+  height: auto;
 
   @media (max-width: ${theme.breakpoints.small + 1}px) {
     &:nth-of-type(2n) {
@@ -77,11 +55,12 @@ const cardStyle = theme => css`
   }
 
   ${theme.mq.small} {
-    width: auto;
+    width: 40%;
 
     .gatsby-image-wrapper {
-      min-height: 30vh;
-      max-width: 60vw;
+      width: 100%;
+      height: auto;
+      margin: 0;
     }
 
     &:nth-of-type(11n-10),

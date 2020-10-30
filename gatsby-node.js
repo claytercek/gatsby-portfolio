@@ -1,6 +1,6 @@
-const path = require(`path`)
-var fs = require('fs')
-const {createFilePath} = require(`gatsby-source-filesystem`)
+const path = await require(`path`)
+const fs = await require('fs')
+const {createFilePath} = await require(`gatsby-source-filesystem`)
 
 exports.onCreateNode = ({node, getNode, actions}) => {
   const {createNodeField} = actions
@@ -53,17 +53,17 @@ exports.createPages = ({actions, graphql}) => {
     posts.forEach(({node}) => {
       // pages/{type}/{type}-single.js
       let template = path.resolve(
-        `./src/templates/${node.fields.type}-single.js`,
+        `./src/templates/${node.fields.type}-single.tsx`,
       )
 
       // pages/{type}/{type}.js
       if (!fs.existsSync(template)) {
-        template = path.resolve(`./src/templates/${node.fields.type}.js`)
+        template = path.resolve(`./src/templates/${node.fields.type}.tsx`)
       }
 
       // pages/default.js
       if (!fs.existsSync(template)) {
-        template = path.resolve(`./src/templates/default.js`)
+        template = path.resolve(`./src/templates/default.tsx`)
       }
 
       createPage({

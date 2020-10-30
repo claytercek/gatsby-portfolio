@@ -1,12 +1,10 @@
-import {useTransitionState} from 'gatsby-plugin-transition-link/hooks'
-import {useEffect, useRef, useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 
-export default function useAnimationState(ref) {
-  // animate out on navigation
-  const {mount} = useTransitionState()
+export default function useAnimationState(ref: React.RefObject<HTMLElement>) {
+  const mount = true
 
   const [inView, setInView] = useState(false)
-  const observer = useRef(null)
+  const observer = useRef<IntersectionObserver>(null!)
 
   useEffect(() => {
     observer.current = new window.IntersectionObserver(

@@ -1,13 +1,13 @@
-export const colors = {
+const colors = {
   white: '#FFFFFF',
   black: '#000000',
   grey: 'lightgrey',
   violet: '#4347C3',
 }
 
-export const lineWidth = '2px'
+const line = '2px'
 
-export const spacing = {
+const spacing = {
   xsmall: '4px',
   small: '8px',
   medium: '16px',
@@ -15,14 +15,22 @@ export const spacing = {
   xlarge: '64px',
 }
 
-export const breakpoints = {
+const breakpoints: {[index: string]: number} = {
   small: 576,
   medium: 768,
   large: 1280,
 }
 
-export const mq = {}
+const mq: {[index: string]: string} = {}
 
 Object.keys(breakpoints).forEach(
   key => (mq[key] = `@media (min-width: ${breakpoints[key]}px)`),
 )
+
+const theme = {colors, line, spacing, breakpoints, mq}
+
+Object.freeze(theme)
+
+export default theme
+
+export type Theme = typeof theme

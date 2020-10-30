@@ -3,7 +3,25 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import {useStaticQuery, graphql} from 'gatsby'
 
-function SEO({description, lang, meta, image: metaImage, title, pathname}) {
+interface Props {
+  description?: string
+  lang?: string
+  meta?: Array<
+    {property: string; content: string} | {property: string; content: string}
+  >
+  image?: {src: string; width: number; height: number}
+  title?: string
+  pathname?: string
+}
+
+function SEO({
+  description,
+  lang,
+  meta,
+  image: metaImage,
+  title,
+  pathname,
+}: Props) {
   const {site} = useStaticQuery(
     graphql`
       query {
@@ -110,7 +128,7 @@ function SEO({description, lang, meta, image: metaImage, title, pathname}) {
             content: `${site.siteMetadata.siteUrl}${image.src}`,
           },
         ])
-        .concat(meta)}
+        .concat(meta ?? [])}
     />
   )
 }

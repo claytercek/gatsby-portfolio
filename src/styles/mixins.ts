@@ -6,5 +6,5 @@ export const borderLine = theme => css`
 `
 export const shadow = theme => css`
   box-shadow: ${theme.spacing.medium} ${theme.spacing.medium}
-    ${transparentize(0.7, theme.colors.violet)};
+    ${theme.colors.black};
 `

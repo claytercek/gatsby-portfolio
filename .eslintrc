@@ -1,33 +1,43 @@
 {
   "extends": [
-    "eslint:recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:jsx-a11y/recommended",
     "prettier",
-    "prettier/react"
+    "prettier/react",
+    "prettier/@typescript-eslint"
   ],
   "settings": {
     "react": {
       "version": "detect"
     }
   },
+  "plugins": ["react", "@typescript-eslint"],
   "env": {
-    "node": true,
     "browser": true,
+    "node": true,
     "es2020": true
   },
-  "plugins": ["react"],
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
-    },
-    "ecmaVersion": 11,
-    "sourceType": "module"
+    }
   },
   "rules": {
     "react/prop-types": "off",
     "no-unused-vars": "warn",
     "no-console": "warn",
-    "react/display-name": ["warn", { "ignoreTranspilerName": false}]
+    "react/display-name": ["warn", { "ignoreTranspilerName": false}],
+    "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
+    "react/react-in-jsx-scope": "off" ,
+    "@typescript-eslint/explicit-module-boundary-types": "off"
+  },
+  "globals": {
+    "React": "writable"
   }
 }

@@ -18,6 +18,7 @@
     "gatsby-plugin-react-helmet": "^3.3.12",
     "gatsby-plugin-sharp": "^2.6.37",
     "gatsby-plugin-transition-link": "^1.20.2",
+    "gatsby-plugin-typegen": "^2.2.1",
     "gatsby-remark-external-links": "^0.0.4",
     "gatsby-remark-images": "^3.3.31",
     "gatsby-remark-relative-images": "^2.0.2",
@@ -35,8 +36,15 @@
     "typeface-poppins": "^0.0.72"
   },
   "devDependencies": {
+    "@types/node": "^14.14.6",
+    "@types/react": "^16.9.55",
+    "@types/react-dom": "^16.9.9",
+    "@types/react-helmet": "^6.1.0",
+    "@typescript-eslint/eslint-plugin": "^4.6.0",
+    "@typescript-eslint/parser": "^4.6.0",
     "eslint": "^7.10.0",
     "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.21.2",
     "eslint-plugin-react-hooks": "^4.1.2",
     "husky": "^4.3.0",
@@ -44,7 +52,8 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^2.1.2",
     "stylelint": "^13.7.2",
-    "stylelint-config-standard": "^20.0.0"
+    "stylelint-config-standard": "^20.0.0",
+    "typescript": "^4.0.5"
   },
   "license": "MIT",
   "scripts": {
@@ -55,17 +64,20 @@
     "clean": "gatsby clean",
     "lint": "run-s -n lint:*",
     "lint:js": "eslint . --fix --max-warnings 8",
-    "lint:style": "stylelint --fix --mw 8 \"**/*.{css,scss,sass,js,jsx}\"",
-    "lint:format": "prettier --write \"**/*.{js,jsx,json,md}\""
+    "lint:style": "stylelint --fix --mw 8 \"**/*.{css,sass,scss,{js,ts}{,x}}\"",
+    "lint:format": "prettier --write \"**/*.{{js,ts}{,x},css,md,json}\"",
+    "lint:types": "tsc --noEmit"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": [
+        "lint-staged"
+      ]
     }
   },
   "lint-staged": {
-    "*.{js,jsx}": "eslint --cache --fix",
-    "*.{css,scss,sass,js,jsx}": "stylelint --fix",
-    "*.{js,jsx,json,md}": "prettier --write"
+    "*.{js,ts}{,x}": "eslint --cache --fix",
+    "*.{{js,ts}{,x},css,sass,scss}": "stylelint --fix",
+    "*.{{js,ts}{,x},md,json}": "prettier --write"
   }
 }

@@ -1,7 +1,8 @@
 import {css} from '@emotion/core'
+import {Theme} from './theme'
 import typography from './typography'
 
-export default css`
+export default (theme: Theme) => css`
   ${typography}
   * {
     box-sizing: border-box;
@@ -9,11 +10,7 @@ export default css`
 
   html {
     font-size: 100%;
-    font-family: 'poppins',
-      -apple-system,
-      Roboto,
-      'Open Sans',
-      'Helvetica Neue',
+    font-family: 'poppins', -apple-system, Roboto, 'Open Sans', 'Helvetica Neue',
       sans-serif;
   }
 
@@ -28,9 +25,10 @@ export default css`
   }
 
   body {
-    background-image: url('pattern.png');
+    /* background-image: url('pattern.png');
     background-size: 8px 8px;
-    background-repeat: repeat;
+    background-repeat: repeat; */
+    background: #fff;
   }
 
   p {
@@ -62,5 +60,9 @@ export default css`
   a {
     text-decoration: none;
     color: inherit;
+  }
+
+  .tl-edges {
+    overflow: visible !important;
   }
 `
