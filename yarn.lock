@@ -5803,10 +5803,10 @@ eslint-config-react-app@^5.2.1:
   dependencies:
     confusing-browser-globals "^1.0.9"
 
-eslint-config-tercek@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/eslint-config-tercek/-/eslint-config-tercek-1.0.3.tgz#a1996d44e5b7cc7d9fbe57aaeceeb94672b71d77"
-  integrity sha512-4Ra2Fel4Fx8RW+FuGYO+qqsG9A/GqG8aCRjQDOzJ4UmbrhpeLv//YMot4/SBszZmrhRFxb+VkskVar7tDRComA==
+eslint-config-tercek@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/eslint-config-tercek/-/eslint-config-tercek-1.0.4.tgz#640676a80e448bda7c7deefc7cd2ad04cac02400"
+  integrity sha512-3cPjfL8c5gBcP7Xy6fprMb/rKkFMg6Y6vOPv6J7RKQ89Uu50qNLUOi28ZrRYBjmVohsTu6Yjcaud3nNo9aaqlQ==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^4.6.1"
     "@typescript-eslint/parser" "^4.6.1"
@@ -12248,6 +12248,11 @@ prepend-http@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-2.0.0.tgz#e92434bfa5ea8c19f41cdfd401d741a3c819d897"
   integrity sha1-6SQ0v6XqjBn0HN/UAddBo8gZ2Jc=
+
+prettier-config-tercek@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/prettier-config-tercek/-/prettier-config-tercek-1.0.0.tgz#371c83c7369a95214c314aabb07d70ecfe7c8613"
+  integrity sha512-bONmoMHiwWIKoLkc2bNntzfKdmBjbz6DvpYm2niTprZrWwM61/giE+sv9nluC4DVE6FMwmd2tDVGfX0F/R47lg==
 
 prettier@^2.0.5, prettier@^2.1.2:
   version "2.1.2"

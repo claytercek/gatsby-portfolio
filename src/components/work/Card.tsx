@@ -6,8 +6,8 @@ import {css} from '@emotion/core'
 import useAnimationState from 'hooks/useAnimationState'
 import {Link} from 'gatsby'
 import {Theme} from 'styles/theme'
-import { mq } from 'styles/mixins'
-import { RemarkImage } from '../../globals'
+import {mq} from 'styles/mixins'
+import {RemarkImage} from '../../globals'
 
 interface Props {
   readonly index: number
@@ -17,11 +17,10 @@ interface Props {
   readonly image: RemarkImage | undefined
 }
 
-
 export default function Card({slug, image, index, title}: Props) {
   const {props: springProps, ref} = useScroll(index)
   const {mount, inView} = useAnimationState(ref)
-  
+
   let transform = 'scale(0%)'
   if (mount) {
     if (inView) transform = 'scale(100%)'

@@ -43,11 +43,12 @@
     "@types/react-dom": "^16.9.9",
     "@types/react-helmet": "^6.1.0",
     "eslint": "^7.10.0",
-    "eslint-config-tercek": "^1.0.3",
+    "eslint-config-tercek": "^1.0.4",
     "husky": "^4.3.0",
     "lint-staged": ">=10",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.1.2",
+    "prettier-config-tercek": "^1.0.0",
     "stylelint": "^13.7.2",
     "stylelint-config-standard": "^20.0.0"
   },
@@ -74,6 +75,7 @@
       "GatsbyTypes": "readonly"
     }
   },
+  "prettier": "prettier-config-tercek",
   "husky": {
     "hooks": {
       "pre-commit": [
