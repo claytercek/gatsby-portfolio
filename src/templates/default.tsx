@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import {graphql, PageProps} from 'gatsby'
 import Layout from 'components/layout/Layout'
 
@@ -6,7 +6,7 @@ export default function Default({
   data,
 }: PageProps<GatsbyTypes.DefaultTemplateQuery>) {
   const post = data.markdownRemark
-  const html = post?.html?.replace(/(\r\n|\n|\r)/gm, '')
+  // const html = post?.html?.replace(/(\r\n|\n|\r)/gm, '')
 
   return (
     <Layout.Wrapper>

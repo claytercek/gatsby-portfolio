@@ -1,8 +1,7 @@
 import SEO from 'utils/seo'
 import React from 'react'
-import {PageProps} from 'gatsby'
 
-export default function NoMatch({data}: PageProps) {
+export default function NoMatch() {
   return (
     <div>
       <SEO title="404" />

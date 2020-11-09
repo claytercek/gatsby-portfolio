@@ -1,4 +1,4 @@
 // fix ios active styles
-document.addEventListener('touchstart', function () {}, true)
+document.addEventListener('touchstart', () => {}, true)
 
 require('typeface-poppins')

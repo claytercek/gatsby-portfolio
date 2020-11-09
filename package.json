@@ -33,27 +33,23 @@
     "react-spring": "^8.0.27",
     "react-use-measure": "^2.0.2",
     "rehype-react": "^6.1.0",
-    "typeface-poppins": "^0.0.72"
+    "typeface-poppins": "^0.0.72",
+    "typescript": "^4.0.5",
+    "unist-util-visit": "^2.0.3"
   },
   "devDependencies": {
     "@types/node": "^14.14.6",
     "@types/react": "^16.9.55",
     "@types/react-dom": "^16.9.9",
     "@types/react-helmet": "^6.1.0",
-    "@typescript-eslint/eslint-plugin": "^4.6.0",
-    "@typescript-eslint/parser": "^4.6.0",
     "eslint": "^7.10.0",
-    "eslint-config-prettier": "^6.12.0",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.21.2",
-    "eslint-plugin-react-hooks": "^4.1.2",
+    "eslint-config-tercek": "^1.0.3",
     "husky": "^4.3.0",
     "lint-staged": ">=10",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.1.2",
     "stylelint": "^13.7.2",
-    "stylelint-config-standard": "^20.0.0",
-    "typescript": "^4.0.5"
+    "stylelint-config-standard": "^20.0.0"
   },
   "license": "MIT",
   "scripts": {
@@ -63,10 +59,20 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "lint": "run-s -n lint:*",
-    "lint:js": "eslint . --fix --max-warnings 8",
+    "lint:js": "eslint . --fix --ignore-path .gitignore",
     "lint:style": "stylelint --fix --mw 8 \"**/*.{css,sass,scss,{js,ts}{,x}}\"",
     "lint:format": "prettier --write \"**/*.{{js,ts}{,x},css,md,json}\"",
     "lint:types": "tsc --noEmit"
+  },
+  "eslintConfig": {
+    "extends": [
+      "tercek",
+      "tercek/react",
+      "tercek/typescript"
+    ],
+    "globals": {
+      "GatsbyTypes": "readonly"
+    }
   },
   "husky": {
     "hooks": {

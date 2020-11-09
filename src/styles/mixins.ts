@@ -1,10 +1,9 @@
-import {css} from '@emotion/core'
-import {transparentize} from 'polished'
+import theme, {Theme} from './theme'
 
-export const borderLine = theme => css`
-  border: ${theme.colors.black} ${theme.lineWidth} solid;
-`
-export const shadow = theme => css`
-  box-shadow: ${theme.spacing.medium} ${theme.spacing.medium}
-    ${theme.colors.black};
-`
+// eslint-disable-next-line import/prefer-default-export
+export const mq = (
+  breakpoint: keyof Theme['breakpoints'],
+  type: 'min' | 'max' = 'min',
+) => {
+  return `@media (${type}-width: ${theme.breakpoints[breakpoint]}px)`
+}

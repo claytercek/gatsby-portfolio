@@ -9,9 +9,10 @@ interface ScrollContextInterface {
   tops: (number | null)[]
 }
 
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const ScrollContext = React.createContext<ScrollContextInterface>(null!)
 
-const tensions = [800, 150, 500, 240]
+const tensions = [150, 500, 240, 800]
 
 function ScrollProvider(props: React.PropsWithChildren<{count: number}>) {
   const [springs, set] = useSprings(props.count, index => ({
@@ -38,19 +39,19 @@ function ScrollProvider(props: React.PropsWithChildren<{count: number}>) {
     setTops(old => old.fill(null))
     setHeight('auto')
 
-    if (window.innerWidth < theme.breakpoints.small) return
+    if (window.innerWidth < theme.breakpoints.alpha) return
     // set static height and 'tops'
     setHeight(wrapperRef?.current?.clientHeight ?? 0)
-    const newTops = []
-    for (const ref of refs) {
+    const newTops: number[] = []
+    refs.forEach(ref => {
       newTops.push(
         ref.current
           ? window.pageYOffset + ref.current.getBoundingClientRect().top
           : 0,
       )
-    }
+    })
     setTops(newTops)
-  }, [])
+  }, [refs])
 
   const onScroll = useCallback(() => {
     set({

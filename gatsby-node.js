@@ -1,27 +1,29 @@
-const path = await require(`path`)
-const fs = await require('fs')
-const {createFilePath} = await require(`gatsby-source-filesystem`)
+/* eslint-disable @typescript-eslint/no-var-requires */
+const path = require('path')
+const fs = require('fs')
+
+const {createFilePath} = require('gatsby-source-filesystem')
 
 exports.onCreateNode = ({node, getNode, actions}) => {
   const {createNodeField} = actions
 
-  if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({node, getNode, basePath: `pages`})
+  if (node.internal.type === 'MarkdownRemark') {
+    const slug = createFilePath({node, getNode, basePath: 'pages'})
     const type = slug.split('/')[1]
     createNodeField({
       node,
-      name: `slug`,
+      name: 'slug',
       value: slug,
     })
     createNodeField({
       node,
-      name: `type`,
+      name: 'type',
       value: type,
     })
 
     createNodeField({
       node,
-      name: `draft`,
+      name: 'draft',
       value:
         process.env.NODE_ENV === 'production' ? node.frontmatter.draft : false,
     })
@@ -63,7 +65,7 @@ exports.createPages = ({actions, graphql}) => {
 
       // pages/default.js
       if (!fs.existsSync(template)) {
-        template = path.resolve(`./src/templates/default.tsx`)
+        template = path.resolve('./src/templates/default.tsx')
       }
 
       createPage({
@@ -80,7 +82,7 @@ exports.createPages = ({actions, graphql}) => {
 }
 
 // absolute imports
-exports.onCreateWebpackConfig = ({stage, actions}) => {
+exports.onCreateWebpackConfig = ({actions}) => {
   actions.setWebpackConfig({
     resolve: {
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],

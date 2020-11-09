@@ -10,7 +10,11 @@ export default (theme: Theme) => css`
 
   html {
     font-size: 100%;
-    font-family: 'poppins', -apple-system, Roboto, 'Open Sans', 'Helvetica Neue',
+    font-family: 'poppins',
+      -apple-system,
+      Roboto,
+      'Open Sans',
+      'Helvetica Neue',
       sans-serif;
   }
 
@@ -28,7 +32,8 @@ export default (theme: Theme) => css`
     /* background-image: url('pattern.png');
     background-size: 8px 8px;
     background-repeat: repeat; */
-    background: #fff;
+    background: ${theme.colors.beta};
+    color: ${theme.colors.alpha};
   }
 
   p {

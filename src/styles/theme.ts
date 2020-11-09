@@ -1,8 +1,7 @@
 const colors = {
-  white: '#FFFFFF',
-  black: '#000000',
-  grey: 'lightgrey',
-  violet: '#4347C3',
+  alpha: '#EAE8F5',
+  beta: '#141320',
+  gamma: '#5449C1',
 }
 
 const line = '2px'
@@ -15,19 +14,13 @@ const spacing = {
   xlarge: '64px',
 }
 
-const breakpoints: {[index: string]: number} = {
-  small: 576,
-  medium: 768,
-  large: 1280,
+const breakpoints = {
+  alpha: 576,
+  beta: 768,
+  gamma: 1280,
 }
 
-const mq: {[index: string]: string} = {}
-
-Object.keys(breakpoints).forEach(
-  key => (mq[key] = `@media (min-width: ${breakpoints[key]}px)`),
-)
-
-const theme = {colors, line, spacing, breakpoints, mq}
+const theme = {colors, line, spacing, breakpoints}
 
 Object.freeze(theme)
 

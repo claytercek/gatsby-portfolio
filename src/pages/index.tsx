@@ -6,12 +6,25 @@ import {ScrollProvider} from 'hooks/useScroll'
 
 export default function Index({data}: PageProps<GatsbyTypes.IndexPageQuery>) {
   const works = data.allMarkdownRemark.edges
+
   return (
     <Layout.Wrapper>
       <Layout.Main>
+        <Layout.Hero>
+          <h2 css={{fontSize: '5rem', fontWeight: 800}}>
+            interaction designer & creative developer.
+          </h2>
+        </Layout.Hero>
         <ScrollProvider count={data.allMarkdownRemark.totalCount}>
-          {works.map(({node}: {node: any}, index: number) => (
-            <Card node={node} key={node.id} index={index} />
+          {works.map(({node}, index: number) => (
+            <Card
+              date={node?.frontmatter?.date}
+              title={node?.frontmatter?.title ?? ''}
+              image={node?.frontmatter?.image}
+              slug={node?.fields?.slug ?? ''}
+              key={node.id}
+              index={index}
+            />
           ))}
         </ScrollProvider>
       </Layout.Main>
@@ -35,6 +48,7 @@ export const query = graphql`
           frontmatter {
             title
             type
+            date
             image {
               childImageSharp {
                 fixed(height: 360, cropFocus: CENTER) {

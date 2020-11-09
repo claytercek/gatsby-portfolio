@@ -1,5 +1,5 @@
 {
-  "include": ["./src/**/*"],
+  "include": ["./src/**/*", "./plugins/**/*"],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "baseUrl": "src",
@@ -16,6 +16,7 @@
     "emitDecoratorMetadata": true,
     "noEmit": true,
     "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "typeRoots": ["./node_modules/@types/", "./src/"]
   }
 }

@@ -2,12 +2,13 @@ import React from 'react'
 import {Global} from '@emotion/core'
 import globalStyles from 'styles/global'
 import {ThemeProvider} from 'emotion-theming'
-import theme, {Theme} from 'styles/theme'
+import * as themeConf from 'styles/theme'
+import {mq} from 'styles/mixins'
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 function Wrapper({children}: React.PropsWithChildren<{}>) {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={themeConf.default}>
       {children}
       <Global styles={globalStyles} />
     </ThemeProvider>
@@ -18,14 +19,26 @@ function Wrapper({children}: React.PropsWithChildren<{}>) {
 function Main(props: React.PropsWithChildren<{}>) {
   return (
     <main
-      css={(theme: Theme) => ({
-        padding: theme.spacing.medium,
-        [theme.mq.small]: {
-          padding: theme.spacing.large,
+      css={(theme: themeConf.Theme) => ({
+        padding: theme.spacing.small,
+        [mq('alpha')]: {
+          padding: theme.spacing.medium,
         },
-        [theme.mq.large]: {
+        [mq('gamma')]: {
           padding: theme.spacing.xlarge,
         },
+      })}
+      {...props}
+    />
+  )
+}
+
+// eslint-disable-next-line @typescript-eslint/ban-types
+function Hero(props: React.PropsWithChildren<{}>) {
+  return (
+    <div
+      css={(theme: themeConf.Theme) => ({
+        minHeight: '72vh',
       })}
       {...props}
     />
@@ -35,6 +48,7 @@ function Main(props: React.PropsWithChildren<{}>) {
 const Layout = {
   Wrapper,
   Main,
+  Hero,
 }
 
 export default Layout

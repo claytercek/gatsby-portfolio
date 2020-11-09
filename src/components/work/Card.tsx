@@ -1,37 +1,42 @@
 import {useScroll} from 'hooks/useScroll'
 import Image from 'gatsby-image'
-import React, {useRef} from 'react'
+import React from 'react'
 import {animated, useSpring} from 'react-spring'
-import {borderLine} from 'styles/mixins'
 import {css} from '@emotion/core'
 import useAnimationState from 'hooks/useAnimationState'
 import {Link} from 'gatsby'
 import {Theme} from 'styles/theme'
-import {WorkNode} from 'globals'
+import { mq } from 'styles/mixins'
+import { RemarkImage } from '../../globals'
 
-export default function Card({node, index}: {index: number; node: WorkNode}) {
+interface Props {
+  readonly index: number
+  readonly title: string
+  readonly slug: string
+  readonly date: string | undefined
+  readonly image: RemarkImage | undefined
+}
+
+
+export default function Card({slug, image, index, title}: Props) {
   const {props: springProps, ref} = useScroll(index)
   const {mount, inView} = useAnimationState(ref)
+  
+  let transform = 'scale(0%)'
+  if (mount) {
+    if (inView) transform = 'scale(100%)'
+    else transform = 'scale(100%)'
+  }
 
   const windowAnim = useSpring({
-    transform: mount ? (inView ? 'scale(100%)' : 'scale(90%)') : 'scale(0%)',
+    transform,
   })
 
   return (
     <animated.li ref={ref} css={cardStyle} style={springProps}>
-      <Link to={node.fields.slug}>
-        {/* <header css={{display: 'flex', alignItems: 'baseline'}}>
-            <h3
-              css={theme => ({
-                marginBottom: theme.spacing.small,
-                marginRight: theme.spacing.small,
-              })}
-            >
-              {node.frontmatter.title}
-            </h3>
-            <span>{node.frontmatter.type}</span>
-          </header> */}
-        <Image {...node.frontmatter.image.childImageSharp} />
+      <Link to={slug}>
+        {image ? <Image {...image.childImageSharp} /> : null}
+        {/* <h3>{title}</h3> */}
       </Link>
     </animated.li>
   )
@@ -39,28 +44,41 @@ export default function Card({node, index}: {index: number; node: WorkNode}) {
 
 const cardStyle = (theme: Theme) => css`
   display: block;
-  margin-bottom: -128px;
+  margin-bottom: -148px;
   max-width: 72vw;
   height: auto;
 
-  @media (max-width: ${theme.breakpoints.small + 1}px) {
-    &:nth-of-type(2n) {
-      align-self: flex-end;
+  .gatsby-image-wrapper {
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  a {
+    display: block;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+    transform: scale(100%);
+
+    .gatsby-image-wrapper {
+      display: block;
+      transform: scale(100%);
+      transition: transform 0.2s ease;
+    }
+
+    &:hover {
+      transform: scale(90.9%);
+
+      .gatsby-image-wrapper {
+        transform: scale(110%);
+      }
     }
   }
 
-  .gatsby-image-wrapper {
-    max-width: 100%;
-    min-height: 0;
-  }
-
-  ${theme.mq.small} {
-    width: 40%;
+  ${mq('alpha')} {
+    max-width: 60%;
 
     .gatsby-image-wrapper {
-      width: 100%;
-      height: auto;
-      margin: 0;
+      max-width: 100%;
     }
 
     &:nth-of-type(11n-10),
@@ -68,6 +86,10 @@ const cardStyle = (theme: Theme) => css`
     &:nth-of-type(11n-6),
     &:nth-of-type(11n-3) {
       align-self: flex-end;
+
+      h3 {
+        text-align: right;
+      }
     }
 
     &:nth-of-type(11n-7),

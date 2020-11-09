@@ -1,7 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Clay Tercek`,
-    description: `Interaction designer and creative developer based in Philadelphia, specializing in rich experiences in spaces both physical and digital.`,
+    title: 'Clay Tercek',
+    description:
+      'Interaction designer and creative developer based in Philadelphia, specializing in rich experiences in spaces both physical and digital.',
     author: 'Clay Tercek',
     siteUrl: 'https://claytercek.com',
     image: '/default-thumb.png',
@@ -53,32 +54,32 @@ module.exports = {
     ],
   },
   plugins: [
-    `gatsby-plugin-typegen`,
-    `gatsby-plugin-emotion`,
+    'gatsby-plugin-typegen',
+    'gatsby-plugin-emotion',
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/static/assets`,
         name: 'assets',
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `pages`,
+        name: 'pages',
         path: `${__dirname}/content/`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
-          `gatsby-remark-custom`,
-          `gatsby-remark-external-links`,
+          'gatsby-remark-custom',
+          'gatsby-remark-external-links',
           {
-            resolve: `gatsby-remark-relative-images`,
+            resolve: 'gatsby-remark-relative-images',
             options: {
               staticFolderName: 'static',
               include: ['image'],
@@ -97,8 +98,8 @@ module.exports = {
         ],
       },
     },
-    `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-catch-links`,
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-catch-links',
     {
       resolve: 'gatsby-plugin-transition-link',
       options: {
